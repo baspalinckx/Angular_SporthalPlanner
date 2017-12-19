@@ -1,84 +1,83 @@
 import {SportsHall} from '../shared/sportshall.model';
 
 export class Reservation {
-
-
-  private _ReserveID: Number;
-  private _StartTime: string;
-  private _EndTime: string;
-  private _FirstName: string;
-  private _LastName: string;
-  private _Email: string;
-  private _PhoneNumber: Number;
-  private _SportsHall: SportsHall;
-  private _Context: string;
+  private _reserveID: Number;
+  private _startTime: string;
+  private _endTime: string;
+  private _firstName: string;
+  private _lastName: string;
+  private _email: string;
+  private _phoneNumber: Number;
+  private _sportsHall: SportsHall;
+  private _context: string;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
   }
 
-  public get Context(): string {
-    return this._Context;
+  public get reserveID(): Number {
+    return this._reserveID;
   }
 
-  public set Context(value: string) {
-    this._Context = value;
+  public set reserveID(value: Number) {
+    this._reserveID = value;
+  }
+  public get startTime(): string {
+    return this._startTime;
   }
 
-  public get SportsHall(): SportsHall {
-    return this._SportsHall;
+  public set startTime(value: string) {
+    this._startTime = value;
+  }
+  public get endTime(): string {
+    return this._endTime;
   }
 
-  public set SportsHall(value: SportsHall) {
-    this._SportsHall = value;
+  public set endTime(value: string) {
+    this._endTime = value;
   }
-  public get PhoneNumber(): Number {
-    return this._PhoneNumber;
-  }
-
-  public set PhoneNumber(value: Number) {
-    this._PhoneNumber = value;
-  }
-  public get Email(): string {
-    return this._Email;
+  public get firstName(): string {
+    return this._firstName;
   }
 
-  public set Email(value: string) {
-    this._Email = value;
+  public set firstName(value: string) {
+    this._firstName = value;
   }
-  public get LastName(): string {
-    return this._LastName;
-  }
-
-  public set LastName(value: string) {
-    this._LastName = value;
-  }
-  public get FirstName(): string {
-    return this._FirstName;
+  public get lastName(): string {
+    return this._lastName;
   }
 
-  public set FirstName(value: string) {
-    this._FirstName = value;
+  public set lastName(value: string) {
+    this._lastName = value;
   }
-  public get EndTime(): string {
-    return this._EndTime;
-  }
-
-  public set EndTime(value: string) {
-    this._EndTime = value;
-  }
-  public get StartTime(): string {
-    return this._StartTime;
+  public get email(): string {
+    return this._email;
   }
 
-  public set StartTime(value: string) {
-    this._StartTime = value;
+  public set email(value: string) {
+    this._email = value;
   }
-  public get ReserveID(): Number {
-    return this._ReserveID;
+  public get phoneNumber(): Number {
+    return this._phoneNumber;
   }
 
-  public set ReserveID(value: Number) {
-    this._ReserveID = value;
+  public set phoneNumber(value: Number) {
+    this._phoneNumber = value;
   }
+  public get sportsHall(): SportsHall {
+    return this._sportsHall;
+  }
+
+  public set sportsHall(value: SportsHall) {
+    this._sportsHall = value;
+  }
+  public get context(): string {
+    return this._context;
+  }
+
+  public set context(value: string) {
+    this._context = value;
+  }
+
+
 }
