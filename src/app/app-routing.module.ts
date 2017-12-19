@@ -8,7 +8,7 @@ const appRoutes: Routes = [
     path: 'home', component: ReservationsComponent, children: [
     {path: '', component: ReservationsComponent},
 
-  ]};
+  ]}
   ];
 
 @NgModule({

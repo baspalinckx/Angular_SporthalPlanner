@@ -8,6 +8,7 @@ import { ReservationEditComponent } from './reservations/reservation-edit/reserv
 import { ReservationListComponent } from './reservations/reservation-list/reservation-list.component';
 import { ReservationStartComponent } from './reservations/reservation-start/reservation-start.component';
 import { ReservationsComponent } from './reservations/reservations.component';
+import {AppRoutingModule} from "./app-routing.module";
 
 
 
@@ -23,6 +24,7 @@ import { ReservationsComponent } from './reservations/reservations.component';
   ],
   imports: [
     BrowserModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
