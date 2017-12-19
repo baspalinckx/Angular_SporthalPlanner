@@ -11,14 +11,13 @@ export class ReservationService {
   // private serverUrl = environment.serverUrl + '/recipes/'; // URL to web api
 
   private reservations: Reservation[] = [
-    new Reservation(
-      1
+    new Reservation({context: 'test', }
     ),
     new Reservation(
-      2
+      {context: 'test2'}
     ),
     new Reservation(
-      3
+      {context: 'test3'}
     )
   ];
   constructor() {
