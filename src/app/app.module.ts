@@ -9,7 +9,8 @@ import { ReservationListComponent } from './reservations/reservation-list/reserv
 import { ReservationStartComponent } from './reservations/reservation-start/reservation-start.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { ReservationItemComponent } from './reservations/reservation-list/reservation-item/reservation-item.component';
-
+import { ReservationService} from "./reservations/reservation.service";
+import {AppRoutingModule} from "./app-routing.module";
 
 
 @NgModule({
@@ -24,9 +25,10 @@ import { ReservationItemComponent } from './reservations/reservation-list/reserv
 
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [ ReservationService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

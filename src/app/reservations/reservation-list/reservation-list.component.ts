@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Reservation} from "../reservations.model";
 import {Subscription} from "rxjs/Subscription";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ReservationService} from "../reservation.service";
 
 @Component({
   selector: 'app-reservation-list',
@@ -18,19 +19,21 @@ export class ReservationListComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.subscription = this.reservationService.reservationChanged
-      .subscribe(
-        (reservation: Reservation[]) => {
-          this.reservationService.getRecords()
-            .then(res => {
-              this.reservations = res;
-            });
-        }
-      );
-    this.reservationService.getReservations().then(res => {
-      this.reservations = res;
-      console.log(this.reservations);
-    });
+    // this.subscription = this.reservationService.reservationChanged
+    //   .subscribe(
+    //     (reservation: Reservation[]) => {
+    //       this.reservationService.getReservations()
+    //         .then(res => {
+    //           this.reservations = res;
+    //         });
+    //     }
+    //   );
+    // this.reservationService.getReservations().then(res => {
+    //   this.reservations = res;
+    //   console.log(this.reservations);
+    // });
+
+    this.reservations = this.reservationService.getReservations();
   }
 
   onNewReservation() {

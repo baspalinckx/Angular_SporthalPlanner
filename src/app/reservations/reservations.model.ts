@@ -1,11 +1,11 @@
-import {SportsHall} from "../shared/sportshall.model";
+import {SportsHall} from '../shared/sportshall.model';
 
 export class Reservation {
 
 
   private _ReserveID: Number;
-  private _StartTime: Date;
-  private _EndTime: Date;
+  private _StartTime: string;
+  private _EndTime: string;
   private _FirstName: string;
   private _LastName: string;
   private _Email: string;
@@ -60,18 +60,18 @@ export class Reservation {
   public set FirstName(value: string) {
     this._FirstName = value;
   }
-  public get EndTime(): Date {
+  public get EndTime(): string {
     return this._EndTime;
   }
 
-  public set EndTime(value: Date) {
+  public set EndTime(value: string) {
     this._EndTime = value;
   }
-  public get StartTime(): Date {
+  public get StartTime(): string {
     return this._StartTime;
   }
 
-  public set StartTime(value: Date) {
+  public set StartTime(value: string) {
     this._StartTime = value;
   }
   public get ReserveID(): Number {
