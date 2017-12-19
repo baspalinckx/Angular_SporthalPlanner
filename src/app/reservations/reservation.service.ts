@@ -12,7 +12,8 @@ export class ReservationService {
 
   private reservations: Reservation[] = [
     new Reservation(
-      1),
+      1
+    ),
     new Reservation(
       2
     ),
