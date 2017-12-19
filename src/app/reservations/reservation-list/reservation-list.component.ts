@@ -33,7 +33,9 @@ export class ReservationListComponent implements OnInit, OnDestroy {
     //   console.log(this.reservations);
     // });
 
-    this.reservations = this.reservationService.getReservations();
+    /*this.reservations = this.reservationService.getReservations();*/
+    this.reservationService.getReservations()
+      .then(res => this.reservations = res).then(() => console.log(this.reservations));
   }
 
   onNewReservation() {

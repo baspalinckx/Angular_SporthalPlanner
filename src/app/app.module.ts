@@ -11,6 +11,7 @@ import { ReservationsComponent } from './reservations/reservations.component';
 import { ReservationItemComponent } from './reservations/reservation-list/reservation-item/reservation-item.component';
 import { ReservationService} from "./reservations/reservation.service";
 import {AppRoutingModule} from "./app-routing.module";
+import {HttpModule} from "@angular/http";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {AppRoutingModule} from "./app-routing.module";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
   providers: [ ReservationService ],
   bootstrap: [AppComponent]

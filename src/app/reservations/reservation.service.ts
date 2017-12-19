@@ -1,14 +1,16 @@
 import {Injectable} from "@angular/core";
 import {Reservation} from "./reservations.model";
 import {Subject} from "rxjs/Subject";
-import {Http} from "@angular/http";
+import {Http, Headers} from "@angular/http";
+import {environment} from '../../environments/environment';
+
 
 @Injectable()
 export class ReservationService {
   reservationChanged = new Subject<Reservation[]>();
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  // private serverUrl = environment.serverUrl + '/recipes/'; // URL to web api
+  private serverUrlReserve = environment.serverUrl;
 
   private reservations: Reservation[] = [
     new Reservation({context: 'test', }
@@ -20,23 +22,27 @@ export class ReservationService {
       {context: 'test3'}
     )
   ];
-  constructor() {
+  constructor(private http: Http) {
 
   }
 
   getReservations() {
-    // return this.http.get(this.serverUrl, {headers: this.headers})
-    //   .toPromise()
-    //   .then(response => {
-    //     this.recipes = response.json().recipe as Recipe[];
-    //     return response.json().recipe as Recipe[];
-    //   })
-    //   .catch(error => {
-    //     return error;
-    //   });
+    console.log(environment.serverUrlReserve);
+    return this.http.get( this.serverUrlReserve, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        this.reservations = response.json() as Reservation[];
+        return response.json() as Reservation[];
+      })
+      .catch(error => {
+        return error;
+      });
 
-    return this.reservations.slice();
   }
+
+
+    /*return this.reservations.slice();*/
+
 
 
   //
