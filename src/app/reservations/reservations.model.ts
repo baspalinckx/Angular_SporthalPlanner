@@ -2,6 +2,7 @@ import {SportsHall} from "../shared/sportshall.model";
 
 export class Reservation {
 
+
   private _ReserveID: Number;
   private _StartTime: Date;
   private _EndTime: Date;
@@ -10,9 +11,18 @@ export class Reservation {
   private _Email: string;
   private _PhoneNumber: Number;
   private _SportsHall: SportsHall;
+  private _Context: string;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
+  }
+
+  public get Context(): string {
+    return this._Context;
+  }
+
+  public set Context(value: string) {
+    this._Context = value;
   }
 
   public get SportsHall(): SportsHall {

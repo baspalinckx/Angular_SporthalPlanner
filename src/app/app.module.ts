@@ -8,6 +8,7 @@ import { ReservationEditComponent } from './reservations/reservation-edit/reserv
 import { ReservationListComponent } from './reservations/reservation-list/reservation-list.component';
 import { ReservationStartComponent } from './reservations/reservation-start/reservation-start.component';
 import { ReservationsComponent } from './reservations/reservations.component';
+import { ReservationItemComponent } from './reservations/reservation-list/reservation-item/reservation-item.component';
 
 
 
@@ -19,6 +20,7 @@ import { ReservationsComponent } from './reservations/reservations.component';
     ReservationListComponent,
     ReservationStartComponent,
     ReservationsComponent,
+    ReservationItemComponent,
 
   ],
   imports: [
