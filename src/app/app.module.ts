@@ -11,6 +11,7 @@ import { ReservationsComponent } from './reservations/reservations.component';
 import { ReservationItemComponent } from './reservations/reservation-list/reservation-item/reservation-item.component';
 import { ReservationService} from "./reservations/reservation.service";
 import {AppRoutingModule} from "./app-routing.module";
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import {AppRoutingModule} from "./app-routing.module";
     ReservationStartComponent,
     ReservationsComponent,
     ReservationItemComponent,
+    HeaderComponent,
 
   ],
   imports: [
