@@ -7,12 +7,12 @@ import { ReservationService } from '../reservations/reservation.service';
 
 
 @Component({
-  selector: 'app-game-add',
-  templateUrl: './game-add.component.html',
-  styleUrls: ['./game-add.component.css']
+  selector: 'app-closing-add',
+  templateUrl: './closingday.component.html',
+  styleUrls: ['./closingday.component.css']
 })
-export class GameAddComponent implements OnInit {
-  //@Input() character: Gamecharacter;
+export class ClosingAddComponent implements OnInit {
+
   id: string;
   idChar: string;
   editMode = false;
@@ -36,9 +36,9 @@ export class GameAddComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
-      this.reservationService.updateReservation(this.id, this.gameForm.value);
+      this.reservationService.updateClosing(this.id, this.closingForm.value);
     } else {
-      this.gameService.addGame(this.gameForm.value);
+      this.reservationService.addClosing(this.closingForm.value);
     }
     this.onCancel();
   }

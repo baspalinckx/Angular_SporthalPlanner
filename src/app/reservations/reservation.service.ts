@@ -40,22 +40,22 @@ export class ReservationService {
     return this.reservations.slice();
   }
 
-  addReservation(reservation: Reservation) {
-    console.log('addReservation');
-    return this.http.post(this.serverUrl, reservation, {headers: this.headers})
+  addClosing(closing: Reservation) {
+    console.log('addClosing');
+    return this.http.post(this.serverUrl, closing, {headers: this.headers})
       .toPromise()
       .then(response => {
         this.reservationChanged.next();
       });
   }
 
-  // updateGame(index: string, newGame: Reservation) {
-  //   return this.http.put(this.serverUrl + index, newReservation, {headers: this.headers})
-  //     .toPromise()
-  //     .then(response => {
-  //       this.reservationChanged.next();
-  //     });
-  // }
+  updateClosing(index: string, newReservation: Reservation) {
+    return this.http.put(this.serverUrl + index, newReservation, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        this.reservationChanged.next();
+      });
+  }
 
   //
   // addIngredientsToShoppingList(ingredients: Ingredient[]) {
