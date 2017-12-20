@@ -43,47 +43,6 @@
           </div>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="imagePath">ImageURL</label>
-            <input type="text" id="imagePath" formControlName="imagePath" class="form-control" #imagePath>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-
-          <img [src]="imagePath.value" class="img-responsive">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12" formArrayName="creators">
-          <label>Creators</label>
-          <!-- Oorspronkelijk: <div class="row" *ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls; let i = index" [formGroupName]="i" -->
-          <div class="row" *ngFor="let platformCtrl of gameForm['controls'].creators['controls']; let i = index" [formGroupName]="i"
-               style="margin-top: 10px;">
-            <!-- De volgende regel voeg je ook toe -->
-            <!--<pre *ngIf="platformCtrl">{{ platformCtrl.value | json }}</pre>-->
-            <div class="col-xs-8">
-              <input type="text" class="form-control" formControlName="name" placeholder="Creator name">
-            </div>
-            <div class="col-xs-2">
-              <button type="button" class="btn btn-danger" (click)="onDeleteCreator(i)">X</button>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-xs-12">
-              <button type="button" class="btn btn-success" (click)="onAddCreator()">Add Creator</button>
-            </div>
-          </div>
-          <br/>
-          <br/>
-        </div>
-      </div>
     </form>
   </div>
 </div>

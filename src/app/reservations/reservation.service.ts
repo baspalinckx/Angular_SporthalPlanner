@@ -8,7 +8,7 @@ import {environment} from "../../environments/environment";
 export class ReservationService {
   reservationChanged = new Subject<Reservation[]>();
 
-  private serverUrl = environment.serverUrl + '/home/';
+  //private serverUrl = environment.serverUrl + '/home/';
   private headers = new Headers({'Content-Type': 'application/json'});
   // private serverUrl = environment.serverUrl + '/recipes/'; // URL to web api
 
@@ -40,22 +40,22 @@ export class ReservationService {
     return this.reservations.slice();
   }
 
-  addClosing(closing: Reservation) {
-    console.log('addClosing');
-    return this.http.post(this.serverUrl, closing, {headers: this.headers})
-      .toPromise()
-      .then(response => {
-        this.reservationChanged.next();
-      });
-  }
-
-  updateClosing(index: string, newReservation: Reservation) {
-    return this.http.put(this.serverUrl + index, newReservation, {headers: this.headers})
-      .toPromise()
-      .then(response => {
-        this.reservationChanged.next();
-      });
-  }
+  // addClosing(closing: Reservation) {
+  //   console.log('addClosing');
+  //   return this.http.post(this.serverUrl, closing, {headers: this.headers})
+  //     .toPromise()
+  //     .then(response => {
+  //       this.reservationChanged.next();
+  //     });
+  // }
+  //
+  // updateClosing(index: string, newReservation: Reservation) {
+  //   return this.http.put(this.serverUrl + index, newReservation, {headers: this.headers})
+  //     .toPromise()
+  //     .then(response => {
+  //       this.reservationChanged.next();
+  //     });
+  // }
 
   //
   // addIngredientsToShoppingList(ingredients: Ingredient[]) {
