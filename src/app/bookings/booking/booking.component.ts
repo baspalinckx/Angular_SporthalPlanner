@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {ReservationService} from '../reservations/reservation.service';
+import {ReservationService} from '../../reservations/reservation.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({

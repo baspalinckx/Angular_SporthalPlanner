@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-reservation-start',
-  templateUrl: './reservation-start.component.html',
-  styleUrls: ['./reservation-start.component.css']
+  selector: 'app-booking-start',
+  templateUrl: './booking-start.component.html',
+  styleUrls: ['./booking-start.component.css']
 })
-export class ReservationStartComponent implements OnInit {
+export class BookingStartComponent implements OnInit {
   id : string;
 
   constructor(private router: Router,
