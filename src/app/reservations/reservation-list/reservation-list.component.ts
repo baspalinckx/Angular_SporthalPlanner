@@ -9,7 +9,7 @@ import {Subscription} from 'rxjs/Subscription';
   templateUrl: './reservation-list.component.html',
   styleUrls: ['./reservation-list.component.css']
 })
-export class ReservationListComponent implements OnInit {
+export class ReservationListComponent implements OnInit, OnDestroy {
 
   reservations: Reservation[];
   subscription: Subscription;
@@ -35,6 +35,11 @@ export class ReservationListComponent implements OnInit {
 
     this.reservations = this.reservationService.getReservations();
   }
+
+
+ // ngOnDestroy() {
+  //  this.subscription.unsubscribe();
+  //}
 
   onNewReservation() {
     this.router.navigate(['new'], {relativeTo: this.route});

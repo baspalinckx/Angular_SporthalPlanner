@@ -14,6 +14,7 @@ import {AppRoutingModule} from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { BookingComponent } from './booking/booking.component';
 import {FormsModule} from "@angular/forms";
+import {ClosingAddComponent} from "./closingday/closingday.component";
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {FormsModule} from "@angular/forms";
     ReservationItemComponent,
     HeaderComponent,
     BookingComponent,
+    ClosingAddComponent
 
   ],
   imports: [
