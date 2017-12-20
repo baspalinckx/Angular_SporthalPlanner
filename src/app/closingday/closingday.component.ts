@@ -49,49 +49,40 @@ export class ClosingAddComponent implements OnInit {
   }
 
   private initForm() {
-    let editgame = new Game({name: '', imagepath: '', description: ''});
+    let editreserve = new Reservation({name: '', imagepath: '', description: ''});
 
     const GamePlatforms = new FormArray([]);
     //const Gamecharacter = new FormArray([]);
 
 
     if (this.editMode) {
-      this.gameService.getGame(this.id).then((res) => console.log(res))
-      this.gameService.getGame(this.id)
-        .then(game => {
-          editgame = game;
-          if (game['creators']) {
-            for (const platform of game.creators) {
-              GamePlatforms.push(
-                new FormGroup({
-                  'name': new FormControl(platform.name, Validators.required)
-                })
-              );
-
-            }
-          }
-          this.gameForm = new FormGroup({
-            '_id': new FormControl(editgame._id, Validators.required),
-            'name': new FormControl(editgame.name, Validators.required),
-            'genre': new FormControl(editgame.genre, Validators.required),
-            'description': new FormControl(editgame.description, Validators.required),
-            'platforms': new FormControl(editgame.platforms, Validators.required),
-            'platforms2': new FormControl(editgame.platforms),
-            'imagePath': new FormControl(editgame.imagePath, Validators.required),
-            'creators': GamePlatforms
+      this.reservationService.getReservation(this.id).then((res) => console.log(res))
+      this.reservationService.getReservation(this.id)
+        .then(reserve => {
+          editreserve = reserve;
+          // if (reserve['creators']) {
+          //   for (const platform of game.creators) {
+          //     GamePlatforms.push(
+          //       new FormGroup({
+          //         'name': new FormControl(platform.name, Validators.required)
+          //       })
+          //     );
+          //
+          //   }
+          // }
+          this.reserveForm = new FormGroup({
+            'reserveID': new FormControl(editreserve.reserveID, Validators.required),
+            'startTime': new FormControl(editreserve.startTime, Validators.required),
+            'endTime': new FormControl(editreserve.endTime, Validators.required),
           });
         })
         .catch(error => console.log(error));
     }
 
-    this.gameForm = new FormGroup({
-      'name': new FormControl('', Validators.required),
-      'genre': new FormControl(0, Validators.required),
-      'description': new FormControl('', Validators.required),
-      'platforms': new FormControl('', Validators.required),
-      'platforms2': new FormControl(''),
-      'imagePath': new FormControl('', Validators.required),
-      'creators': new FormArray([]),
+    this.reserveForm = new FormGroup({
+      'reserveID': new FormControl ('', Validators.required),
+      'startTime': new FormControl('', Validators.required),
+      'endTime': new FormControl('', Validators.required),
     });
   }
 
