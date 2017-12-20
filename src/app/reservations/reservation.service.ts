@@ -24,7 +24,7 @@ export class ReservationService {
     )
   ];
 
-  constructor(private http: Http) {
+  constructor() {
 
   }
 
