@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Reservation} from "../../shared/reservations.model";
 import {Subscription} from "rxjs/Subscription";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router, Params} from "@angular/router";
 import {ReservationService} from "../reservation.service";
 
 @Component({
@@ -13,12 +13,25 @@ export class ReservationListComponent implements OnInit, OnDestroy {
 
   reservations: Reservation[];
   subscription: Subscription;
+  date : '2017-10-06';
+  id : string;
 
   constructor(private reservationService: ReservationService,
               private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.reservationService.getReservations();
+
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = params['id'];
+          this.reservationService.getReservationsS(this.id, this.date)
+            .then(res => this.reservations = res)
+        }
+      )
     // this.subscription = this.reservationService.reservationChanged
     //   .subscribe(
     //     (reservation: Reservation[]) => {

@@ -41,6 +41,24 @@ export class ReservationService {
 
   }
 
+  getReservationsS(id: string, date: string) {
+
+    return this.http.get( this.serverUrlReserve + '/SporthalId?id=' + id + '&dateTime=' + date, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        this.reservations = response.json() as Reservation[];
+        return response.json() as Reservation[];
+      })
+      .catch(error => {
+        return error;
+      });
+
+  }
+
+
+
+
+
   getSportshalls() {
     return this.http.get( this.serverUrlSportshall, {headers: this.headers})
       .toPromise()
