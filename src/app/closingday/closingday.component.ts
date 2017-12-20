@@ -62,16 +62,8 @@ export class ClosingAddComponent implements OnInit {
       this.reservationService.getReservation(this.id)
         .then(reserve => {
           editreserve = reserve;
-          // if (reserve['creators']) {
-          //   for (const platform of game.creators) {
-          //     GamePlatforms.push(
-          //       new FormGroup({
-          //         'name': new FormControl(platform.name, Validators.required)
-          //       })
-          //     );
-          //
-          //   }
-          // }
+
+
           this.reserveForm = new FormGroup({
             'reserveID': new FormControl(editreserve.reserveID, Validators.required),
             'startTime': new FormControl(editreserve.startTime, Validators.required),
