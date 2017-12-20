@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Reservation} from "../../shared/reservations.model";
-import {Subscription} from "rxjs/Subscription";
-import {ActivatedRoute, Router, Params} from "@angular/router";
-import {ReservationService} from "../reservation.service";
+import {Reservation} from '../../shared/reservations.model';
+import {Subscription} from 'rxjs/Subscription';
+import {ActivatedRoute, Router, Params} from '@angular/router';
+import {ReservationService} from '../reservation.service';
+
 
 @Component({
   selector: 'app-reservation-list',
@@ -13,50 +14,33 @@ export class ReservationListComponent implements OnInit, OnDestroy {
 
   reservations: Reservation[];
   subscription: Subscription;
-  
-  id : string;
+
+  dateString: string;
+  id: string;
 
   constructor(private reservationService: ReservationService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
-
-    this.reservationService.getReservations();
-
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = params['id'];
-          this.reservationService.getReservationsS(this.id, '2017-10-06')
-            .then(res => this.reservations = res);
-        }
-      )
-    // this.subscription = this.reservationService.reservationChanged
-    //   .subscribe(
-    //     (reservation: Reservation[]) => {
-    //       this.reservationService.getReservations()
-    //         .then(res => {
-    //           this.reservations = res;
-    //         });
-    //     }
-    //   );
-    // this.reservationService.getReservations().then(res => {
-    //   this.reservations = res;
-    //   console.log(this.reservations);
-    // });
-
-    /*this.reservations = this.reservationService.getReservations();*/
-    this.reservationService.getReservations()
-      .then(res => this.reservations = res).then(() => console.log(this.reservations));
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
   }
 
   onNewReservation() {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 
+  onSearchDate() {
+    // 2017-05-05
+    this.reservationService.getReservationsS(this.id, this.dateString.slice(0, 4) + '-' + this.dateString.slice(5, 7) + '-' + this.dateString.slice(8, 10))
+      .then(res => this.reservations = res);
+  }
+
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
 }

@@ -1,9 +1,9 @@
-import {Injectable} from "@angular/core";
-import {Reservation} from "../shared/reservations.model";
-import {Subject} from "rxjs/Subject";
-import {Http, Headers} from "@angular/http";
+import {Injectable} from '@angular/core';
+import {Reservation} from '../shared/reservations.model';
+import {Subject} from 'rxjs/Subject';
+import {Http, Headers} from '@angular/http';
 import {environment} from '../../environments/environment';
-import {SportsHall} from "../shared/sportshall.model";
+import {SportsHall} from '../shared/sportshall.model';
 
 
 @Injectable()
@@ -28,7 +28,6 @@ export class ReservationService {
   }
 
   getReservations() {
-
     return this.http.get( this.serverUrlReserve, {headers: this.headers})
       .toPromise()
       .then(response => {
@@ -54,11 +53,7 @@ export class ReservationService {
       });
 
   }
-
-
-
-
-
+  
   getSportshalls() {
     return this.http.get( this.serverUrlSportshall, {headers: this.headers})
       .toPromise()

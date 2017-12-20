@@ -9,13 +9,15 @@ import { ReservationListComponent } from './reservations/reservation-list/reserv
 import { ReservationStartComponent } from './reservations/reservation-start/reservation-start.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { ReservationItemComponent } from './reservations/reservation-list/reservation-item/reservation-item.component';
-import { ReservationService} from "./reservations/reservation.service";
-import {AppRoutingModule} from "./app-routing.module";
-import {HttpModule} from "@angular/http";
+import { ReservationService} from './reservations/reservation.service';
+import {AppRoutingModule} from './app-routing.module';
+import {HttpModule} from '@angular/http';
 import { SportshallComponent } from './sportshall/sportshall.component';
 import { SportshallListComponent } from './sportshall/sportshall-list/sportshall-list.component';
 import { SportshallItemComponent } from './sportshall/sportshall-list/sportshall-item/sportshall-item.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {FormsModule} from '@angular/forms';
+
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpModule
   ],
   providers: [ ReservationService ],
