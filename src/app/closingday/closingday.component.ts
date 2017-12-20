@@ -57,23 +57,23 @@ export class ClosingAddComponent implements OnInit {
   private initForm() {
     let editreserve = new Reservation({reserveID: '', startTime: '', endTime: ''});
 
-    if (this.editMode) {
-      this.reservationService.getReservation(this.id).then((res) => console.log(res))
-      this.reservationService.getReservation(this.id)
-        .then(reserve => {
-          editreserve = reserve;
+    // if (this.editMode) {
+    //   this.reservationService.getReservation(this.id).then((res) => console.log(res))
+    //   this.reservationService.getReservation(this.id)
+    //     .then(reserve => {
+    //       editreserve = reserve;
+    //
+    //
+    //       this.closingForm = new FormGroup({
+    //         'reserveID': new FormControl(editreserve.reserveID, Validators.required),
+    //         'startTime': new FormControl(editreserve.startTime, Validators.required),
+    //         'endTime': new FormControl(editreserve.endTime, Validators.required),
+    //       });
+    //     })
+    //     .catch(error => console.log(error));
+    // }
 
-
-          this.reserveForm = new FormGroup({
-            'reserveID': new FormControl(editreserve.reserveID, Validators.required),
-            'startTime': new FormControl(editreserve.startTime, Validators.required),
-            'endTime': new FormControl(editreserve.endTime, Validators.required),
-          });
-        })
-        .catch(error => console.log(error));
-    }
-
-    this.reserveForm = new FormGroup({
+    this.closingForm = new FormGroup({
       'reserveID': new FormControl ('', Validators.required),
       'startTime': new FormControl('', Validators.required),
       'endTime': new FormControl('', Validators.required),
