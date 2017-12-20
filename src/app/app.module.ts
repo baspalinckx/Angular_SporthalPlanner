@@ -9,9 +9,13 @@ import { ReservationListComponent } from './reservations/reservation-list/reserv
 import { ReservationStartComponent } from './reservations/reservation-start/reservation-start.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { ReservationItemComponent } from './reservations/reservation-list/reservation-item/reservation-item.component';
-import { ReservationService} from "./reservations/reservation.service";
-import {AppRoutingModule} from "./app-routing.module";
+import { ReservationService} from './reservations/reservation.service';
+import {AppRoutingModule} from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
+import { BookingComponent } from './booking/booking.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ClosingAddComponent} from './closingday/closingday.component';
+
 
 
 @NgModule({
@@ -24,11 +28,16 @@ import { HeaderComponent } from './header/header.component';
     ReservationsComponent,
     ReservationItemComponent,
     HeaderComponent,
+    BookingComponent,
+    ClosingAddComponent
+
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ ReservationService ],
   bootstrap: [AppComponent]

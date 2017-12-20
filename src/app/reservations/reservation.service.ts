@@ -2,11 +2,14 @@ import {Injectable} from "@angular/core";
 import {Reservation} from "./reservations.model";
 import {Subject} from "rxjs/Subject";
 import {Http} from "@angular/http";
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class ReservationService {
   reservationChanged = new Subject<Reservation[]>();
 
+
+  //private serverUrl = environment.serverUrl + '/home/';
   private headers = new Headers({'Content-Type': 'application/json'});
   // private serverUrl = environment.serverUrl + '/recipes/'; // URL to web api
 
@@ -26,6 +29,7 @@ export class ReservationService {
       {context: 'Maintenance', startTime: '12:00:00', endTime: '12:30:00'}
     )
   ];
+
   constructor() {
 
   }
@@ -44,6 +48,23 @@ export class ReservationService {
     return this.reservations.slice();
   }
 
+
+  // addClosing(closing: Reservation) {
+  //   console.log('addClosing');
+  //   return this.http.post(this.serverUrl, closing, {headers: this.headers})
+  //     .toPromise()
+  //     .then(response => {
+  //       this.reservationChanged.next();
+  //     });
+  // }
+  //
+  // updateClosing(index: string, newReservation: Reservation) {
+  //   return this.http.put(this.serverUrl + index, newReservation, {headers: this.headers})
+  //     .toPromise()
+  //     .then(response => {
+  //       this.reservationChanged.next();
+  //     });
+  // }
 
   //
   // addIngredientsToShoppingList(ingredients: Ingredient[]) {
