@@ -7,14 +7,21 @@
   </div>
   <p></p>
 
-  <hr>
-  <div class="row">
-    <div class="col-xs-12">
-      <app-reservation-item
-        *ngFor="let reservationEl of reservations; let i = index"
-        [reservation] ="reservationEl"
-        [index]="i"></app-reservation-item>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-md-3">
+        <input [(ngModel)]="dateString" type="date">
+      </div>
+      <div class="col-md-1">
+        <button (click)="onSearchDate()">Search</button>
+      </div>
     </div>
+    <app-reservation-item
+      *ngFor="let reservationEl of reservations; let i = index"
+      [reservation]="reservationEl"
+      [index]="i"></app-reservation-item>
   </div>
   <hr>
 </div>

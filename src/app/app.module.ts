@@ -11,10 +11,16 @@ import { ReservationsComponent } from './reservations/reservations.component';
 import { ReservationItemComponent } from './reservations/reservation-list/reservation-item/reservation-item.component';
 import { ReservationService} from './reservations/reservation.service';
 import {AppRoutingModule} from './app-routing.module';
+import {HttpModule} from '@angular/http';
+import { SportshallComponent } from './sportshall/sportshall.component';
+import { SportshallListComponent } from './sportshall/sportshall-list/sportshall-list.component';
+import { SportshallItemComponent } from './sportshall/sportshall-list/sportshall-item/sportshall-item.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HeaderComponent } from './header/header.component';
 import { BookingComponent } from './booking/booking.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ClosingAddComponent} from './closingday/closingday.component';
+
 
 
 
@@ -27,9 +33,14 @@ import {ClosingAddComponent} from './closingday/closingday.component';
     ReservationStartComponent,
     ReservationsComponent,
     ReservationItemComponent,
+    SportshallComponent,
+    SportshallListComponent,
+    SportshallItemComponent,
+    PageNotFoundComponent,
     HeaderComponent,
     BookingComponent,
     ClosingAddComponent
+
 
 
   ],
@@ -37,7 +48,9 @@ import {ClosingAddComponent} from './closingday/closingday.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpModule,
     ReactiveFormsModule
+
   ],
   providers: [ ReservationService ],
   bootstrap: [AppComponent]

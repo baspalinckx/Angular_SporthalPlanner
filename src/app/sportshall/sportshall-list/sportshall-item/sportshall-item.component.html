@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <a
+      style="cursor: pointer;"
+      routerLink="/Reserve/{{sportshall.sportsHallID}}"
+
+      class="list-group-item clearfix">
+      <div class="pull-left">
+        <h1>SporthalId: {{sportshall.sportsHallID}}</h1>
+        <p>Open: {{sportshall.openTime.toString().slice(11 , 20)}} - Close: {{sportshall.closeTime.toString().slice(11 , 20)}}</p>
+      </div>
+      <div class="pull-right">
+        <button class="btn btn-primary">Gekke knop</button>
+      </div>
+    </a>
+  </div>
+</div>
+
+

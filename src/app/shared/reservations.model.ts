@@ -1,4 +1,4 @@
-import {SportsHall} from '../shared/sportshall.model';
+import {SportsHall} from './sportshall.model';
 
 export class Reservation {
   private _reserveID: Number;
