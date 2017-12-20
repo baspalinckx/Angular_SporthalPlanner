@@ -17,6 +17,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ClosingAddComponent} from './closingday/closingday.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import {ClosingAddComponent} from './closingday/closingday.component';
     HeaderComponent,
     BookingComponent,
     ClosingAddComponent
+
 
   ],
   imports: [
