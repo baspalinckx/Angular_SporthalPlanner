@@ -13,7 +13,6 @@ export class ReservationService {
   reservationChanged = new Subject<Reservation[]>();
 
 
-  //private serverUrl = environment.serverUrl + '/home/';
   private headers = new Headers({'Content-Type': 'application/json'});
   private serverUrlReserve = environment.serverUrl;
   private serverUrlSportshall = environment.serverUrlSportshall;
@@ -36,6 +35,8 @@ export class ReservationService {
 
   constructor(private http: Http) {
   }
+
+  // Reservation
 
   getReservations() {
     return this.http.get( this.serverUrlReserve, {headers: this.headers})
@@ -63,7 +64,16 @@ export class ReservationService {
       });
 
   }
-  
+
+  addReservation(reservation: Reservation) {
+    return this.http.post(this.serverUrlReserve, reservation, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        this.reservationChanged.next();
+      });
+  }
+
+  // Sportshalls
   getSportshalls() {
     return this.http.get( this.serverUrlSportshall, {headers: this.headers})
       .toPromise()
@@ -75,57 +85,6 @@ export class ReservationService {
         return error;
       });
 
-
   }
 
-
-    /*return this.reservations.slice();*/
-
-
-
-  // addClosing(closing: Reservation) {
-  //   console.log('addClosing');
-  //   return this.http.post(this.serverUrl, closing, {headers: this.headers})
-  //     .toPromise()
-  //     .then(response => {
-  //       this.reservationChanged.next();
-  //     });
-  // }
-  //
-  // updateClosing(index: string, newReservation: Reservation) {
-  //   return this.http.put(this.serverUrl + index, newReservation, {headers: this.headers})
-  //     .toPromise()
-  //     .then(response => {
-  //       this.reservationChanged.next();
-  //     });
-  // }
-
-  //
-  // addIngredientsToShoppingList(ingredients: Ingredient[]) {
-  //   this.slService.addIngredients(ingredients);
-  // }
-  //
-  // addRecipe(recipe: Recipe) {
-  //   return this.http.post(this.serverUrl, recipe, {headers: this.headers})
-  //     .toPromise()
-  //     .then(response => {
-  //       this.recipesChanged.next(this.recipes.slice());
-  //     });
-  // }
-  //
-  // updateRecipe(index: string, newRecipe: Recipe) {
-  //   return this.http.put(this.serverUrl + index, newRecipe, {headers: this.headers})
-  //     .toPromise()
-  //     .then(response => {
-  //       this.recipesChanged.next(this.recipes.slice());
-  //     });
-  // }
-  //
-  // deleteRecipe(index: string) {
-  //   return this.http.delete(this.serverUrl + index, {headers: this.headers})
-  //     .toPromise()
-  //     .then(response => {
-  //       this.recipesChanged.next(this.recipes.slice());
-  //     });
-  // }
 }
