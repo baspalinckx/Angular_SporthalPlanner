@@ -16,8 +16,9 @@ export class ClosingAddComponent implements OnInit {
   id: string;
   idChar: string;
   editMode = false;
-  reserveForm: FormGroup;
-  selectedGenre: string;
+  options: [string];
+  closingForm: FormGroup;
+  selectedOption: string;
   reserve: Reservation;
 
   constructor(private route: ActivatedRoute,
@@ -29,6 +30,7 @@ export class ClosingAddComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
       this.editMode = params['id'] != null;
+      this.options = ['Sluitingsdag', 'Onderhoud']
       this.initForm();
     });
   }
@@ -43,6 +45,10 @@ export class ClosingAddComponent implements OnInit {
     this.onCancel();
   }
 
+  changeSelectedTypeOption(event: any) {
+    console.log(event);
+    console.log(this.selectedOption);
+  }
 
   onCancel() {
     this.router.navigate(['../'], {relativeTo: this.route});

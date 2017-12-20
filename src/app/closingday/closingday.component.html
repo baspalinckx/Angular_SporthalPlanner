@@ -1,19 +1,36 @@
 <div class="row">
   <div class="col-xs-12">
-    <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="closingForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-xs-12">
           <button type="submit" class="btn btn-success" [disabled]="!gameForm.valid">Save</button>
           <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
         </div>
       </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="options">Option</label>
+              <select type="text"
+                      id="options"
+                      formControlName="options"
+                      class="form-control"
+                      [(ngModel)]="selectedOption"
+                      (ngModelChange)="changeSelectedTypeOption($event)">
+                <option *ngFor="let type of options" [ngValue]="type">{{type.toString()}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
-            <label for="name">Title</label>
+            <label for="startTime">Starttijd</label>
             <input type="text"
-                   id="name"
-                   formControlName="name"
+                   id="startTime"
+                   formControlName="startTime"
                    class="form-control">
           </div>
         </div>
@@ -21,31 +38,7 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
-            <label for="genre">Genre</label>
-            <select type="text"
-                    id="genre"
-                    formControlName="genre"
-                    class="form-control" [(ngModel)]="selectedGenre">
-
-              <option value="Action">Action</option>
-              <option value="FPS">First Person Shooter</option>
-              <option value="RPG">Role Playing Game</option>
-              <option value="JRPG">Japanese Role Playing Game</option>
-              <option value="Horror">Horror</option>
-              <option value="Strategy">Strategy</option>
-              <option value="Simulation">Simulation</option>
-              <option value="Sport">Sport</option>
-              <option value="Retro">Retro</option>
-              <option value="Puzzle">Puzzle</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="description">Description</label>
+            <label for="description">Eindtijd</label>
             <input type="text" id="description" formControlName="description" class="form-control">
           </div>
         </div>
@@ -63,42 +56,6 @@
         <div class="col-xs-12">
 
           <img [src]="imagePath.value" class="img-responsive">
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="form-group">
-              <label for="platforms">Platforms</label>
-              <select type="text"
-                      id="platforms"
-                      formControlName="platforms"
-                      class="form-control"
-                      [(ngModel)]="selectedPlatform"
-                      (ngModelChange)="changeSelectedTypePlatform($event)">
-                <option *ngFor="let type of platforms" [ngValue]="type">{{type.toString()}}</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="form-group">
-              <label for="platforms2">Extra Platforms</label>
-              <select type="text"
-                      id="platforms2"
-                      formControlName="platforms2"
-                      class="form-control"
-                      [(ngModel)]="selectedPlatform2"
-                      (ngModelChange)="changeSelectedTypePlatform2($event)">
-                <option *ngFor="let type of platforms2" [ngValue]="type">{{type.toString()}}</option>
-              </select>
-            </div>
-          </div>
         </div>
       </div>
 
