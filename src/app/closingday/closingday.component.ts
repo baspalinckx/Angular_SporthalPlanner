@@ -49,11 +49,7 @@ export class ClosingAddComponent implements OnInit {
   }
 
   private initForm() {
-    let editreserve = new Reservation({name: '', imagepath: '', description: ''});
-
-    const GamePlatforms = new FormArray([]);
-    //const Gamecharacter = new FormArray([]);
-
+    let editreserve = new Reservation({reserveID: '', startTime: '', endTime: ''});
 
     if (this.editMode) {
       this.reservationService.getReservation(this.id).then((res) => console.log(res))
