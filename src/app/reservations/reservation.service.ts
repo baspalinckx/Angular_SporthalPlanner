@@ -42,7 +42,7 @@ export class ReservationService {
   }
 
   getReservationsS(id: string, date: string) {
-
+  console.log(this.serverUrlReserve + '/SporthalId?id=' + id + '&dateTime=' + date);
     return this.http.get( this.serverUrlReserve + '/SporthalId?id=' + id + '&dateTime=' + date, {headers: this.headers})
       .toPromise()
       .then(response => {

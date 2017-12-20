@@ -13,7 +13,7 @@ export class ReservationListComponent implements OnInit, OnDestroy {
 
   reservations: Reservation[];
   subscription: Subscription;
-  date : '2017-10-06';
+  
   id : string;
 
   constructor(private reservationService: ReservationService,
@@ -28,8 +28,8 @@ export class ReservationListComponent implements OnInit, OnDestroy {
       .subscribe(
         (params: Params) => {
           this.id = params['id'];
-          this.reservationService.getReservationsS(this.id, this.date)
-            .then(res => this.reservations = res)
+          this.reservationService.getReservationsS(this.id, '2017-10-06')
+            .then(res => this.reservations = res);
         }
       )
     // this.subscription = this.reservationService.reservationChanged
