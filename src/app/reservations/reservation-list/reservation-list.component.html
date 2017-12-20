@@ -1,3 +1,16 @@
-<p>
-  reservation-list works!
-</p>
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onNewReservation()">New Reservation</button>
+  </div>
+</div>
+<p></p>
+
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <app-reservation-item
+      *ngFor="let reservationEl of reservations; let i = index"
+      [reservation] ="reservationEl"
+      [index]="i"></app-reservation-item>
+  </div>
+</div>

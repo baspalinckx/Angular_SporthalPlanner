@@ -1,0 +1,132 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success" [disabled]="!gameForm.valid">Save</button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Title</label>
+            <input type="text"
+                   id="name"
+                   formControlName="name"
+                   class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="genre">Genre</label>
+            <select type="text"
+                    id="genre"
+                    formControlName="genre"
+                    class="form-control" [(ngModel)]="selectedGenre">
+
+              <option value="Action">Action</option>
+              <option value="FPS">First Person Shooter</option>
+              <option value="RPG">Role Playing Game</option>
+              <option value="JRPG">Japanese Role Playing Game</option>
+              <option value="Horror">Horror</option>
+              <option value="Strategy">Strategy</option>
+              <option value="Simulation">Simulation</option>
+              <option value="Sport">Sport</option>
+              <option value="Retro">Retro</option>
+              <option value="Puzzle">Puzzle</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" id="description" formControlName="description" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imagePath">ImageURL</label>
+            <input type="text" id="imagePath" formControlName="imagePath" class="form-control" #imagePath>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+
+          <img [src]="imagePath.value" class="img-responsive">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="platforms">Platforms</label>
+              <select type="text"
+                      id="platforms"
+                      formControlName="platforms"
+                      class="form-control"
+                      [(ngModel)]="selectedPlatform"
+                      (ngModelChange)="changeSelectedTypePlatform($event)">
+                <option *ngFor="let type of platforms" [ngValue]="type">{{type.toString()}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="platforms2">Extra Platforms</label>
+              <select type="text"
+                      id="platforms2"
+                      formControlName="platforms2"
+                      class="form-control"
+                      [(ngModel)]="selectedPlatform2"
+                      (ngModelChange)="changeSelectedTypePlatform2($event)">
+                <option *ngFor="let type of platforms2" [ngValue]="type">{{type.toString()}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12" formArrayName="creators">
+          <label>Creators</label>
+          <!-- Oorspronkelijk: <div class="row" *ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls; let i = index" [formGroupName]="i" -->
+          <div class="row" *ngFor="let platformCtrl of gameForm['controls'].creators['controls']; let i = index" [formGroupName]="i"
+               style="margin-top: 10px;">
+            <!-- De volgende regel voeg je ook toe -->
+            <!--<pre *ngIf="platformCtrl">{{ platformCtrl.value | json }}</pre>-->
+            <div class="col-xs-8">
+              <input type="text" class="form-control" formControlName="name" placeholder="Creator name">
+            </div>
+            <div class="col-xs-2">
+              <button type="button" class="btn btn-danger" (click)="onDeleteCreator(i)">X</button>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-12">
+              <button type="button" class="btn btn-success" (click)="onAddCreator()">Add Creator</button>
+            </div>
+          </div>
+          <br/>
+          <br/>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

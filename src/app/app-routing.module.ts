@@ -9,7 +9,7 @@ const appRoutes: Routes = [
     {path: '', component: ReservationsComponent},
 
   ]}
-  ];
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
