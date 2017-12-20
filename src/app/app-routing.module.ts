@@ -2,15 +2,19 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ReservationsComponent} from "./reservations/reservations.component";
 import {SportshallComponent} from "./sportshall/sportshall.component";
+import {ReservationStartComponent} from "./reservations/reservation-start/reservation-start.component";
+import {ReservationListComponent} from "./reservations/reservation-list/reservation-list.component";
+import {SportshallListComponent} from "./sportshall/sportshall-list/sportshall-list.component";
+import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/sportshalls', pathMatch: 'full'},
-  {
-    path: 'home', component: ReservationsComponent, children: [
-    {path: '', component: ReservationsComponent},
-
+  {path: 'Reserve', component: ReservationsComponent, children: [
+    {path: '', component: ReservationStartComponent},
+    {path: ':id', component: ReservationListComponent}
   ]},
   {path: 'sportshalls', component: SportshallComponent},
+  {path: '**', component: PageNotFoundComponent}
 
 ];
 

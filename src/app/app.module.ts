@@ -15,6 +15,7 @@ import {HttpModule} from "@angular/http";
 import { SportshallComponent } from './sportshall/sportshall.component';
 import { SportshallListComponent } from './sportshall/sportshall-list/sportshall-list.component';
 import { SportshallItemComponent } from './sportshall/sportshall-list/sportshall-item/sportshall-item.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { SportshallItemComponent } from './sportshall/sportshall-list/sportshall
     SportshallComponent,
     SportshallListComponent,
     SportshallItemComponent,
+    PageNotFoundComponent,
 
   ],
   imports: [
