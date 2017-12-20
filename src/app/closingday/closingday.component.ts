@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Response } from '@angular/http';
-import { Reservation } from '../reservations/reservations.model'
+import { Reservation } from '../shared/reservations.model';
 import { ReservationService } from '../reservations/reservation.service';
 
 
