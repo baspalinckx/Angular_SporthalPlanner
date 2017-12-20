@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Reservation} from "../../reservations.model";
+import {Reservation} from "../../../shared/reservations.model";
 
 @Component({
   selector: 'app-reservation-item',

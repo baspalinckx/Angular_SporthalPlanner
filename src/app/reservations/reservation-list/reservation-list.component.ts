@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Reservation} from "../reservations.model";
+import {Reservation} from "../../shared/reservations.model";
 import {Subscription} from "rxjs/Subscription";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ReservationService} from "../reservation.service";

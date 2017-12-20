@@ -6,6 +6,7 @@
 export const environment = {
   production: false,
   serverUrl: 'http://localhost:56749/api/reserve',
-  serverUrlReserve: 'Reserve'
+  serverUrlReserve: 'Reserve',
+  serverUrlSportshall: 'http://localhost:56749/api/Sportshalls'
 
 };

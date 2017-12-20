@@ -12,6 +12,9 @@ import { ReservationItemComponent } from './reservations/reservation-list/reserv
 import { ReservationService} from "./reservations/reservation.service";
 import {AppRoutingModule} from "./app-routing.module";
 import {HttpModule} from "@angular/http";
+import { SportshallComponent } from './sportshall/sportshall.component';
+import { SportshallListComponent } from './sportshall/sportshall-list/sportshall-list.component';
+import { SportshallItemComponent } from './sportshall/sportshall-list/sportshall-item/sportshall-item.component';
 
 
 @NgModule({
@@ -23,6 +26,9 @@ import {HttpModule} from "@angular/http";
     ReservationStartComponent,
     ReservationsComponent,
     ReservationItemComponent,
+    SportshallComponent,
+    SportshallListComponent,
+    SportshallItemComponent,
 
   ],
   imports: [

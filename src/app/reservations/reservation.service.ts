@@ -1,8 +1,9 @@
 import {Injectable} from "@angular/core";
-import {Reservation} from "./reservations.model";
+import {Reservation} from "../shared/reservations.model";
 import {Subject} from "rxjs/Subject";
 import {Http, Headers} from "@angular/http";
 import {environment} from '../../environments/environment';
+import {SportsHall} from "../shared/sportshall.model";
 
 
 @Injectable()
@@ -11,7 +12,7 @@ export class ReservationService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private serverUrlReserve = environment.serverUrl;
-
+  private serverUrlSportshall = environment.serverUrlSportshall;
   private reservations: Reservation[] = [
     new Reservation({context: 'test', }
     ),
@@ -27,7 +28,7 @@ export class ReservationService {
   }
 
   getReservations() {
-    console.log(environment.serverUrlReserve);
+
     return this.http.get( this.serverUrlReserve, {headers: this.headers})
       .toPromise()
       .then(response => {
@@ -37,6 +38,20 @@ export class ReservationService {
       .catch(error => {
         return error;
       });
+
+  }
+
+  getSportshalls() {
+    return this.http.get( this.serverUrlSportshall, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        // this.reservations = response.json() as Reservation[];
+        return response.json() as SportsHall[];
+      })
+      .catch(error => {
+        return error;
+      });
+
 
   }
 
