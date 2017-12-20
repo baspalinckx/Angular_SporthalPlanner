@@ -12,13 +12,13 @@ import {BookingComponent} from './booking/booking.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/sportshalls', pathMatch: 'full'},
-  {path: 'Reserve', component: ReservationsComponent, children: [
+  {path: 'sportshalls', component: SportshallComponent},
+  {path: 'reserve', component: ReservationsComponent, children: [
     {path: '', component: ReservationStartComponent},
     {path: ':id', component: ReservationListComponent}
   ]},
   {path: 'nieuw', component: BookingComponent},
   {path: 'add', component: ClosingAddComponent},
-  {path: 'sportshalls', component: SportshallComponent},
   {path: '**', component: PageNotFoundComponent}
 
 ];

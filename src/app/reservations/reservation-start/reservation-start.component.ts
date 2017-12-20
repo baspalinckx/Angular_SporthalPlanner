@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-reservation-start',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reservation-start.component.css']
 })
 export class ReservationStartComponent implements OnInit {
+  id : string;
 
-  constructor() { }
+  constructor(private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+  }
+
+  onButtonClick() {
+    console.log(this.id);
+    this.router.navigate(['reserve/' + this.id]);
   }
 
 }
