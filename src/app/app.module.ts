@@ -13,8 +13,8 @@ import { ReservationService} from './reservations/reservation.service';
 import {AppRoutingModule} from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { BookingComponent } from './booking/booking.component';
-import {FormsModule} from "@angular/forms";
-import {ClosingAddComponent} from "./closingday/closingday.component";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ClosingAddComponent} from './closingday/closingday.component';
 
 
 @NgModule({
@@ -34,7 +34,8 @@ import {ClosingAddComponent} from "./closingday/closingday.component";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ ReservationService ],
   bootstrap: [AppComponent]

@@ -30,20 +30,20 @@ export class ClosingAddComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
       this.editMode = params['id'] != null;
-      this.options = ['Sluitingsdag', 'Onderhoud']
+      this.options = ['Sluitingsdag', 'Onderhoud'];
       this.initForm();
     });
   }
 
 
-  onSubmit() {
-    if (this.editMode) {
-      this.reservationService.updateClosing(this.id, this.closingForm.value);
-    } else {
-      this.reservationService.addClosing(this.closingForm.value);
-    }
-    this.onCancel();
-  }
+ // onSubmit() {
+ //   if (this.editMode) {
+ //     this.reservationService.updateClosing(this.id, this.closingForm.value);
+ //   } else {
+ //     this.reservationService.addClosing(this.closingForm.value);
+ //   }
+ //   this.onCancel();
+ // }
 
   changeSelectedTypeOption(event: any) {
     console.log(event);
