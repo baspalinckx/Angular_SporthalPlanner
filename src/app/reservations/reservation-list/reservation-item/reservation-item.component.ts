@@ -13,7 +13,7 @@ export class ReservationItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.reservation)
+    console.log(this.reservation);
   }
 
 }

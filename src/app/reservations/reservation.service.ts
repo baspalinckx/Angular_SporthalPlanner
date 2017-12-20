@@ -1,3 +1,4 @@
+
 import {Injectable} from '@angular/core';
 import {Reservation} from '../shared/reservations.model';
 import {Subject} from 'rxjs/Subject';
@@ -6,25 +7,34 @@ import {environment} from '../../environments/environment';
 import {SportsHall} from '../shared/sportshall.model';
 
 
+
 @Injectable()
 export class ReservationService {
   reservationChanged = new Subject<Reservation[]>();
 
+
+  //private serverUrl = environment.serverUrl + '/home/';
   private headers = new Headers({'Content-Type': 'application/json'});
   private serverUrlReserve = environment.serverUrl;
   private serverUrlSportshall = environment.serverUrlSportshall;
   private reservations: Reservation[] = [
-    new Reservation({context: 'test', }
+    new Reservation({context: 'Reservation', startTime: '10:00:00', endTime: '12:00:00' }
     ),
     new Reservation(
-      {context: 'test2'}
+      {context: 'Maintenance', startTime: '12:00:00', endTime: '12:30:00'}
     ),
     new Reservation(
-      {context: 'test3'}
+      {context: 'Reservation', startTime: '10:00:00', endTime: '11:00:00'}
+    ),
+    new Reservation(
+      {context: 'Maintenance', startTime: '12:00:00', endTime: '12:30:00'}
+    ),
+    new Reservation(
+      {context: 'Maintenance', startTime: '12:00:00', endTime: '12:30:00'}
     )
   ];
-  constructor(private http: Http) {
 
+  constructor(private http: Http) {
   }
 
   getReservations() {
@@ -72,6 +82,23 @@ export class ReservationService {
     /*return this.reservations.slice();*/
 
 
+
+  // addClosing(closing: Reservation) {
+  //   console.log('addClosing');
+  //   return this.http.post(this.serverUrl, closing, {headers: this.headers})
+  //     .toPromise()
+  //     .then(response => {
+  //       this.reservationChanged.next();
+  //     });
+  // }
+  //
+  // updateClosing(index: string, newReservation: Reservation) {
+  //   return this.http.put(this.serverUrl + index, newReservation, {headers: this.headers})
+  //     .toPromise()
+  //     .then(response => {
+  //       this.reservationChanged.next();
+  //     });
+  // }
 
   //
   // addIngredientsToShoppingList(ingredients: Ingredient[]) {

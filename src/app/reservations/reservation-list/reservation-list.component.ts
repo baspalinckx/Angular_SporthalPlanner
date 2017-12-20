@@ -4,13 +4,12 @@ import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router, Params} from '@angular/router';
 import {ReservationService} from '../reservation.service';
 
-
 @Component({
   selector: 'app-reservation-list',
   templateUrl: './reservation-list.component.html',
   styleUrls: ['./reservation-list.component.css']
 })
-export class ReservationListComponent implements OnInit, OnDestroy {
+export class ReservationListComponent implements OnInit {
 
   reservations: Reservation[];
   subscription: Subscription;
@@ -29,9 +28,15 @@ export class ReservationListComponent implements OnInit, OnDestroy {
     });
   }
 
+
+ // ngOnDestroy() {
+  //  this.subscription.unsubscribe();
+  //}
+
   onNewReservation() {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
+
 
   onSearchDate() {
     // 2017-05-05
@@ -42,5 +47,6 @@ export class ReservationListComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     // this.subscription.unsubscribe();
   }
+
 
 }

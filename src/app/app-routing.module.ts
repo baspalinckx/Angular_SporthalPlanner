@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import {ReservationsComponent} from "./reservations/reservations.component";
 import {SportshallComponent} from "./sportshall/sportshall.component";
 import {ReservationStartComponent} from "./reservations/reservation-start/reservation-start.component";
@@ -13,9 +14,11 @@ const appRoutes: Routes = [
     {path: '', component: ReservationStartComponent},
     {path: ':id', component: ReservationListComponent}
   ]},
+  {path: 'nieuw', component: BookingComponent},
+  {path: 'add', component: ClosingAddComponent},
   {path: 'sportshalls', component: SportshallComponent},
   {path: '**', component: PageNotFoundComponent}
-
+  
 ];
 
 @NgModule({

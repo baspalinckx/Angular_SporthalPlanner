@@ -16,7 +16,11 @@ import { SportshallComponent } from './sportshall/sportshall.component';
 import { SportshallListComponent } from './sportshall/sportshall-list/sportshall-list.component';
 import { SportshallItemComponent } from './sportshall/sportshall-list/sportshall-item/sportshall-item.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import {FormsModule} from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
+import { BookingComponent } from './booking/booking.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ClosingAddComponent} from './closingday/closingday.component';
+
 
 
 
@@ -33,13 +37,20 @@ import {FormsModule} from '@angular/forms';
     SportshallListComponent,
     SportshallItemComponent,
     PageNotFoundComponent,
+    HeaderComponent,
+    BookingComponent,
+    ClosingAddComponent
+
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule
+
   ],
   providers: [ ReservationService ],
   bootstrap: [AppComponent]
