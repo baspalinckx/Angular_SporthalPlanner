@@ -8,6 +8,7 @@ import {environment} from "../../environments/environment";
 export class ReservationService {
   reservationChanged = new Subject<Reservation[]>();
 
+
   //private serverUrl = environment.serverUrl + '/home/';
   private headers = new Headers({'Content-Type': 'application/json'});
   // private serverUrl = environment.serverUrl + '/recipes/'; // URL to web api
@@ -22,6 +23,7 @@ export class ReservationService {
       {context: 'test3'}
     )
   ];
+
   constructor(private http: Http) {
 
   }
@@ -39,6 +41,7 @@ export class ReservationService {
 
     return this.reservations.slice();
   }
+
 
   // addClosing(closing: Reservation) {
   //   console.log('addClosing');
