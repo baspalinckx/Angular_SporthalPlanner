@@ -23,6 +23,7 @@ import {ClosingAddComponent} from './closingday/closingday.component';
 import { BookingsComponent } from './bookings/bookings.component';
 import { BookingStartComponent } from './bookings/booking-start/booking-start.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { NgDatepickerModule } from 'ng2-datepicker';
 
 
 
@@ -55,7 +56,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    NgDatepickerModule
 
   ],
   providers: [ ReservationService ],
