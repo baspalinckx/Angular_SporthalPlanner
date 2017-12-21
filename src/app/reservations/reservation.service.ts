@@ -1,70 +1,90 @@
-import {Injectable} from "@angular/core";
-import {Reservation} from "./reservations.model";
-import {Subject} from "rxjs/Subject";
-import {Http} from "@angular/http";
+
+import {Injectable} from '@angular/core';
+import {Reservation} from '../shared/reservations.model';
+import {Subject} from 'rxjs/Subject';
+import {Http, Headers} from '@angular/http';
+import {environment} from '../../environments/environment';
+import {SportsHall} from '../shared/sportshall.model';
+
+
 
 @Injectable()
 export class ReservationService {
   reservationChanged = new Subject<Reservation[]>();
 
-  private headers = new Headers({'Content-Type': 'application/json'});
-  // private serverUrl = environment.serverUrl + '/recipes/'; // URL to web api
 
+  private headers = new Headers({'Content-Type': 'application/json'});
+  private serverUrlReserve = environment.serverUrl;
+  private serverUrlSportshall = environment.serverUrlSportshall;
   private reservations: Reservation[] = [
-    new Reservation({context: 'Reservation', startTime: '15:00:00', endTime: '20:00:00' }
+    new Reservation({context: 'Reservation', startTime: '10:00:00', endTime: '12:00:00' }
     ),
     new Reservation(
       {context: 'Maintenance', startTime: '12:00:00', endTime: '12:30:00'}
     ),
     new Reservation(
       {context: 'Reservation', startTime: '10:00:00', endTime: '11:00:00'}
+    ),
+    new Reservation(
+      {context: 'Maintenance', startTime: '12:00:00', endTime: '12:30:00'}
+    ),
+    new Reservation(
+      {context: 'Maintenance', startTime: '12:00:00', endTime: '12:30:00'}
     )
   ];
-  constructor() {
 
+  constructor(private http: Http) {
   }
+
+  // Reservation
 
   getReservations() {
-    // return this.http.get(this.serverUrl, {headers: this.headers})
-    //   .toPromise()
-    //   .then(response => {
-    //     this.recipes = response.json().recipe as Recipe[];
-    //     return response.json().recipe as Recipe[];
-    //   })
-    //   .catch(error => {
-    //     return error;
-    //   });
+    return this.http.get( this.serverUrlReserve, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        this.reservations = response.json() as Reservation[];
+        return response.json() as Reservation[];
+      })
+      .catch(error => {
+        return error;
+      });
 
-    return this.reservations.slice();
   }
 
+  getReservationsS(id: string, date: string) {
+  console.log(this.serverUrlReserve + '/SporthalId?id=' + id + '&dateTime=' + date);
+    return this.http.get( this.serverUrlReserve + '/SporthalId?id=' + id + '&dateTime=' + date, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        this.reservations = response.json() as Reservation[];
+        return response.json() as Reservation[];
+      })
+      .catch(error => {
+        return error;
+      });
 
-  //
-  // addIngredientsToShoppingList(ingredients: Ingredient[]) {
-  //   this.slService.addIngredients(ingredients);
-  // }
-  //
-  // addRecipe(recipe: Recipe) {
-  //   return this.http.post(this.serverUrl, recipe, {headers: this.headers})
-  //     .toPromise()
-  //     .then(response => {
-  //       this.recipesChanged.next(this.recipes.slice());
-  //     });
-  // }
-  //
-  // updateRecipe(index: string, newRecipe: Recipe) {
-  //   return this.http.put(this.serverUrl + index, newRecipe, {headers: this.headers})
-  //     .toPromise()
-  //     .then(response => {
-  //       this.recipesChanged.next(this.recipes.slice());
-  //     });
-  // }
-  //
-  // deleteRecipe(index: string) {
-  //   return this.http.delete(this.serverUrl + index, {headers: this.headers})
-  //     .toPromise()
-  //     .then(response => {
-  //       this.recipesChanged.next(this.recipes.slice());
-  //     });
-  // }
+  }
+
+  addReservation(reservation: Reservation) {
+    return this.http.post(this.serverUrlReserve, reservation, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        this.reservationChanged.next();
+      });
+  }
+
+  // Sportshalls
+  getSportshalls() {
+    return this.http.get( this.serverUrlSportshall, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        // this.reservations = response.json() as Reservation[];
+        return response.json() as SportsHall[];
+      })
+      .catch(error => {
+        return error;
+      });
+
+  }
+
 }

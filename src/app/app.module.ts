@@ -9,9 +9,21 @@ import { ReservationListComponent } from './reservations/reservation-list/reserv
 import { ReservationStartComponent } from './reservations/reservation-start/reservation-start.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { ReservationItemComponent } from './reservations/reservation-list/reservation-item/reservation-item.component';
-import { ReservationService} from "./reservations/reservation.service";
-import {AppRoutingModule} from "./app-routing.module";
+import { ReservationService} from './reservations/reservation.service';
+import {AppRoutingModule} from './app-routing.module';
+import {HttpModule} from '@angular/http';
+import { SportshallComponent } from './sportshall/sportshall.component';
+import { SportshallListComponent } from './sportshall/sportshall-list/sportshall-list.component';
+import { SportshallItemComponent } from './sportshall/sportshall-list/sportshall-item/sportshall-item.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HeaderComponent } from './header/header.component';
+import { BookingComponent } from './bookings/booking/booking.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ClosingAddComponent} from './closingday/closingday.component';
+import { BookingsComponent } from './bookings/bookings.component';
+import { BookingStartComponent } from './bookings/booking-start/booking-start.component';
+
+
 
 
 @NgModule({
@@ -23,12 +35,26 @@ import { HeaderComponent } from './header/header.component';
     ReservationStartComponent,
     ReservationsComponent,
     ReservationItemComponent,
+    SportshallComponent,
+    SportshallListComponent,
+    SportshallItemComponent,
+    PageNotFoundComponent,
     HeaderComponent,
+    BookingComponent,
+    ClosingAddComponent,
+    BookingsComponent,
+    BookingStartComponent
+
+
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpModule,
+    ReactiveFormsModule
+
   ],
   providers: [ ReservationService ],
   bootstrap: [AppComponent]
