@@ -1,0 +1,13 @@
+ng-datepicker {
+  position: absolute;
+  z-index: 1010;
+
+}
+
+#datePicker{
+  margin-right: 100px;
+
+}
+
+
+
