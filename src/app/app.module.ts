@@ -20,6 +20,7 @@ import { HeaderComponent } from './header/header.component';
 import { BookingComponent } from './booking/booking.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ClosingAddComponent} from './closingday/closingday.component';
+import {SportshallService} from './sportshall/sportshall.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import {ClosingAddComponent} from './closingday/closingday.component';
     ReactiveFormsModule
 
   ],
-  providers: [ ReservationService ],
+  providers: [ ReservationService, SportshallService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

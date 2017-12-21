@@ -4,9 +4,6 @@ import {Reservation} from '../shared/reservations.model';
 import {Subject} from 'rxjs/Subject';
 import {Http, Headers} from '@angular/http';
 import {environment} from '../../environments/environment';
-import {SportsHall} from '../shared/sportshall.model';
-
-
 
 @Injectable()
 export class ReservationService {
@@ -73,18 +70,6 @@ export class ReservationService {
       });
   }
 
-  // Sportshalls
-  getSportshalls() {
-    return this.http.get( this.serverUrlSportshall, {headers: this.headers})
-      .toPromise()
-      .then(response => {
-        // this.reservations = response.json() as Reservation[];
-        return response.json() as SportsHall[];
-      })
-      .catch(error => {
-        return error;
-      });
 
-  }
 
 }

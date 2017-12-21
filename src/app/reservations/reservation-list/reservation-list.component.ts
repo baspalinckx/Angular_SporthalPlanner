@@ -3,6 +3,7 @@ import {Reservation} from '../../shared/reservations.model';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router, Params} from '@angular/router';
 import {ReservationService} from '../reservation.service';
+import {SportshallService} from "../../sportshall/sportshall.service";
 
 @Component({
   selector: 'app-reservation-list',
