@@ -12,13 +12,13 @@ export class BookingComponent {
   @ViewChild('f') bookingForm: NgForm;
   booking = {
 
-    date: '',
-    startTime: '',
-    endTime: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '' };
+    Datum: '',
+    StartTime: '',
+    EndTime: '',
+    FirstName: '',
+    LastName: '',
+    Email: '',
+    PhoneNumber: '' };
   submitted = false;
 
   constructor(private reservationService: ReservationService,
@@ -27,13 +27,13 @@ export class BookingComponent {
 
   onSubmit() {
     this.submitted = true;
-    this.booking.date = this.bookingForm.value.bookingData.date;
-    this.booking.startTime = this.bookingForm.value.bookingData.startTime;
-    this.booking.endTime = this.bookingForm.value.bookingData.endTime;
-    this.booking.firstName = this.bookingForm.value.bookingData.firstName;
-    this.booking.lastName = this.bookingForm.value.bookingData.lastName;
-    this.booking.email = this.bookingForm.value.bookingData.email;
-    this.booking.phoneNumber = this.bookingForm.value.bookingData.phoneNumber;
+    this.booking.Datum = this.bookingForm.value.bookingData.Datum;
+    this.booking.StartTime = this.bookingForm.value.bookingData.StartTime;
+    this.booking.EndTime = this.bookingForm.value.bookingData.EndTime;
+    this.booking.FirstName = this.bookingForm.value.bookingData.FirstName;
+    this.booking.LastName = this.bookingForm.value.bookingData.LastName;
+    this.booking.Email = this.bookingForm.value.bookingData.Email;
+    this.booking.PhoneNumber = this.bookingForm.value.bookingData.PhoneNumber;
     console.log(this.bookingForm.value);
     // this.reservationService.addReservation()
     this.bookingForm.reset();
