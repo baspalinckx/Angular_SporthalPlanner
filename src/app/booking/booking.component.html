@@ -7,76 +7,76 @@
           ngModelGroup="bookingData"
           #bookingData="ngModelGroup">
           <div class="form-group">
-            <label for="date">Datum</label>
+            <label for="Datum">Datum</label>
             <input
               type="date"
-              id="date"
+              id="Datum"
               class="form-control"
               ngModel
-              name="date"
+              name="Datum"
               required>
           </div>
           <div class="form-group">
-            <label for="startTime">start tijd</label>
+            <label for="StartTime">start tijd</label>
             <input
               type="time"
-              id="startTime"
+              id="StartTime"
               class="form-control"
               ngModel
-              name="startTime"
+              name="StartTime"
               required>
           </div>
           <div class="form-group">
-            <label for="endTime">Eind tijd</label>
+            <label for="EndTime">Tijdsduur</label>
             <input
-              type="time"
-              id="endTime"
+              type="number"
+              id="EndTime"
               class="form-control"
               ngModel
-              name="endTime"
+              name="EndTime"
               required>
           </div>
           <div class="form-group">
-            <label for="firstName">Voornaam</label>
-            <input
-              type="text"
-              id="firstName"
-              class="form-control"
-              ngModel
-              name="firstName"
-              required>
-          </div>
-          <div class="form-group">
-            <label for="lastName">Achternaam</label>
+            <label for="FirstName">Voornaam</label>
             <input
               type="text"
-              id="lastName"
+              id="FirstName"
               class="form-control"
               ngModel
-              name="lastName"
+              name="FirstName"
               required>
           </div>
           <div class="form-group">
-            <label for="email">Email</label>
+            <label for="LastName">Achternaam</label>
+            <input
+              type="text"
+              id="LastName"
+              class="form-control"
+              ngModel
+              name="LastName"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="Email">Email</label>
             <input
               type="email"
-              id="email"
+              id="Email"
               class="form-control"
               ngModel
-              name="email"
+              name="Email"
               required
               email
               #email="ngModel">
             <span class="help-block" *ngIf="!email.valid && email.touched">Vul een geldig email adres in!</span>
           </div>
           <div class="form-group">
-            <label for="phoneNumber">Telefoon nummer</label>
+            <label for="PhoneNumber">Telefoon nummer</label>
             <input
               type="number"
-              id="phoneNumber"
+              id="PhoneNumber"
               class="form-control"
               ngModel
-              name="phoneNumber"
+              name="PhoneNumber"
               required>
           </div>
         </div>
@@ -84,6 +84,10 @@
           class="btn btn-primary"
           type="submit"
           [disabled]="!f.valid">Reserveer</button>
+        <button
+          class="btn btn-warning"
+          (click)="onCancel()"
+        >Anuleer</button>
       </form>
     </div>
   </div>
@@ -91,13 +95,13 @@
   <div class="row" *ngIf="submitted">
     <div class="col-xs-12">
       <h3>Reservering details</h3>
-      <P>Datum: {{ booking.date}}</P>
-      <p>Start tijd: {{booking.startTime}}</p>
-      <p>Eind tijd: {{booking.endTime}}</p>
-      <p>Voornaam: {{booking.firstName}}</p>
-      <p>Achternaam: {{booking.lastName}}</p>
-      <p>Email: {{booking.email}}</p>
-      <p>Telefoon nummer: {{booking.phoneNumber}}</p>
+      <P>Datum: {{ booking.Datum}}</P>
+      <p>Start tijd: {{booking.StartTime}}</p>
+      <p>Eind tijd: {{booking.EndTime}}</p>
+      <p>Voornaam: {{booking.FirstName}}</p>
+      <p>Achternaam: {{booking.LastName}}</p>
+      <p>Email: {{booking.Email}}</p>
+      <p>Telefoon nummer: {{booking.PhoneNumber}}</p>
     </div>
   </div>
 </div>

@@ -17,11 +17,9 @@ import { SportshallListComponent } from './sportshall/sportshall-list/sportshall
 import { SportshallItemComponent } from './sportshall/sportshall-list/sportshall-item/sportshall-item.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HeaderComponent } from './header/header.component';
-import { BookingComponent } from './bookings/booking/booking.component';
+import { BookingComponent } from './booking/booking.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ClosingAddComponent} from './closingday/closingday.component';
-import { BookingsComponent } from './bookings/bookings.component';
-import { BookingStartComponent } from './bookings/booking-start/booking-start.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgDatepickerModule } from 'ng2-datepicker';
 
@@ -43,12 +41,7 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     PageNotFoundComponent,
     HeaderComponent,
     BookingComponent,
-    ClosingAddComponent,
-    BookingsComponent,
-    BookingStartComponent
-
-
-
+    ClosingAddComponent
   ],
   imports: [
     BrowserModule,

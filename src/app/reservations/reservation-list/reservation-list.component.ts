@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Reservation} from '../../shared/reservations.model';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router, Params} from '@angular/router';
@@ -44,21 +44,10 @@ options: DatepickerOptions = {
     });
   }
 
-
-  onNewReservation() {
-    this.router.navigate(['new/' + this.id]);
-  }
-
-
   onSearchDate() {
 
     this.reservationService.getReservationsS(this.id, this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear())
       .then(res => this.reservations = res);
   }
-
-  ngOnDestroy() {
-    // this.subscription.unsubscribe();
-  }
-
 
 }

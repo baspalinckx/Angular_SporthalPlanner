@@ -55,7 +55,7 @@ export class ClosingAddComponent implements OnInit {
   }
 
   private initForm() {
-    let editreserve = new Reservation({reserveID: '', startTime: '', endTime: ''});
+    const editreserve = new Reservation({reserveID: '', startTime: '', endTime: ''});
 
     // if (this.editMode) {
     //   this.reservationService.getReservation(this.id).then((res) => console.log(res))
@@ -81,3 +81,4 @@ export class ClosingAddComponent implements OnInit {
   }
 
 }
+
