@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {ReservationService} from '../../reservations/reservation.service';
+import {ReservationService} from '../reservations/reservation.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -37,5 +37,9 @@ export class BookingComponent {
     console.log(this.bookingForm.value);
     // this.reservationService.addReservation()
     this.bookingForm.reset();
+  }
+
+  onCancel() {
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
 }
