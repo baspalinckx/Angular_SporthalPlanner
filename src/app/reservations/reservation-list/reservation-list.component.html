@@ -9,20 +9,12 @@
 
 <hr>
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-sm-4">
     <div class="row">
-      <div class="col-md-3">
-        <!--<div class="input-group date" data-provide="datepicker">
-          <input [(ngModel)]="dateString" class="form-control">
-          <div class="input-group-addon">
-            <span class="glyphicon glyphicon-th"></span>
-          </div>
-        </div>-->
-
-
+      <div class="col-sm-7">
         <ng-datepicker type="text" format="DD-MM-YYYY" [options]="options" name="dateExpires" [(ngModel)]="date"> </ng-datepicker>
       </div>
-      <div class="col-md-1">
+      <div class="col-sm-4">
         <button class="btn btn-primary"(click)="onSearchDate()">Search</button>
       </div>
     </div>
@@ -31,7 +23,6 @@
       [reservation]="reservationEl"
       [index]="i"></app-reservation-item>
   </div>
-  <hr>
 </div>
 
 
