@@ -1,5 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
+import {ReservationService} from '../../reservations/reservation.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-booking',
@@ -9,6 +11,7 @@ import {NgForm} from '@angular/forms';
 export class BookingComponent {
   @ViewChild('f') bookingForm: NgForm;
   booking = {
+
     date: '',
     startTime: '',
     endTime: '',
@@ -17,6 +20,10 @@ export class BookingComponent {
     email: '',
     phoneNumber: '' };
   submitted = false;
+
+  constructor(private reservationService: ReservationService,
+              private router: Router,
+              private route: ActivatedRoute ) { }
 
   onSubmit() {
     this.submitted = true;
@@ -27,7 +34,8 @@ export class BookingComponent {
     this.booking.lastName = this.bookingForm.value.bookingData.lastName;
     this.booking.email = this.bookingForm.value.bookingData.email;
     this.booking.phoneNumber = this.bookingForm.value.bookingData.phoneNumber;
-
+    console.log(this.bookingForm.value);
+    // this.reservationService.addReservation()
     this.bookingForm.reset();
   }
 }

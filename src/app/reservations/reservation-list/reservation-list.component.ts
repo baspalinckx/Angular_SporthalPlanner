@@ -29,12 +29,8 @@ export class ReservationListComponent implements OnInit {
   }
 
 
- // ngOnDestroy() {
-  //  this.subscription.unsubscribe();
-  //}
-
   onNewReservation() {
-    this.router.navigate(['new'], {relativeTo: this.route});
+    this.router.navigate(['new/' + this.id]);
   }
 
 
