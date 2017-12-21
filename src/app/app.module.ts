@@ -20,6 +20,11 @@ import { HeaderComponent } from './header/header.component';
 import { BookingComponent } from './booking/booking.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ClosingAddComponent} from './closingday/closingday.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { NgDatepickerModule } from 'ng2-datepicker';
+
+
+
 
 @NgModule({
   declarations: [
@@ -43,7 +48,9 @@ import {ClosingAddComponent} from './closingday/closingday.component';
     AppRoutingModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BsDatepickerModule.forRoot(),
+    NgDatepickerModule
 
   ],
   providers: [ ReservationService ],

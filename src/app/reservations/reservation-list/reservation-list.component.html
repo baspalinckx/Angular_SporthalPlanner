@@ -1,30 +1,38 @@
 <div class="container">
   <div class="row">
-    <h1>Boekingen:  </h1>
+    <h2>Boekingen:  </h2>
+    <hr>
     <div class="col-xs-12">
       <button class="btn btn-success" routerLink="new">Nieuwe boeking</button>
       <button class="btn btn-success" routerLink="extra">Extra bezetting</button>
     </div>
   </div>
-
+<div class="row">
+  <div class="col-sm-12">
+    <div class="row">
+      <div id="datePicker" class="col-xs-4" >
+        <ng-datepicker  type="text" format="DD-MM-YYYY" [options]="options" name="dateExpires" [(ngModel)]="date"> </ng-datepicker>
+      </div>
+      <div class="col-xs-3">
+        <button class="btn btn-primary"(click)="onSearchDate()">Search</button>
   <router-outlet></router-outlet>
 
-  <hr>
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="row">
-        <div class="col-md-3">
-          <input title="dateString" [(ngModel)]="dateString" type="date">
-        </div>
-        <div class="col-md-1">
-          <button (click)="onSearchDate()">Search</button>
-        </div>
       </div>
       <app-reservation-item
         *ngFor="let reservationEl of reservations"
         [reservation]="reservationEl">
       </app-reservation-item>
     </div>
+    <div class="col-xs-12">
+      <app-reservation-item
+        *ngFor="let reservationEl of reservations; let i = index"
+        [reservation]="reservationEl"
+        [index]="i"></app-reservation-item>
+      <h4  *ngIf="reservations?.length == 0"> Helaas, niks gevonden</h4>
+    </div>
     <hr>
   </div>
 </div>
+
+</div>
+
