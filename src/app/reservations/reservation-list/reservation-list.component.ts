@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Reservation} from '../../shared/reservations.model';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router, Params} from '@angular/router';
@@ -28,21 +28,10 @@ export class ReservationListComponent implements OnInit {
     });
   }
 
-
-  onNewReservation() {
-    this.router.navigate(['new/' + this.id]);
-  }
-
-
   onSearchDate() {
     // 2017-05-05
     this.reservationService.getReservationsS(this.id, this.dateString.slice(0, 4) + '-' + this.dateString.slice(5, 7) + '-' + this.dateString.slice(8, 10))
       .then(res => this.reservations = res);
   }
-
-  ngOnDestroy() {
-    // this.subscription.unsubscribe();
-  }
-
 
 }

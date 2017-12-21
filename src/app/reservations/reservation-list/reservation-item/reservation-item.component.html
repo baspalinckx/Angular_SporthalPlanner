@@ -5,7 +5,7 @@
       <div class="caption">
         <h4 class="group inner list-group-item-heading">
           {{reservation.context}}</h4>
-        <p class="group inner list-group-item-text">{{ reservation.startTime}} - {{reservation.endTime}}</p>
+        <p class="group inner list-group-item-text">{{reservation.startTime.toString().slice(11, 20)}} - {{reservation.endTime.toString().slice(11, 20)}}</p>
         <p class="group inner list-group-item-text">{{reservation.firstName}}  {{reservation.lastName}}</p>
         <p class="group inner list-group-item-text">{{reservation.phoneNumber}} - {{reservation.email}}</p>
       </div>
