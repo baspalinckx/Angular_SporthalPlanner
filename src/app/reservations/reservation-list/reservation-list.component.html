@@ -22,6 +22,7 @@
       *ngFor="let reservationEl of reservations; let i = index"
       [reservation]="reservationEl"
       [index]="i"></app-reservation-item>
+    <h4  *ngIf="reservations?.length == 0"> Helaas, niks gevonden</h4>
   </div>
 </div>
 
