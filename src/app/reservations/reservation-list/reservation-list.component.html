@@ -16,12 +16,7 @@
       <div class="col-xs-3">
         <button class="btn btn-primary"(click)="onSearchDate()">Search</button>
   <router-outlet></router-outlet>
-
       </div>
-      <app-reservation-item
-        *ngFor="let reservationEl of reservations"
-        [reservation]="reservationEl">
-      </app-reservation-item>
     </div>
     <div class="col-xs-12">
       <app-reservation-item
