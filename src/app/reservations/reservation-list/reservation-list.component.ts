@@ -38,6 +38,7 @@ options: DatepickerOptions = {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params['id'];
+      this.date = new Date();
 
 
     });
