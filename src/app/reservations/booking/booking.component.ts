@@ -98,7 +98,7 @@ export class BookingComponent implements OnInit, OnDestroy {
                   }
 
                   if (this.selectedStartTime) {
-                    if (time.time > this.selectedStartTime && time.time < closingTime && afterStartTime) {
+                    if (time.time > this.selectedStartTime && time.time <= closingTime && afterStartTime) {
                       if (time.free === true) {
                         this.dropDownEndTimes.push(time.time);
                       } else {
