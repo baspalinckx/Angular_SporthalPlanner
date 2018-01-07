@@ -3,6 +3,7 @@ import {Reservation} from '../../shared/reservations.model';
 import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router, Params} from '@angular/router';
 import {ReservationService} from '../reservation.service';
+import {SportshallService} from "../../sportshall/sportshall.service";
 import { DatepickerOptions } from 'ng2-datepicker';
 
 
@@ -13,16 +14,14 @@ import { DatepickerOptions } from 'ng2-datepicker';
 })
 export class ReservationListComponent implements OnInit {
 
-
-
-options: DatepickerOptions = {
-  minYear: 2016,
-  maxYear: 2030,
-  displayFormat: 'DD[-]MM[-]YYYY',
-  barTitleFormat: 'MMMM YYYY',
-  firstCalendarDay: 0, // 0 - Sunday, 1 - Monday
- // locale: loc
-};
+  options: DatepickerOptions = {
+    minYear: 2016,
+    maxYear: 2030,
+    displayFormat: 'DD[-]MM[-]YYYY',
+    barTitleFormat: 'MMMM YYYY',
+    firstCalendarDay: 0, // 0 - Sunday, 1 - Monday
+    // locale: loc
+  };
 
   reservations: Reservation[];
   subscription: Subscription;
@@ -39,8 +38,6 @@ options: DatepickerOptions = {
     this.route.params.subscribe(params => {
       this.id = params['id'];
       this.date = new Date();
-
-
     });
   }
 

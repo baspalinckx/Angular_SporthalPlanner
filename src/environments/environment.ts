@@ -5,8 +5,5 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://localhost:49335/api/reserve',
-  serverUrlReserve: 'Reserve',
-  serverUrlSportshall: 'http://localhost:49335/api/Sportshalls'
-
+  serverUrl: 'http://localhost:60701/api'
 };

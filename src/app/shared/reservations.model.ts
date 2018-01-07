@@ -7,12 +7,21 @@ export class Reservation {
   private _firstName: string;
   private _lastName: string;
   private _email: string;
-  private _phoneNumber: Number;
+  private _phoneNumber: string;
   private _sportsHall: SportsHall;
   private _context: string;
+  private _datum: string;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
+  }
+
+  public get datum(): string {
+    return this._datum;
+  }
+
+  public set datum(value: string){
+    this._datum = value;
   }
 
   public get reserveID(): Number {
@@ -57,11 +66,11 @@ export class Reservation {
   public set email(value: string) {
     this._email = value;
   }
-  public get phoneNumber(): Number {
+  public get phoneNumber(): string {
     return this._phoneNumber;
   }
 
-  public set phoneNumber(value: Number) {
+  public set phoneNumber(value: string) {
     this._phoneNumber = value;
   }
   public get sportsHall(): SportsHall {

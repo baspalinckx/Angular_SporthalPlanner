@@ -12,29 +12,29 @@
               type="date"
               id="Datum"
               class="form-control"
-              ngModel
+              [(ngModel)]="datum"
               name="Datum"
               required>
           </div>
           <div class="form-group">
             <label for="StartTime">start tijd</label>
-            <input
-              type="time"
-              id="StartTime"
-              class="form-control"
-              ngModel
-              name="StartTime"
-              required>
+            <br>
+            <select name="StartTime" [(ngModel)]="selectedStartTime" id="StartTime">
+              <option *ngFor="let time of dropDownTimes"
+                [value]="time">
+                  {{time}}:00
+              </option>
+            </select>
           </div>
           <div class="form-group">
-            <label for="EndTime">Tijdsduur</label>
-            <input
-              type="number"
-              id="EndTime"
-              class="form-control"
-              ngModel
-              name="EndTime"
-              required>
+            <label for="EndTime">Eind tijd</label>
+            <br>
+            <select name="EndTime" [(ngModel)]="selectedEndTime" id="EndTime">
+              <option *ngFor="let time of dropDownEndTimes"
+                      [value]="time">
+                {{time}}:00
+              </option>
+            </select>
           </div>
           <div class="form-group">
             <label for="FirstName">Voornaam</label>
@@ -72,7 +72,7 @@
           <div class="form-group">
             <label for="PhoneNumber">Telefoon nummer</label>
             <input
-              type="number"
+              type="text"
               id="PhoneNumber"
               class="form-control"
               ngModel

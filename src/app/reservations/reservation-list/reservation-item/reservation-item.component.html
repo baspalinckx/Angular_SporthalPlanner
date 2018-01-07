@@ -1,49 +1,14 @@
 
 <div id="reservations" class="list-group">
-
-  <div class="item  col-xs-12 col-md-6  col-lg-4">
+  <div class="item  col-xs-4 col-lg-4">
     <div class="list-group-item">
       <div class="caption">
         <h4 class="group inner list-group-item-heading">
           {{reservation.context}}</h4>
-        <p class="group inner list-group-item-text">{{ reservation.startTime.toString().slice(11 , 20)}} - {{reservation.endTime.toString().slice(11 , 20)}}</p>
+        <p class="group inner list-group-item-text">{{reservation.startTime}} - {{reservation.endTime}}</p>
         <p class="group inner list-group-item-text">{{reservation.firstName}}  {{reservation.lastName}}</p>
         <p class="group inner list-group-item-text">{{reservation.phoneNumber}} - {{reservation.email}}</p>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<a-->
-  <!--style="cursor: pointer;"-->
-  <!--[routerLink]="[index]"-->
-  <!--routerLinkActive="active"-->
-  <!--class="list-group-item clearfix">-->
-  <!--<div class="pull-left">-->
-    <!--<h4 class="list-group-item-heading">{{ reservation.context }}</h4>-->
-    <!--&lt;!&ndash;<p class="list-group-item-text">{{ reservation.SportsHall.sportsBuilding.name}}</p>&ndash;&gt;-->
-    <!--<p class="list-group-item-text">{{ reservation.startTime}}</p>-->
-    <!--<p class="list-group-item-text">{{ reservation.endTime }}</p>-->
-
-  <!--</div>-->
-<!--</a>-->

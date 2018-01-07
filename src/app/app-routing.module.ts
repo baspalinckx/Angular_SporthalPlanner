@@ -7,8 +7,8 @@ import {ReservationStartComponent} from './reservations/reservation-start/reserv
 import {ReservationListComponent} from './reservations/reservation-list/reservation-list.component';
 import {SportshallListComponent} from './sportshall/sportshall-list/sportshall-list.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {ClosingAddComponent} from './closingday/closingday.component';
-import {BookingComponent} from './booking/booking.component';
+import {ClosingAddComponent} from './reservations/closingday/closingday.component';
+import {BookingComponent} from './reservations/booking/booking.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/sportshalls', pathMatch: 'full'},
