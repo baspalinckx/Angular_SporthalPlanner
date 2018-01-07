@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {SportsHall} from '../shared/sportshall.model';
 import {SportshallService} from '../sportshall/sportshall.service';
+import {Reservation} from "../shared/reservations.model";
 
 @Component({
   selector: 'app-booking',
@@ -116,8 +117,21 @@ export class BookingComponent implements OnInit, OnDestroy {
     this.booking.LastName = this.bookingForm.value.bookingData.LastName;
     this.booking.Email = this.bookingForm.value.bookingData.Email;
     this.booking.PhoneNumber = this.bookingForm.value.bookingData.PhoneNumber;
-    console.log(this.bookingForm.value);
-    // this.reservationService.addReservation()
+
+    let reservation = new Reservation();
+    reservation.datum = this.bookingForm.value.bookingData.Datum;
+    reservation.firstName = this.bookingForm.value.bookingData.FirstName;
+    reservation.lastName = this.bookingForm.value.bookingData.LastName;
+    reservation.email = this.bookingForm.value.bookingData.Email;
+    reservation.phoneNumber = this.bookingForm.value.bookingData.PhoneNumber;
+    reservation.context = 'reservation';
+    reservation.startTime = new Date(2000, 1, 1, this.startTime, 0, 0, 0).toString();
+    reservation.endTime = new Date(2000, 1, 1, this.bookingForm.value.bookingData.EndTime, 0, 0, 0).toString();
+    reservation.sportsHall = this.sportsHall;
+
+    console.log(reservation);
+
+    this.reservationService.addReservation(reservation);
     this.bookingForm.reset();
     this.dropDownEndTimes = [];
     this.dropDownTimes = [];
