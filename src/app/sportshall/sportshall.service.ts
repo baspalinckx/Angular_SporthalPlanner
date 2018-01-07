@@ -6,8 +6,7 @@ import {Http} from "@angular/http";
 @Injectable()
 export class SportshallService {
   private headers = new Headers({'Content-Type': 'application/json'});
-  private serverUrlReserve = environment.serverUrl;
-  private serverUrlSportshall = environment.serverUrlSportshall;
+  private serverUrlSportshall = environment.serverUrl + "/Sportshalls";
 
   constructor(private http: Http) { }
 

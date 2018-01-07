@@ -1,26 +1,28 @@
 import {Component, ViewChild, OnInit, OnDestroy} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {ReservationService} from '../reservations/reservation.service';
+import {ReservationService} from '../reservation.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
-import {SportsHall} from '../shared/sportshall.model';
-import {SportshallService} from '../sportshall/sportshall.service';
-import {Reservation} from "../shared/reservations.model";
+import {SportsHall} from '../../shared/sportshall.model';
+import {SportshallService} from '../../sportshall/sportshall.service';
+import {Reservation} from "../../shared/reservations.model";
 
 @Component({
-  selector: 'app-closing-add',
-  templateUrl: './closingday.component.html',
-  styleUrls: ['./closingday.component.css']
+  selector: 'app-booking',
+  templateUrl: './booking.component.html',
+  styleUrls: ['./booking.component.css']
 })
-
-export class ClosingAddComponent implements OnInit, OnDestroy {
+export class BookingComponent implements OnInit, OnDestroy {
 
   @ViewChild('f') bookingForm: NgForm;
   booking = {
     Datum: '',
     StartTime: '',
     EndTime: '',
-    Context: '' };
+    FirstName: '',
+    LastName: '',
+    Email: '',
+    PhoneNumber: '' };
 
   submitted = false;
   lastdatum: Date;
@@ -45,7 +47,7 @@ export class ClosingAddComponent implements OnInit, OnDestroy {
     this.subscription = this.route.parent.params.subscribe(params => {
       this.sportshallService.getSportshallById(params['id'])
         .then(sportshall => {
-          this.sportsHall = sportshall;
+            this.sportsHall = sportshall;
         });
     });
     this.bookingForm.valueChanges.subscribe((update) => {
@@ -119,14 +121,18 @@ export class ClosingAddComponent implements OnInit, OnDestroy {
     this.booking.Datum = this.bookingForm.value.bookingData.Datum;
     this.booking.StartTime = this.bookingForm.value.bookingData.StartTime;
     this.booking.EndTime = this.bookingForm.value.bookingData.EndTime;
+    this.booking.FirstName = this.bookingForm.value.bookingData.FirstName;
+    this.booking.LastName = this.bookingForm.value.bookingData.LastName;
+    this.booking.Email = this.bookingForm.value.bookingData.Email;
+    this.booking.PhoneNumber = this.bookingForm.value.bookingData.PhoneNumber;
 
     let reservation = new Reservation();
     reservation.datum = this.bookingForm.value.bookingData.Datum;
-    reservation.firstName = 'admin';
-    reservation.lastName = 'admin';
-    reservation.email = 'admin@sporthalplanner.nl';
-    reservation.phoneNumber = '063848542';
-    reservation.context = this.bookingForm.value.bookingData.Context;
+    reservation.firstName = this.bookingForm.value.bookingData.FirstName;
+    reservation.lastName = this.bookingForm.value.bookingData.LastName;
+    reservation.email = this.bookingForm.value.bookingData.Email;
+    reservation.phoneNumber = this.bookingForm.value.bookingData.PhoneNumber;
+    reservation.context = 'reservation';
     reservation.startTime = new Date(2000, 1, 1, this.bookingForm.value.bookingData.StartTime, 0, 0, 0).toString();
     reservation.endTime = new Date(2000, 1, 1, this.bookingForm.value.bookingData.EndTime, 0, 0, 0).toString();
     reservation.sportsHall = this.sportsHall;

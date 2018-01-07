@@ -11,8 +11,7 @@ export class ReservationService {
 
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private serverUrlReserve = environment.serverUrl;
-  private serverUrlSportshall = environment.serverUrlSportshall;
+  private serverUrlReserve = environment.serverUrl + "/Reserve";
   private reservations: Reservation[] = [
     new Reservation({context: 'Reservation', startTime: '10:00:00', endTime: '12:00:00' }
     ),

@@ -14,21 +14,19 @@ import { DatepickerOptions } from 'ng2-datepicker';
 })
 export class ReservationListComponent implements OnInit {
 
-
-
-options: DatepickerOptions = {
-  minYear: 2016,
-  maxYear: 2030,
-  displayFormat: 'DD[-]MM[-]YYYY',
-  barTitleFormat: 'MMMM YYYY',
-  firstCalendarDay: 0, // 0 - Sunday, 1 - Monday
- // locale: loc
-};
+  options: DatepickerOptions = {
+    minYear: 2016,
+    maxYear: 2030,
+    displayFormat: 'DD[-]MM[-]YYYY',
+    barTitleFormat: 'MMMM YYYY',
+    firstCalendarDay: 0, // 0 - Sunday, 1 - Monday
+    // locale: loc
+  };
 
   reservations: Reservation[];
   subscription: Subscription;
 
-  dateString: string;
+  date: Date;
   id: string;
 
   constructor(private reservationService: ReservationService,
@@ -39,6 +37,7 @@ options: DatepickerOptions = {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params['id'];
+      this.date = new Date();
     });
   }
 
