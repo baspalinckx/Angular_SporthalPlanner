@@ -1,19 +1,17 @@
-<div class="container">
-  <div class="row">
-    <a
-      style="cursor: pointer;"
-      routerLink="/reserve/{{sportshall.sportsHallID}}"
 
-      class="list-group-item clearfix">
-      <div class="pull-left">
-        <h1>SporthalId: {{sportshall.sportsHallID}}</h1>
-        <p>Open: {{sportshall.openTime.toString().slice(11 , 20)}} - Close: {{sportshall.closeTime.toString().slice(11 , 20)}}</p>
+<div id="sportshalls" class="list-group">
+  <a
+    style="cursor: pointer;"
+    routerLink="/reserve/{{sportshall.sportsHallID}}">
+  <div class="item col-xs-12 col-md-6  col-lg-4">
+    <div class="list-group-item">
+      <div class="caption">
+        <h4 class="group inner list-group-item-heading">
+         SporthalID: {{sportshall.sportsHallID}}</h4>
+        <p class="group inner list-group-item-text">Open: {{sportshall.openTime.toString().slice(11 , 20)}} - Close: {{sportshall.closeTime.toString().slice(11 , 20)}}</p>
       </div>
-      <div class="pull-right">
-        <button class="btn btn-primary">Gekke knop</button>
-      </div>
-    </a>
+    </div>
   </div>
+  </a>
 </div>
-
 

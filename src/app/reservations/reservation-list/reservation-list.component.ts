@@ -4,6 +4,8 @@ import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router, Params} from '@angular/router';
 import {ReservationService} from '../reservation.service';
 import {SportshallService} from "../../sportshall/sportshall.service";
+import { DatepickerOptions } from 'ng2-datepicker';
+
 
 @Component({
   selector: 'app-reservation-list',
@@ -11,6 +13,17 @@ import {SportshallService} from "../../sportshall/sportshall.service";
   styleUrls: ['./reservation-list.component.css']
 })
 export class ReservationListComponent implements OnInit {
+
+
+
+options: DatepickerOptions = {
+  minYear: 2016,
+  maxYear: 2030,
+  displayFormat: 'DD[-]MM[-]YYYY',
+  barTitleFormat: 'MMMM YYYY',
+  firstCalendarDay: 0, // 0 - Sunday, 1 - Monday
+ // locale: loc
+};
 
   reservations: Reservation[];
   subscription: Subscription;
@@ -30,8 +43,8 @@ export class ReservationListComponent implements OnInit {
   }
 
   onSearchDate() {
-    // 2017-05-05
-    this.reservationService.getReservationsS(this.id, this.dateString.slice(0, 4) + '-' + this.dateString.slice(5, 7) + '-' + this.dateString.slice(8, 10))
+
+    this.reservationService.getReservationsS(this.id, this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear())
       .then(res => this.reservations = res);
   }
 

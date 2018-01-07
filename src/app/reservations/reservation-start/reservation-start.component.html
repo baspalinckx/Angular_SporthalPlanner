@@ -1,5 +1,13 @@
-<p>
-  Please input SportsHallId
-</p>
-<input [(ngModel)]="id" type="text">
-<button (click)="onButtonClick()" class="btn btn-default">Submit</button>
+<h3>
+  Please enter SporthalID
+</h3>
+<hr>
+<div class="form-group row">
+  <div class="col-xs-2">
+    <input [(ngModel)]="id" class="form-control" id="id">
+  </div>
+  <div class="col-xs-2">
+    <button (click)="onButtonClick()" class="btn btn-primary">Submit</button>
+  </div>
+</div>
+
