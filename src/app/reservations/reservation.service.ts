@@ -4,9 +4,6 @@ import {Reservation} from '../shared/reservations.model';
 import {Subject} from 'rxjs/Subject';
 import {Http, Headers} from '@angular/http';
 import {environment} from '../../environments/environment';
-import {SportsHall} from '../shared/sportshall.model';
-
-
 
 @Injectable()
 export class ReservationService {
@@ -14,8 +11,7 @@ export class ReservationService {
 
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private serverUrlReserve = environment.serverUrl;
-  private serverUrlSportshall = environment.serverUrlSportshall;
+  private serverUrlReserve = environment.serverUrl + "/Reserve";
   private reservations: Reservation[] = [
     new Reservation({context: 'Reservation', startTime: '10:00:00', endTime: '12:00:00' }
     ),
@@ -66,25 +62,30 @@ export class ReservationService {
   }
 
   addReservation(reservation: Reservation) {
-    return this.http.post(this.serverUrlReserve, reservation, {headers: this.headers})
+
+    console.log(new Date(reservation.endTime).toISOString());
+
+    return this.http.post(this.serverUrlReserve, {
+      "firstName": reservation.firstName,
+      "lastName": reservation.lastName,
+      "email": reservation.email,
+      "context": reservation.context,
+      "phoneNumber": reservation.phoneNumber,
+      "datum": reservation.datum,
+      "startTime": new Date(reservation.startTime).toISOString(),
+      "endTime": new Date(reservation.endTime).toISOString(),
+      "sportsHall": reservation.sportsHall
+    },
+      {headers: this.headers})
       .toPromise()
       .then(response => {
         this.reservationChanged.next();
-      });
-  }
-
-  // Sportshalls
-  getSportshalls() {
-    return this.http.get( this.serverUrlSportshall, {headers: this.headers})
-      .toPromise()
-      .then(response => {
-        // this.reservations = response.json() as Reservation[];
-        return response.json() as SportsHall[];
       })
-      .catch(error => {
-        return error;
+      .catch( res => {
+        console.log('rejected');
       });
-
   }
+
+
 
 }

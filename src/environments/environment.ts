@@ -9,4 +9,5 @@ export const environment = {
   serverUrlReserve: 'Reserve',
   serverUrlSportshall: 'http://localhost:50232/api/Sportshalls'
 
+
 };
