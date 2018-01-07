@@ -75,6 +75,14 @@ export class BookingComponent implements OnInit, OnDestroy {
                 reserves.forEach(reserve => {
                   let startTime: number = reserve.startTime.toString().slice(11, 13);
                   let endTime: number = reserve.endTime.toString().slice(11, 13);
+                  if (startTime < 10) {
+                    startTime = parseInt (startTime.toString().slice(1, 2));
+                  }
+                  if (endTime < 10) {
+                    endTime = parseInt (endTime.toString().slice(1, 2));
+                  }
+                  startTime++;
+                  endTime++;
                   for (startTime; startTime < endTime; startTime++) {
                     timesArray[startTime].free = false;
                   }
@@ -90,7 +98,7 @@ export class BookingComponent implements OnInit, OnDestroy {
                   }
 
                   if (this.selectedStartTime) {
-                    if (time.time >= this.selectedStartTime && time.time < closingTime && afterStartTime) {
+                    if (time.time > this.selectedStartTime && time.time < closingTime && afterStartTime) {
                       if (time.free === true) {
                         this.dropDownEndTimes.push(time.time);
                       } else {
@@ -125,11 +133,9 @@ export class BookingComponent implements OnInit, OnDestroy {
     reservation.email = this.bookingForm.value.bookingData.Email;
     reservation.phoneNumber = this.bookingForm.value.bookingData.PhoneNumber;
     reservation.context = 'reservation';
-    reservation.startTime = new Date(2000, 1, 1, this.startTime, 0, 0, 0).toString();
+    reservation.startTime = new Date(2000, 1, 1, this.bookingForm.value.bookingData.StartTime, 0, 0, 0).toString();
     reservation.endTime = new Date(2000, 1, 1, this.bookingForm.value.bookingData.EndTime, 0, 0, 0).toString();
     reservation.sportsHall = this.sportsHall;
-
-    console.log(reservation);
 
     this.reservationService.addReservation(reservation);
     this.bookingForm.reset();

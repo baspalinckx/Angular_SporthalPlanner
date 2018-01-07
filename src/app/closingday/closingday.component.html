@@ -1,48 +1,74 @@
-<div class="row">
-  <div class="col-xs-12">
-    <form [formGroup]="closingForm" (ngSubmit)="onSubmit()">
-      <div class="row">
-        <div class="col-xs-12">
-          <button type="submit" class="btn btn-success" [disabled]="!closingForm.valid">Save</button>
-          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="form-group">
-              <label for="options">Option</label>
-              <select type="text"
-                      id="options"
-                      formControlName="options"
-                      class="form-control"
-                      [(ngModel)]="selectedOption"
-                      (ngModelChange)="changeSelectedTypeOption($event)">
-                <option *ngFor="let type of options" [ngValue]="type">{{type.toString()}}</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div
+          id="booking-data"
+          ngModelGroup="bookingData"
+          #bookingData="ngModelGroup">
           <div class="form-group">
-            <label for="startTime">Starttijd</label>
-            <input type="text"
-                   id="startTime"
-                   formControlName="startTime"
-                   class="form-control">
+            <label for="Datum">Datum</label>
+            <input
+              type="date"
+              id="Datum"
+              class="form-control"
+              [(ngModel)]="datum"
+              name="Datum"
+              required>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
           <div class="form-group">
-            <label for="description">Eindtijd</label>
-            <input type="text" id="description" formControlName="description" class="form-control">
+            <label for="StartTime">start tijd</label>
+            <br>
+            <select name="StartTime" [(ngModel)]="selectedStartTime" id="StartTime">
+              <option *ngFor="let time of dropDownTimes"
+                      [value]="time">
+                {{time}}:00
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="EndTime">Eind tijd</label>
+            <br>
+            <select name="EndTime" [(ngModel)]="selectedEndTime" id="EndTime">
+              <option *ngFor="let time of dropDownEndTimes"
+                      [value]="time">
+                {{time}}:00
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Context">Context</label>
+            <input
+              type="text"
+              id="Context"
+              class="form-control"
+              ngModel
+              name="Context"
+              required>
           </div>
         </div>
-      </div>
-    </form>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!f.valid">Reserveer</button>
+        <button
+          class="btn btn-warning"
+          (click)="onCancel()"
+        >Anuleer</button>
+      </form>
+    </div>
+  </div>
+  <hr>
+  <div class="row" *ngIf="submitted">
+    <div class="col-xs-12">
+      <h3>Reservering details</h3>
+      <P>Datum: {{ booking.Datum}}</P>
+      <p>Start tijd: {{booking.StartTime}}</p>
+      <p>Eind tijd: {{booking.EndTime}}</p>
+      <p>Voornaam: {{booking.FirstName}}</p>
+      <p>Achternaam: {{booking.LastName}}</p>
+      <p>Email: {{booking.Email}}</p>
+      <p>Telefoon nummer: {{booking.PhoneNumber}}</p>
+    </div>
   </div>
 </div>

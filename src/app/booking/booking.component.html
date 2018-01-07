@@ -32,7 +32,7 @@
             <select name="EndTime" [(ngModel)]="selectedEndTime" id="EndTime">
               <option *ngFor="let time of dropDownEndTimes"
                       [value]="time">
-                {{time + 1}}:00
+                {{time}}:00
               </option>
             </select>
           </div>
