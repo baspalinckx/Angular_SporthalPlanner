@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Reservation} from "../../../shared/reservations.model";
 
 @Component({
   selector: 'app-reservation-week-item',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reservation-week-item.component.css']
 })
 export class ReservationWeekItemComponent implements OnInit {
+  @Input() reservation: Reservation;
+  @Input() index: string;
 
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

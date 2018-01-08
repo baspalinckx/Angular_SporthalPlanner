@@ -1,8 +1,20 @@
-  <div class="row-fluid">
+<div class="container">
+<div class="row">
+  <h3>Week 32 - Sporthal 3</h3>
+  <hr>
+</div>
+</div>
+
+<div class="row-fluid">
     <div class="col-md-2">
       <div class="panel panel-default">
         <div class="panel-heading">Maandag</div>
-        <div class="panel-body">Panel Content</div>
+        <div class="panel-body">
+          <app-reservation-week-item
+            *ngFor="let reservationEl of reservations;"
+            [reservation] ="reservationEl"></app-reservation-week-item>
+
+        </div>
       </div>
     </div>
     <div class="col-md-10">
@@ -19,7 +31,9 @@
 
         <div class="col-md-2"><div class="panel panel-default">
           <div class="panel-heading">Donderdag</div>
-          <div class="panel-body">Panel Content</div>
+          <div class="panel-body">Panel Content
+
+          </div>
         </div></div>
 
         <div class="col-md-2"><div class="panel panel-default">
