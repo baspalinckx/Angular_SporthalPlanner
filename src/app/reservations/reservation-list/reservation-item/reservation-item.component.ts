@@ -13,8 +13,8 @@ export class ReservationItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.reservation.startTime = new Date(this.reservation.startTime).getHours() + 1 + ":00";
-    this.reservation.endTime = new Date(this.reservation.endTime).getHours() + 1 + ":00";
+    this.reservation.startTime = new Date(this.reservation.startTime).getHours() + 1 + "";
+    this.reservation.endTime = new Date(this.reservation.endTime).getHours() + 1 + "";
   }
 
 }

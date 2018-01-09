@@ -44,7 +44,28 @@ export class ReservationListComponent implements OnInit {
   onSearchDate() {
 
     this.reservationService.getReservationsS(this.id, this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear())
-      .then(res => this.reservations = res);
+      .then(res => {
+        this.reservations = res;
+        console.log(this.reservations);
+        console.log(parseInt(this.reservations[0].startTime));
+        this.reservations.sort(function (a, b){
+          let bstart = parseInt (b.startTime.toString().slice(11, 13));
+          let astart = parseInt (a.startTime.toString().slice(11, 13));
+          if (astart < 10) {
+            astart = parseInt (astart.toString().slice(1, 2));
+          }
+          if (bstart < 10) {
+            bstart = parseInt (bstart.toString().slice(1, 2));
+          }
+
+          console.log(astart);
+          console.log(bstart);
+
+        return bstart - astart;
+        });
+      });
+
+
   }
 
 }
