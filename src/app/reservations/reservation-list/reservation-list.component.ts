@@ -27,6 +27,8 @@ export class ReservationListComponent implements OnInit {
   subscription: Subscription;
 
   date: Date;
+  sunday: Date;
+  week: Array<Date>;
   id: string;
 
   constructor(private reservationService: ReservationService,
@@ -45,6 +47,15 @@ export class ReservationListComponent implements OnInit {
 
     this.reservationService.getReservationsS(this.id, this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear())
       .then(res => this.reservations = res);
+
+    this.date.setDate(this.date.getDate() + 1 - (this.date.getDay() || 7));
+    this.sunday = new Date(this.date.getTime());
+    this.sunday.setDate(this.sunday.getDate() + 6);
+    this.week = new Array<Date>();
+    this.week.push(this.date, this.sunday);
+    console.log(this.week);
   }
+
+
 
 }

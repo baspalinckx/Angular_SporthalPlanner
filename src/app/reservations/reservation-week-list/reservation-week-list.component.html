@@ -13,6 +13,7 @@
           <app-reservation-week-item
             *ngFor="let reservationEl of reservations;"
             [reservation] ="reservationEl"></app-reservation-week-item>
+          <h5 *ngIf="reservations?.length == 0"> Niets gepland</h5>
 
         </div>
       </div>
@@ -21,7 +22,8 @@
       <div class="row-fluid">
         <div class="col-md-2"><div class="panel panel-default">
           <div class="panel-heading">Dinsdag</div>
-          <div class="panel-body">Panel Content</div>
+          <div class="panel-body">Panel Content
+          </div>
         </div></div>
 
         <div class="col-md-2"><div class="panel panel-default">
@@ -31,9 +33,7 @@
 
         <div class="col-md-2"><div class="panel panel-default">
           <div class="panel-heading">Donderdag</div>
-          <div class="panel-body">Panel Content
-
-          </div>
+          <div class="panel-body">Panel Content</div>
         </div></div>
 
         <div class="col-md-2"><div class="panel panel-default">
