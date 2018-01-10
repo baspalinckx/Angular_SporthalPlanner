@@ -5,6 +5,8 @@ import {ActivatedRoute, Router, Params} from '@angular/router';
 import {ReservationService} from '../reservation.service';
 import {SportshallService} from "../../sportshall/sportshall.service";
 import { DatepickerOptions } from 'ng2-datepicker';
+import {SportsHall} from "../../shared/sportshall.model";
+import {SportsBuilding} from "../../shared/sportsbuilding.model";
 
 
 @Component({
@@ -24,26 +26,31 @@ export class ReservationListComponent implements OnInit {
   };
 
   reservations: Reservation[];
-  subscription: Subscription;
+  sporthall: SportsHall = new SportsHall;
 
   date: Date;
   id: string;
 
   constructor(private reservationService: ReservationService,
+              private sporthalService: SportshallService,
               private router: Router,
               private route: ActivatedRoute) {
+    this.sporthall.sportsHallID = 0;
+    console.log(this.sporthall);
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params['id'];
+      this.sporthalService.getSportshallById(this.id).then(res => {
+        this.sporthall = res;
+      });
       this.date = new Date();
     });
   }
 
   onSearchDate() {
-
-    this.reservationService.getReservationsS(this.id, this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear())
+  this.reservationService.getReservationsS(this.id, this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear())
       .then(res => this.reservations = res);
   }
 
