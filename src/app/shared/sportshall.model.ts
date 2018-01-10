@@ -1,4 +1,6 @@
 import {SportsBuilding} from "./sportsbuilding.model";
+import {Sport} from "./sport.model";
+import {SportshallssportModel} from "./sportshallssport.model";
 
 
 export class SportsHall {
@@ -13,6 +15,7 @@ export class SportsHall {
   private _openTime: Date;
   private _closeTime: Date;
   private _sportsBuilding: SportsBuilding;
+  private _sportsHallSports: [SportshallssportModel];
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
@@ -82,6 +85,12 @@ export class SportsHall {
     this._sportsBuilding = value;
   }
 
+  get sportshallsports(): [SportshallssportModel] {
+    return this._sportsHallSports;
+  }
 
+  set sportshallsports(value: [SportshallssportModel]) {
+    this._sportsHallSports = value;
+  }
 
 }
