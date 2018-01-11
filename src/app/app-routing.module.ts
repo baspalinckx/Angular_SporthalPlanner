@@ -14,13 +14,15 @@ import {ReservationWeekListComponent} from "./reservations/reservation-week-list
 const appRoutes: Routes = [
   {path: '', redirectTo: '/sportshalls', pathMatch: 'full'},
   {path: 'sportshalls', component: SportshallComponent},
-  {path: 'week', component: ReservationWeekListComponent},
+  {path: 'week', component: ReservationWeekListComponent, children: [
+    {path: ':id ', component: ReservationWeekListComponent}
+    ]},
   {path: 'reserve', component: ReservationsComponent, children: [
     {path: '', component: ReservationStartComponent},
-    {path: ':id', component: ReservationListComponent, children: [
-      {path: 'new', component: BookingComponent},
-      {path: 'extra', component: ClosingAddComponent}
-    ]}
+      {path: ':id', component: ReservationListComponent, children: [
+        {path: 'new', component: BookingComponent},
+        {path: 'extra', component: ClosingAddComponent},
+      ]}
   ]},
   {path: '**', component: PageNotFoundComponent}
 

@@ -5,6 +5,7 @@ import {ActivatedRoute, Router, Params} from '@angular/router';
 import {ReservationService} from '../reservation.service';
 import {SportshallService} from "../../sportshall/sportshall.service";
 import { DatepickerOptions } from 'ng2-datepicker';
+import {ReservationweekModel} from "../../shared/reservationweek.model";
 
 
 @Component({
@@ -23,11 +24,13 @@ export class ReservationListComponent implements OnInit {
     // locale: loc
   };
 
-  reservations: Reservation[];
+  reservationsWeek: ReservationweekModel[];
   subscription: Subscription;
 
   date: Date;
   sunday: Date;
+  mondaydate: string;
+  sundaydate: string;
   week: Array<Date>;
   id: string;
 
@@ -45,17 +48,25 @@ export class ReservationListComponent implements OnInit {
 
   onSearchDate() {
 
-    this.reservationService.getReservationsS(this.id, this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear())
-      .then(res => this.reservations = res);
+    // this.reservationService.getReservationsS(this.id, this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear())
+    //   .then(res => this.reservations = res);
 
     this.date.setDate(this.date.getDate() + 1 - (this.date.getDay() || 7));
     this.sunday = new Date(this.date.getTime());
     this.sunday.setDate(this.sunday.getDate() + 6);
-    this.week = new Array<Date>();
-    this.week.push(this.date, this.sunday);
-    console.log(this.week);
+
+
+    this.mondaydate = this.date.getFullYear() + '/' + (this.date.getMonth() + 1) + '/' + this.date.getDate();
+    this.sundaydate = this.sunday.getFullYear() + '/' + (this.sunday.getMonth() + 1) + '/' + this.sunday.getDate();
+
+
+     // this.reservationService.getReservationsWeek(this.id, this.mondaydate, this.sundaydate)
+     //   .then(res => {
+     //     this.reservationsWeek = res;
+     //     console.log(this.reservationsWeek);
+     //   });
+
+     this.router.navigate(['week/' + this.id], { queryParams: { id: this.id, monday: this.mondaydate, sunday: this.sundaydate } });
+
   }
-
-
-
 }

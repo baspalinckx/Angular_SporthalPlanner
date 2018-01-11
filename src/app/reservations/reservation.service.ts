@@ -4,6 +4,7 @@ import {Reservation} from '../shared/reservations.model';
 import {Subject} from 'rxjs/Subject';
 import {Http, Headers} from '@angular/http';
 import {environment} from '../../environments/environment';
+import {ReservationweekModel} from "../shared/reservationweek.model";
 
 @Injectable()
 export class ReservationService {
@@ -29,6 +30,8 @@ export class ReservationService {
     )
   ];
 
+  private reservationsWeek: ReservationweekModel[];
+
   constructor(private http: Http) {
   }
 
@@ -53,6 +56,21 @@ export class ReservationService {
       .toPromise()
       .then(response => {
         this.reservations = response.json() as Reservation[];
+        return response.json() as Reservation[];
+      })
+      .catch(error => {
+        return error;
+      });
+
+  }
+
+  getReservationsWeek(id: string, monday: string, sunday: string) {
+    console.log(this.serverUrlReserve + '/ReserveWeek?id=' + id + '&monday=' + monday + '&sunday=' + sunday);
+    return this.http.get( this.serverUrlReserve + '/ReserveWeek?id=' + id + '&monday=' + monday + '&sunday=' + sunday, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        this.reservationsWeek = response.json() as ReservationweekModel[];
+        console.log(response);
         return response.json() as Reservation[];
       })
       .catch(error => {
