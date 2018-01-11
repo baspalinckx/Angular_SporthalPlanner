@@ -38,6 +38,8 @@ export class BookingComponent implements OnInit, OnDestroy {
   startTime: number;
   sports: [SportshallssportModel];
   selectedSport: string;
+  emailBool: boolean = false;
+  emailAdress: '';
 
   constructor(private reservationService: ReservationService,
               private sportshallService: SportshallService,
@@ -123,6 +125,23 @@ export class BookingComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  onSearch() {
+    this.reservationService.getCustomer(this.emailAdress)
+      .then(res => {
+        if (res === 'fout') {
+
+          this.emailBool = true;
+          console.log('bestaat niet');
+        }
+        else {
+          console.log('bestaat');
+
+        }
+      });
+  }
+
+
 
 
 

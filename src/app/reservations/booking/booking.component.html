@@ -47,12 +47,13 @@
                 name="Email"
                 required
                 email
-                #email="ngModel">
+                #email="ngModel"
+               [(ngModel)]="emailAdress">
               <span class="help-block" *ngIf="!email.valid && email.touched">Vul een geldig email adres in!</span>
             </div>
-            <button class="btn btn-primary col-sm-2">Search</button>
+            <button (click)="onSearch()" type="button" class="btn btn-primary col-sm-2">Search</button>
           </div>
-          <div *ngIf="true">
+          <div *ngIf="emailBool">
           <div class="form-group">
             <label for="FirstName">Voornaam</label>
             <input

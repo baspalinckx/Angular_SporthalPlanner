@@ -11,6 +11,9 @@ export class Reservation {
   private _sportsHall: SportsHall;
   private _context: string;
   private _datum: string;
+  private _streetName: string;
+  private _houseNumber: string;
+  private _postalCode: string;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
@@ -88,5 +91,28 @@ export class Reservation {
     this._context = value;
   }
 
+  public get streetName(): string {
+    return this._streetName;
+  }
+
+  public set streetName(value: string) {
+    this._streetName = value;
+  }
+
+  public get houseNumber(): string {
+  return this._houseNumber;
+}
+
+  public set houseNumber(value: string) {
+    this._houseNumber = value;
+  }
+
+  public get postalCode(): string {
+    return this._postalCode;
+  }
+
+  public set postalCode(value: string) {
+    this._postalCode = value;
+  }
 
 }
