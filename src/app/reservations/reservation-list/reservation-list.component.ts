@@ -36,7 +36,6 @@ export class ReservationListComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute) {
     this.sporthall.sportsHallID = 0;
-    console.log(this.sporthall);
   }
 
   ngOnInit() {

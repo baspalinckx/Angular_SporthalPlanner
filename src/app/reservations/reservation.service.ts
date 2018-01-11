@@ -101,7 +101,6 @@ export class ReservationService {
   }
 
   addCustomer(customer: Reservation){
-    console.log(customer.postalCode)
     return this.http.post(this.serverUrlCustomer, {
         "firstName": customer.firstName,
         "lastName": customer.lastName,

@@ -141,7 +141,6 @@ if(this.emailAdress !== '') {
       if (res === 'fout') {
 
         this.emailBool = true;
-        console.log(this.emailBool);
       }
       else {
         this.emailBool = false;
