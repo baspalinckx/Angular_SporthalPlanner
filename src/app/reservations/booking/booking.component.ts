@@ -25,7 +25,10 @@ export class BookingComponent implements OnInit, OnDestroy {
     FirstName: '',
     LastName: '',
     Email: '',
-    PhoneNumber: '' };
+    PhoneNumber: '',
+    PostalCode: '',
+  StreetName: '',
+  HouseNumber: ''};
 
   submitted = false;
   lastdatum: Date;
@@ -40,6 +43,7 @@ export class BookingComponent implements OnInit, OnDestroy {
   selectedSport: string;
   emailBool: boolean = false;
   emailAdress: '';
+  customer: Reservation;
 
   constructor(private reservationService: ReservationService,
               private sportshallService: SportshallService,
@@ -132,10 +136,17 @@ export class BookingComponent implements OnInit, OnDestroy {
         if (res === 'fout') {
 
           this.emailBool = true;
-          console.log('bestaat niet');
+          console.log(this.emailBool);
         }
         else {
-          console.log('bestaat');
+          this.emailBool = false;
+          console.log(res);
+          /*this.bookingForm.value.bookingData.firstName = res.firstName;
+          this.bookingForm.value.bookingData.lastName = res.lastName;
+          this.bookingForm.value.bookingData.phoneNumber = res.phoneNumber;
+          console.log(this.bookingForm.value.bookingData.phoneNumber);*/
+          console.log(this.emailBool);
+          this.customer = res;
 
         }
       });
@@ -150,26 +161,34 @@ export class BookingComponent implements OnInit, OnDestroy {
     this.booking.Datum = this.bookingForm.value.bookingData.Datum;
     this.booking.StartTime = this.bookingForm.value.bookingData.StartTime;
     this.booking.EndTime = this.bookingForm.value.bookingData.EndTime;
-    this.booking.FirstName = this.bookingForm.value.bookingData.FirstName;
-    this.booking.LastName = this.bookingForm.value.bookingData.LastName;
+    this.booking.FirstName = this.bookingForm.value.bookingData.FirstName || this.customer.firstName;
+    this.booking.LastName = this.bookingForm.value.bookingData.LastName || this.customer.lastName;
     this.booking.Email = this.bookingForm.value.bookingData.Email;
-    this.booking.PhoneNumber = this.bookingForm.value.bookingData.PhoneNumber;
+    this.booking.PhoneNumber = this.bookingForm.value.bookingData.PhoneNumber || this.customer.phoneNumber;;
 
     let reservation = new Reservation();
     reservation.datum = this.bookingForm.value.bookingData.Datum;
-    reservation.firstName = this.bookingForm.value.bookingData.FirstName;
-    reservation.lastName = this.bookingForm.value.bookingData.LastName;
+    reservation.firstName = this.bookingForm.value.bookingData.FirstName || this.customer.firstName;
+    reservation.lastName = this.bookingForm.value.bookingData.LastName || this.customer.lastName;
     reservation.email = this.bookingForm.value.bookingData.Email;
-    reservation.phoneNumber = this.bookingForm.value.bookingData.PhoneNumber;
+    reservation.phoneNumber = this.bookingForm.value.bookingData.PhoneNumber || this.customer.phoneNumber;
     reservation.context = 'reservation';
     reservation.startTime = new Date(2000, 1, 1, this.bookingForm.value.bookingData.StartTime, 0, 0, 0).toString();
     reservation.endTime = new Date(2000, 1, 1, this.bookingForm.value.bookingData.EndTime, 0, 0, 0).toString();
+    reservation.postalCode = this.bookingForm.value.bookingData.PostalCode;
+    reservation.streetName = this.bookingForm.value.bookingData.StreetName;
+    reservation.houseNumber = this.bookingForm.value.bookingData.HouseNumber;
     reservation.sportsHall = this.sportsHall;
 
     this.reservationService.addReservation(reservation);
     this.bookingForm.reset();
     this.dropDownEndTimes = [];
     this.dropDownTimes = [];
+
+    if(this.emailBool === true){
+      this.reservationService.addCustomer(reservation);
+    }
+
   }
 
   onCancel() {

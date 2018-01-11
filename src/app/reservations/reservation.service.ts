@@ -102,10 +102,25 @@ export class ReservationService {
   }
 
   addCustomer(customer: Reservation){
-    return this.http.post(this.serverUrlCustomer, {headers: this.headers})
+    console.log(customer.postalCode)
+    return this.http.post(this.serverUrlCustomer, {
+        "firstName": customer.firstName,
+        "lastName": customer.lastName,
+        "email": customer.email,
+        "streetName": customer.streetName,
+        "phoneNumber": customer.phoneNumber,
+        "houseNumber": customer.houseNumber,
+        "postalCode": customer.postalCode
+      },
+      {headers: this.headers})
       .toPromise()
       .then(response => {
+        this.reservationChanged.next();
+      })
+      .catch( res => {
+        console.log('fout');
       });
+      }
 
 
 
