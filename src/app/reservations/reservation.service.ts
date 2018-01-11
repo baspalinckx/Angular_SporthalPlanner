@@ -93,7 +93,7 @@ export class ReservationService {
         if (response.text() === '') {
         return 'fout';
         } else {
-          return response.json() as Reservation[];
+          return response.json() as Reservation;
         }
 
 
@@ -101,11 +101,11 @@ export class ReservationService {
 
   }
 
-  /*addCustomer(customer: Reservation){
-    return this.http.post()
-
-
-  }*/
+  addCustomer(customer: Reservation){
+    return this.http.post(this.serverUrlCustomer, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+      });
 
 
 
