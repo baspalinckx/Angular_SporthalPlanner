@@ -1,4 +1,4 @@
-import {Component, ViewChild, OnInit, OnDestroy} from '@angular/core';
+import {Component, ViewChild, OnInit, OnDestroy, ElementRef} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {ReservationService} from '../reservation.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -9,6 +9,7 @@ import {Reservation} from "../../shared/reservations.model";
 import {Sport} from "../../shared/sport.model";
 import {SportshallssportModel} from "../../shared/sportshallssport.model";
 import {forEach} from "@angular/router/src/utils/collection";
+import {isUndefined} from "util";
 
 @Component({
   selector: 'app-booking',
@@ -44,6 +45,7 @@ export class BookingComponent implements OnInit, OnDestroy {
   emailBool: boolean = false;
   emailAdress: '';
   customer: Reservation;
+  clicked: boolean = false;
 
   constructor(private reservationService: ReservationService,
               private sportshallService: SportshallService,
@@ -131,25 +133,30 @@ export class BookingComponent implements OnInit, OnDestroy {
   }
 
   onSearch() {
-    this.reservationService.getCustomer(this.emailAdress)
-      .then(res => {
-        if (res === 'fout') {
+    this.clicked = true;
+    this.emailAdress = this.emailAdress || '' ;
+if(this.emailAdress !== '') {
+  this.reservationService.getCustomer(this.emailAdress)
+    .then(res => {
+      if (res === 'fout') {
 
-          this.emailBool = true;
-          console.log(this.emailBool);
-        }
-        else {
-          this.emailBool = false;
-          console.log(res);
-          /*this.bookingForm.value.bookingData.firstName = res.firstName;
-          this.bookingForm.value.bookingData.lastName = res.lastName;
-          this.bookingForm.value.bookingData.phoneNumber = res.phoneNumber;
-          console.log(this.bookingForm.value.bookingData.phoneNumber);*/
-          console.log(this.emailBool);
-          this.customer = res;
+        this.emailBool = true;
+        console.log(this.emailBool);
+      }
+      else {
+        this.emailBool = false;
+        /*this.bookingForm.value.bookingData.firstName = res.firstName;
+         this.bookingForm.value.bookingData.lastName = res.lastName;
+         this.bookingForm.value.bookingData.phoneNumber = res.phoneNumber;
+         console.log(this.bookingForm.value.bookingData.phoneNumber);*/
+        this.customer = res;
 
-        }
-      });
+      }
+    });
+}else{
+}
+
+
   }
 
 

@@ -6,6 +6,7 @@
           id="booking-data"
           ngModelGroup="bookingData"
           #bookingData="ngModelGroup">
+          <hr>
           <div class="form-group">
             <label for="Datum">Datum</label>
             <input
@@ -36,8 +37,24 @@
               </option>
             </select>
           </div>
+          <div >
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="sport">Sport</label>
+                  <select type="text"
+                          id="sport"
+                          name="sport"
+                          class="form-control">
+                    <option *ngFor="let sport of sports" [ngValue]="type">{{sport.sport.name}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
           <div class="row">
-            <div class="form-group col-sm-10">
+            <div class="form-group col-md-12">
               <label for="Email">Email</label>
               <input
                 type="email"
@@ -51,8 +68,14 @@
                [(ngModel)]="emailAdress">
               <span class="help-block" *ngIf="!email.valid && email.touched">Vul een geldig email adres in!</span>
             </div>
-            <button (click)="onSearch()" type="button" class="btn btn-primary col-sm-2">Search</button>
           </div>
+          <div class="row">
+            <div class="form-group col-md-2">
+              <button (click)="onSearch()" type="button" class="btn btn-primary">Search</button>
+            </div>
+          </div>
+
+
           <div *ngIf="emailBool">
           <div class="form-group">
             <label for="FirstName">Voornaam</label>
@@ -117,33 +140,20 @@
               name="PostalCode"
               required>
           </div>
-            <div >
-              <div class="row">
-                <div class="col-xs-12">
-                  <div class="form-group">
-                    <label for="sport">Sport</label>
-                    <select type="text"
-                            id="sport"
-                            name="sport"
-                            class="form-control"
-                            [(ngModel)]="selectedSport"
-                            (ngModelChange)="changeSelectedType($event)">
-                      <option *ngFor="let sport of sports" [ngValue]="type">{{sport.sport.name}}</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
-        <button
-          class="btn btn-primary"
-          type="submit"
-          [disabled]="!f.valid">Reserveer</button>
-        <button
-          class="btn btn-warning"
-          (click)="onCancel()"
-        >Anuleer</button>
+        <div *ngIf="clicked">
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!f.valid">Reserveer</button>
+          <button
+            class="btn btn-warning"
+            (click)="onCancel()"
+          >Anuleer</button>
+        </div>
+
       </form>
     </div>
   </div>

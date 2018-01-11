@@ -89,7 +89,6 @@ export class ReservationService {
     return this.http.get(this.serverUrlCustomer + '/' + email, {headers: this.headers})
       .toPromise()
       .then(response => {
-        console.log(response.text());
         if (response.text() === '') {
         return 'fout';
         } else {
@@ -118,7 +117,7 @@ export class ReservationService {
         this.reservationChanged.next();
       })
       .catch( res => {
-        console.log('fout');
+
       });
       }
 
