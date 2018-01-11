@@ -36,6 +36,23 @@
               </option>
             </select>
           </div>
+          <div class="row">
+            <div class="form-group col-sm-10">
+              <label for="Email">Email</label>
+              <input
+                type="email"
+                id="Email"
+                class="form-control"
+                ngModel
+                name="Email"
+                required
+                email
+                #email="ngModel">
+              <span class="help-block" *ngIf="!email.valid && email.touched">Vul een geldig email adres in!</span>
+            </div>
+            <button class="btn btn-primary col-sm-2">Search</button>
+          </div>
+          <div *ngIf="true">
           <div class="form-group">
             <label for="FirstName">Voornaam</label>
             <input
@@ -56,19 +73,7 @@
               name="LastName"
               required>
           </div>
-          <div class="form-group">
-            <label for="Email">Email</label>
-            <input
-              type="email"
-              id="Email"
-              class="form-control"
-              ngModel
-              name="Email"
-              required
-              email
-              #email="ngModel">
-            <span class="help-block" *ngIf="!email.valid && email.touched">Vul een geldig email adres in!</span>
-          </div>
+
           <div class="form-group">
             <label for="PhoneNumber">Telefoon nummer</label>
             <input
@@ -78,6 +83,56 @@
               ngModel
               name="PhoneNumber"
               required>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-10">
+              <label for="StreetName">Straatnaam</label>
+              <input
+                type="text"
+                id="StreetName"
+                class="form-control"
+                ngModel
+                name="StreetName"
+                required>
+            </div>
+            <div class="form-group col-sm-2">
+              <label for="HouseNumber">Huisnummer</label>
+              <input
+                type="number"
+                id="HouseNumber"
+                class="form-control"
+                ngModel
+                name="HouseNumber"
+                required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="PostalCode">Postcode</label>
+            <input
+              type="text"
+              id="PostalCode"
+              class="form-control"
+              ngModel
+              name="PostalCode"
+              required>
+          </div>
+            <div >
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label for="sport">Sport</label>
+                    <select type="text"
+                            id="sport"
+                            name="sport"
+                            class="form-control"
+                            [(ngModel)]="selectedSport"
+                            (ngModelChange)="changeSelectedType($event)">
+                      <option *ngFor="let sport of sports" [ngValue]="type">{{sport.sport.name}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <button

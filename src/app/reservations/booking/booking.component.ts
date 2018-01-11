@@ -6,6 +6,9 @@ import {Subscription} from 'rxjs/Subscription';
 import {SportsHall} from '../../shared/sportshall.model';
 import {SportshallService} from '../../sportshall/sportshall.service';
 import {Reservation} from "../../shared/reservations.model";
+import {Sport} from "../../shared/sport.model";
+import {SportshallssportModel} from "../../shared/sportshallssport.model";
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'app-booking',
@@ -33,6 +36,8 @@ export class BookingComponent implements OnInit, OnDestroy {
   selectedStartTime: number;
   selectedEndTime: number;
   startTime: number;
+  sports: [SportshallssportModel];
+  selectedSport: string;
 
   constructor(private reservationService: ReservationService,
               private sportshallService: SportshallService,
@@ -43,11 +48,17 @@ export class BookingComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  /*changeSelectedType(event: any) {
+    /!*console.log(event); //object, depends on ngValue
+    console.log(this.selectedSport.name); //object, depends on ngValue*!/
+  }*/
+
   ngOnInit() {
     this.subscription = this.route.parent.params.subscribe(params => {
       this.sportshallService.getSportshallById(params['id'])
         .then(sportshall => {
             this.sportsHall = sportshall;
+            this.sports = this.sportsHall.sportsHallSports;
         });
     });
     this.bookingForm.valueChanges.subscribe((update) => {
@@ -61,9 +72,7 @@ export class BookingComponent implements OnInit, OnDestroy {
                 this.startTime = this.bookingForm.value.bookingData.StartTime;
                 let openingsTime: number = +this.sportsHall.openTime.toString().slice(11, 13);
                 let closingTime: number = +this.sportsHall.closeTime.toString().slice(11, 13);
-
                 let timesArray = [];
-
                 for (let i = 0; i < 24; i++) {
                   timesArray.push({time: i, free: false});
                 }
@@ -114,6 +123,7 @@ export class BookingComponent implements OnInit, OnDestroy {
       }
     });
   }
+
 
 
   onSubmit() {
