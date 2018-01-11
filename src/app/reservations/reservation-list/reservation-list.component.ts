@@ -4,7 +4,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router, Params} from '@angular/router';
 import {ReservationService} from '../reservation.service';
 import {SportshallService} from "../../sportshall/sportshall.service";
-import { DatepickerOptions } from 'ng2-datepicker';
+import {DatepickerOptions} from 'ng2-datepicker';
 import {ReservationweekModel} from "../../shared/reservationweek.model";
 
 
@@ -24,7 +24,7 @@ export class ReservationListComponent implements OnInit {
     // locale: loc
   };
 
-  reservationsWeek: ReservationweekModel[];
+  reservations: Reservation[];
   subscription: Subscription;
 
   date: Date;
@@ -46,10 +46,7 @@ export class ReservationListComponent implements OnInit {
     });
   }
 
-  onSearchDate() {
-
-    // this.reservationService.getReservationsS(this.id, this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear())
-    //   .then(res => this.reservations = res);
+  onSearchWeek() {
 
     this.date.setDate(this.date.getDate() + 1 - (this.date.getDay() || 7));
     this.sunday = new Date(this.date.getTime());
@@ -60,13 +57,24 @@ export class ReservationListComponent implements OnInit {
     this.sundaydate = this.sunday.getFullYear() + '/' + (this.sunday.getMonth() + 1) + '/' + this.sunday.getDate();
 
 
-     // this.reservationService.getReservationsWeek(this.id, this.mondaydate, this.sundaydate)
-     //   .then(res => {
-     //     this.reservationsWeek = res;
-     //     console.log(this.reservationsWeek);
-     //   });
-
-     this.router.navigate(['week/' + this.id], { queryParams: { id: this.id, monday: this.mondaydate, sunday: this.sundaydate } });
+    this.router.navigate(['week/' + this.id], {
+      queryParams: {
+        id: this.id,
+        monday: this.mondaydate,
+        sunday: this.sundaydate
+      }
+    });
 
   }
-}
+
+  onSearchDay() {
+    this.reservationService.getReservationsS(this.id, this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear())
+      .then(res => {
+        this.reservations = res;
+        this.reservations.sort(function (a, b) {
+          return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
+        });
+      });
+
+
+  }

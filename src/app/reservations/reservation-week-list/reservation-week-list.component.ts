@@ -13,9 +13,14 @@ import {forEach} from "@angular/router/src/utils/collection";
 export class ReservationWeekListComponent implements OnInit {
   reservationsWeek: ReservationweekModel[];
   mondaydate: string;
+  mondayDate: Date;
+  tuesdaydate: string;
+  wednesdaydate: string;
+  thursdaydate: string;
+  fridaydate: string
+  saterdaydate: string;
   sundaydate: string;
   id: string;
-  randompar: string;
 
   constructor(private reservationService: ReservationService,
               private router: Router,
@@ -72,8 +77,6 @@ export class ReservationWeekListComponent implements OnInit {
 
               if (day.fridayArray != null) {
                 day.fridayArray.sort(function (a, b) {
-                  console.log(new Date(a.startTime).getHours());
-                  console.log(new Date(b.startTime).getHours());
                   return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
 
                 });
@@ -95,5 +98,16 @@ export class ReservationWeekListComponent implements OnInit {
             });
           });
       });
+   //  this.mondaydate = this.date.getFullYear() + '/' + (this.date.getMonth() + 1) + '/' + this.date.getDate();
+
+    console.log(this.mondaydate);
+     this.mondayDate = new Date(this.mondaydate);
+     this.tuesdaydate = this.mondayDate.getFullYear() + '/' + (this.mondayDate.getMonth() + 1) + '/' + (this.mondayDate.getDate() + 1);
+    this.wednesdaydate = this.mondayDate.getFullYear() + '/' + (this.mondayDate.getMonth() + 1) + '/' + (this.mondayDate.getDate() + 2);
+    this.thursdaydate = this.mondayDate.getFullYear() + '/' + (this.mondayDate.getMonth() + 1) + '/' + (this.mondayDate.getDate() + 3);
+    this.fridaydate = this.mondayDate.getFullYear() + '/' + (this.mondayDate.getMonth() + 1) + '/' + (this.mondayDate.getDate() + 4);
+    this.saterdaydate = this.mondayDate.getFullYear() + '/' + (this.mondayDate.getMonth() + 1) + '/' + (this.mondayDate.getDate() + 5);
+
+
   }
 }

@@ -13,20 +13,27 @@
   <div class="col-sm-12">
     <hr>
     <div class="row">
-      <div id="datePicker" class="col-xs-3" >
+      <div id="datePicker" class="col-sm-2" >
+
         <ng-datepicker  type="text" format="DD-MM-YYYY" [options]="options" name="dateExpires" [(ngModel)]="date"> </ng-datepicker>
       </div>
-      <div class="col-xs-1">
-        <button class="btn btn-primary"(click)="onSearchDate()"
-                >Search</button>
+      <div class="col-sm-5">
+        <button class="btn btn-primary"(click)="onSearchWeek()"
+        >Search Week</button>
+        <button class="btn btn-primary" (click)="onSearchDay()">
+          Search Day
+        </button>
       </div>
     </div>
     <hr>
-    <div class="col-xs-12">
-      <app-reservation-item
-        *ngFor="let reservationEl of reservations"
-        [reservation]="reservationEl">
-      </app-reservation-item>
+    <div class="row">
+      <div class="col-xs-12">
+
+        <app-reservation-item
+          *ngFor="let reservationEl of reservations"
+          [reservation]="reservationEl">
+        </app-reservation-item>
+      </div>
     </div>
 
     <h4 *ngIf="reservations?.length == 0"> Helaas, niks gevonden</h4>
