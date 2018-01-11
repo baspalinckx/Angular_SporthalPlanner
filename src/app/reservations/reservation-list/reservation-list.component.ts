@@ -50,8 +50,17 @@ export class ReservationListComponent implements OnInit {
   }
 
   onSearchDate() {
-  this.reservationService.getReservationsS(this.id, this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear())
-      .then(res => this.reservations = res);
+
+    this.reservationService.getReservationsS(this.id, this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear())
+      .then(res => {
+        this.reservations = res;
+        this.reservations.sort(function (a, b){
+          return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
+        });
+      });
+
+
+
   }
 
 }
