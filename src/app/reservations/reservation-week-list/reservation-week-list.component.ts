@@ -4,6 +4,8 @@ import {ReservationService} from "../reservation.service";
 import {ActivatedRoute, Router, Params} from '@angular/router';
 import {ReservationweekModel} from "../../shared/reservationweek.model";
 import {forEach} from "@angular/router/src/utils/collection";
+import {SportshallService} from "../../sportshall/sportshall.service";
+import {SportsHall} from "../../shared/sportshall.model";
 
 @Component({
   selector: 'app-reservation-week-list',
@@ -21,60 +23,66 @@ export class ReservationWeekListComponent implements OnInit {
   saterdaydate: string;
   sundaydate: string;
   id: string;
+  sporthall: SportsHall;
 
   constructor(private reservationService: ReservationService,
+              private sporthalService: SportshallService,
               private router: Router,
               private route: ActivatedRoute) {
-  }
-
-  ngOnInit() {
     this.route
       .queryParams
       .subscribe(params => {
         this.id = params['id'];
         this.mondaydate = params['monday'];
         this.sundaydate = params['sunday'];
-
-        this.reservationService.getReservationsWeek(this.id, this.mondaydate, this.sundaydate)
-          .then(res => {
-            this.reservationsWeek = res;
-            console.log(this.reservationsWeek);
-
-            this.reservationsWeek[0].sort(function (a, b) {
-              return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
-
-            });
-            this.reservationsWeek[1].sort(function (a, b) {
-              return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
-
-            });
-
-            this.reservationsWeek[2].sort(function (a, b) {
-              return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
-
-            });
-
-            this.reservationsWeek[3].sort(function (a, b) {
-              return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
-
-            });
-
-            this.reservationsWeek[4].sort(function (a, b) {
-              return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
-
-            });
-
-            this.reservationsWeek[5].sort(function (a, b) {
-              return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
-
-            });
-
-            this.reservationsWeek[6].sort(function (a, b) {
-              return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
-
-            });
-          });
       });
+  }
+
+  ngOnInit() {
+        this.sporthalService.getSportshallById(this.id).then(res => {
+          this.sporthall = res;
+        });
+
+    this.reservationService.getReservationsWeek(this.id, this.mondaydate, this.sundaydate)
+      .then(res => {
+        this.reservationsWeek = res;
+        console.log(this.reservationsWeek);
+
+        this.reservationsWeek[0].sort(function (a, b) {
+          return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
+
+        });
+        this.reservationsWeek[1].sort(function (a, b) {
+          return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
+
+        });
+
+        this.reservationsWeek[2].sort(function (a, b) {
+          return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
+
+        });
+
+        this.reservationsWeek[3].sort(function (a, b) {
+          return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
+
+        });
+
+        this.reservationsWeek[4].sort(function (a, b) {
+          return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
+
+        });
+
+        this.reservationsWeek[5].sort(function (a, b) {
+          return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
+
+        });
+
+        this.reservationsWeek[6].sort(function (a, b) {
+          return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
+
+        });
+      });
+
 
 
     console.log(this.mondaydate);

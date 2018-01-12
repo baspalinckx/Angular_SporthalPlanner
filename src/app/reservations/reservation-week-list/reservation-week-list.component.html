@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h3>Weekoverzicht - Sporthal {{id}}</h3>
+    <h3 *ngIf="sporthall.sportsHallID !== 0">Weekoverzicht - {{sporthall.sportsBuilding.name}} {{sporthall.sportsHallID}}</h3>
     <hr>
   </div>
 </div>
@@ -12,7 +12,7 @@
         <a (click)="onNavigateMonday()">
         Maandag - {{mondaydate}}
         </a>
-      </div>  
+      </div>
       <div class="panel-body">
         <app-reservation-week-item
           *ngFor="let reservationEl of reservationsWeek[0];"

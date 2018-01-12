@@ -17,7 +17,6 @@ export class ReservationDayComponent implements OnInit {
 
   constructor(private reservationService: ReservationService,
               private route: ActivatedRoute) {
-    
     this.route.params.subscribe(params => {
       this.id = params['id'];
       console.log(this.id);
@@ -45,7 +44,7 @@ export class ReservationDayComponent implements OnInit {
       //       return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
       //     });
       //   });
-    });
+    }
   }
 
-}
+
