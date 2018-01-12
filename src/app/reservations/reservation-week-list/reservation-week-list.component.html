@@ -8,7 +8,11 @@
 <div class="row-fluid">
   <div class="col-md-2">
     <div class="panel panel-default">
-      <div class="panel-heading">Maandag - {{mondaydate}}</div>
+      <div class="panel-heading">
+        <a (click)="onNavigateMonday()">
+        Maandag - {{mondaydate}}
+        </a>
+      </div>  
       <div class="panel-body">
         <app-reservation-week-item
           *ngFor="let reservationEl of reservationsWeek[0];"

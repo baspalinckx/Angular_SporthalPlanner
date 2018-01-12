@@ -11,6 +11,7 @@ import {ClosingAddComponent} from './reservations/closingday/closingday.componen
 import {BookingComponent} from './reservations/booking/booking.component';
 import {ReservationWeekListComponent} from "./reservations/reservation-week-list/reservation-week-list.component";
 import {CustomerComponent} from "./customer/customer.component";
+import {ReservationDayComponent} from "./reservations/reservation-day/reservation-day.component";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/sportshalls', pathMatch: 'full'},
@@ -19,6 +20,9 @@ const appRoutes: Routes = [
   {path: 'week', component: ReservationWeekListComponent, children: [
     {path: ':id ', component: ReservationWeekListComponent}
     ]},
+  {path: 'day', component: ReservationDayComponent, children: [
+    {path: ':id', component: ReservationDayComponent}
+  ]},
   {path: 'reserve', component: ReservationsComponent, children: [
     {path: '', component: ReservationStartComponent},
       {path: ':id', component: ReservationListComponent, children: [

@@ -38,7 +38,7 @@ export class ReservationWeekListComponent implements OnInit {
         this.reservationService.getReservationsWeek(this.id, this.mondaydate, this.sundaydate)
           .then(res => {
             this.reservationsWeek = res;
-            console.log(this.reservationsWeek)
+            console.log(this.reservationsWeek);
 
             this.reservationsWeek[0].sort(function (a, b) {
               return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
@@ -86,5 +86,68 @@ export class ReservationWeekListComponent implements OnInit {
     this.saterdaydate = this.mondayDate.getFullYear() + '/' + (this.mondayDate.getMonth() + 1) + '/' + (this.mondayDate.getDate() + 5);
 
 
+  }
+
+  onNavigateMonday() {
+    this.router.navigate(['day/' + this.id], {
+      queryParams: {
+        id: this.id,
+        date: this.mondaydate
+      }
+    });
+  }
+
+  onNavigateTuesday() {
+    this.router.navigate(['day/' + this.id], {
+      queryParams: {
+        id: this.id,
+        date: this.tuesdaydate,
+      }
+    });
+  }
+
+  onNavigateWednesday() {
+    this.router.navigate(['day/' + this.id], {
+      queryParams: {
+        id: this.id,
+        date: this.wednesdaydate,
+      }
+    });
+  }
+
+  onNavigateThursday() {
+    this.router.navigate(['day/' + this.id], {
+      queryParams: {
+        id: this.id,
+        date: this.thursdaydate,
+      }
+    });
+  }
+
+  onNavigateFriday() {
+    this.router.navigate(['day/' + this.id], {
+      queryParams: {
+        id: this.id,
+        date: this.fridaydate,
+      }
+    });
+  }
+
+  onNavigateSaterday() {
+    this.router.navigate(['day/' + this.id], {
+      queryParams: {
+        id: this.id,
+        date: this.saterdaydate,
+      }
+    });
+  }
+
+  onNavigateSunday() {
+    this.router.navigate(['day/' + this.id], {
+      queryParams: {
+        id: this.id,
+        date: this.sundaydate,
+      }
+    });
   }
 }

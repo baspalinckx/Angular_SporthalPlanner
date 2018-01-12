@@ -81,6 +81,6 @@ export class ReservationListComponent implements OnInit {
           return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
         });
       });
-
+  }
 
   }

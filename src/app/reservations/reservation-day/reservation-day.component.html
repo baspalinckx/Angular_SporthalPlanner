@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-xs-12">
+
+    <app-reservation-day-item
+      *ngFor="let reservationEl of reservations"
+      [reservation]="reservationEl">
+    </app-reservation-day-item>
+  </div>
+</div>
+
+
+<h4 *ngIf="reservations?.length == 0"> Helaas, niks gevonden</h4>

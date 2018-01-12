@@ -17,8 +17,11 @@ export class CustomerComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSearchEmail(){
-
+  onSearchEmail() {
+    this.reservationService.getCustomer(this.email)
+      .then((res) =>
+      console.log(res)
+      );
   }
 
 }
