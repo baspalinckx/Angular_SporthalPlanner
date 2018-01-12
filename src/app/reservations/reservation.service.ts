@@ -12,7 +12,8 @@ export class ReservationService {
 
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private serverUrlReserve = environment.serverUrl + "/reserve";
+  private serverUrlReserve = environment.serverUrl + '/reserve';
+  private serverUrlCustomer = environment.serverMongoUrl + '/customers';
   private reservations: Reservation[] = [
     new Reservation({context: 'Reservation', startTime: '10:00:00', endTime: '12:00:00' }
     ),
@@ -81,8 +82,6 @@ export class ReservationService {
 
   addReservation(reservation: Reservation) {
 
-    console.log(new Date(reservation.endTime).toISOString());
-
     return this.http.post(this.serverUrlReserve, {
       "firstName": reservation.firstName,
       "lastName": reservation.lastName,
@@ -103,6 +102,41 @@ export class ReservationService {
         console.log('rejected');
       });
   }
+
+  getCustomer(email: String) {
+    return this.http.get(this.serverUrlCustomer + '/' + email, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        if (response.text() === '') {
+        return 'fout';
+        } else {
+          return response.json() as Reservation;
+        }
+
+
+      });
+
+  }
+
+  addCustomer(customer: Reservation){
+    return this.http.post(this.serverUrlCustomer, {
+        "firstName": customer.firstName,
+        "lastName": customer.lastName,
+        "email": customer.email,
+        "streetName": customer.streetName,
+        "phoneNumber": customer.phoneNumber,
+        "houseNumber": customer.houseNumber,
+        "postalCode": customer.postalCode
+      },
+      {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        this.reservationChanged.next();
+      })
+      .catch( res => {
+
+      });
+      }
 
 
 

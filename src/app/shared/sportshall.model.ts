@@ -85,11 +85,11 @@ export class SportsHall {
     this._sportsBuilding = value;
   }
 
-  get sportshallsports(): [SportshallssportModel] {
+  get sportsHallSports(): [SportshallssportModel] {
     return this._sportsHallSports;
   }
 
-  set sportshallsports(value: [SportshallssportModel]) {
+  set sportsHallSports(value: [SportshallssportModel]) {
     this._sportsHallSports = value;
   }
 
