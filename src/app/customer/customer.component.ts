@@ -30,11 +30,10 @@ export class CustomerComponent implements OnInit {
       .then(res => {
 
         if (res.toString() === 'fout') {
-          console.log('bestaatniet');
+
           this.customer = null;
         } else {
-          this.customer =  res as Reservation;
-          console.log(this.customer);
+          this.customer = res as Reservation;
           this.reservationService.getReservationsByEmail(this.id, this.email)
             .then(reservations => this.reservations = reservations);
         }
