@@ -1,14 +1,10 @@
 
-<div id="reservations" class="list-group">
-  <div class="item  col-xs-4 col-lg-4">
-    <div class="list-group-item">
-      <div class="caption">
-        <h4 class="group inner list-group-item-heading">
-          {{reservation.context}}</h4>
-        <p class="group inner list-group-item-text">{{reservation.startTime}} - {{reservation.endTime}}</p>
-        <p class="group inner list-group-item-text">{{reservation.firstName}}  {{reservation.lastName}}</p>
-        <p class="group inner list-group-item-text">{{reservation.phoneNumber}} - {{reservation.email}}</p>
-      </div>
-    </div>
+<div id="reservations" class="list-group-item clearfix">
+  <div>
+    <h4 class="group inner list-group-item-heading">
+      {{reservation.context}}</h4>
+    <p class="group inner list-group-item-text">{{reservation.startTime }}:00 - {{reservation.endTime}}:00</p>
+    <p class="group inner list-group-item-text">{{reservation.firstName}}  {{reservation.lastName}}</p>
+    <p class="group inner list-group-item-text">{{reservation.phoneNumber}} - {{reservation.email}}</p>
   </div>
 </div>
