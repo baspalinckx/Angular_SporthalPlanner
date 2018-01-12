@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"><input [(ngModel)]="email"></div>
+    <button (click)="onSearchEmail()" class="btn btn-primary col-md-2">search</button>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+
+      <app-reservation-item
+        *ngFor="let reservationEl of reservations"
+        [reservation]="reservationEl">
+      </app-reservation-item>
+    </div>
+  </div>
+</div>
+

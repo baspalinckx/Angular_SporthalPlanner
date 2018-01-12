@@ -23,6 +23,7 @@ import { NgDatepickerModule } from 'ng2-datepicker';
 import {SportshallService} from './sportshall/sportshall.service';
 import { ReservationWeekListComponent } from './reservations/reservation-week-list/reservation-week-list.component';
 import { ReservationWeekItemComponent } from './reservations/reservation-week-list/reservation-week-item/reservation-week-item.component';
+import { CustomerComponent } from './customer/customer.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ReservationWeekItemComponent } from './reservations/reservation-week-li
     BookingComponent,
     ClosingAddComponent,
     ReservationWeekListComponent,
-    ReservationWeekItemComponent
+    ReservationWeekItemComponent,
+    CustomerComponent
   ],
   imports: [
     BrowserModule,

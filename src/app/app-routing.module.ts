@@ -10,10 +10,12 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {ClosingAddComponent} from './reservations/closingday/closingday.component';
 import {BookingComponent} from './reservations/booking/booking.component';
 import {ReservationWeekListComponent} from "./reservations/reservation-week-list/reservation-week-list.component";
+import {CustomerComponent} from "./customer/customer.component";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/sportshalls', pathMatch: 'full'},
   {path: 'sportshalls', component: SportshallComponent},
+  {path: 'customer', component: CustomerComponent},
   {path: 'week', component: ReservationWeekListComponent, children: [
     {path: ':id ', component: ReservationWeekListComponent}
     ]},
