@@ -21,6 +21,8 @@ import {ClosingAddComponent} from './reservations/closingday/closingday.componen
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgDatepickerModule } from 'ng2-datepicker';
 import {SportshallService} from './sportshall/sportshall.service';
+import { ReservationWeekListComponent } from './reservations/reservation-week-list/reservation-week-list.component';
+import { ReservationWeekItemComponent } from './reservations/reservation-week-list/reservation-week-item/reservation-week-item.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import {SportshallService} from './sportshall/sportshall.service';
     PageNotFoundComponent,
     HeaderComponent,
     BookingComponent,
-    ClosingAddComponent
+    ClosingAddComponent,
+    ReservationWeekListComponent,
+    ReservationWeekItemComponent
   ],
   imports: [
     BrowserModule,

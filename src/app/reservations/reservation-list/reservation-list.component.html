@@ -13,11 +13,16 @@
   <div class="col-sm-12">
     <hr>
     <div class="row">
-      <div id="datePicker" class="col-xs-2" >
+      <div id="datePicker" class="col-sm-2" >
+
         <ng-datepicker  type="text" format="DD-MM-YYYY" [options]="options" name="dateExpires" [(ngModel)]="date"> </ng-datepicker>
       </div>
-      <div class="col-xs-1">
-        <button class="btn btn-primary"(click)="onSearchDate()">Search</button>
+      <div class="col-sm-5">
+        <button class="btn btn-primary"(click)="onSearchWeek()"
+        >Search Week</button>
+        <button class="btn btn-primary" (click)="onSearchDay()">
+          Search Day
+        </button>
       </div>
     </div>
     <hr>

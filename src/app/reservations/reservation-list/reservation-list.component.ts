@@ -4,7 +4,8 @@ import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, Router, Params} from '@angular/router';
 import {ReservationService} from '../reservation.service';
 import {SportshallService} from "../../sportshall/sportshall.service";
-import { DatepickerOptions } from 'ng2-datepicker';
+import {DatepickerOptions} from 'ng2-datepicker';
+import {ReservationweekModel} from "../../shared/reservationweek.model";
 import {SportsHall} from "../../shared/sportshall.model";
 import {SportsBuilding} from "../../shared/sportsbuilding.model";
 
@@ -29,6 +30,10 @@ export class ReservationListComponent implements OnInit {
   sporthall: SportsHall = new SportsHall;
 
   date: Date;
+  sunday: Date;
+  mondaydate: string;
+  sundaydate: string;
+  week: Array<Date>;
   id: string;
 
   constructor(private reservationService: ReservationService,
@@ -49,18 +54,34 @@ export class ReservationListComponent implements OnInit {
     });
   }
 
-  onSearchDate() {
+  onSearchWeek() {
 
+    this.date.setDate(this.date.getDate() + 1 - (this.date.getDay() || 7));
+    this.sunday = new Date(this.date.getTime());
+    this.sunday.setDate(this.sunday.getDate() + 6);
+
+
+    this.mondaydate = this.date.getFullYear() + '/' + (this.date.getMonth() + 1) + '/' + this.date.getDate();
+    this.sundaydate = this.sunday.getFullYear() + '/' + (this.sunday.getMonth() + 1) + '/' + this.sunday.getDate();
+
+
+    this.router.navigate(['week/' + this.id], {
+      queryParams: {
+        id: this.id,
+        monday: this.mondaydate,
+        sunday: this.sundaydate
+      }
+    });
+  }
+
+  onSearchDay() {
     this.reservationService.getReservationsS(this.id, this.date.getDate() + '-' + (this.date.getMonth() + 1) + '-' + this.date.getFullYear())
       .then(res => {
         this.reservations = res;
-        this.reservations.sort(function (a, b){
+        this.reservations.sort(function (a, b) {
           return new Date(a.startTime).getHours() - new Date(b.startTime).getHours();
         });
       });
 
 
-
   }
-
-}

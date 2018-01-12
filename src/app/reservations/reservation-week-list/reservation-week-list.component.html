@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row">
+    <h3>Weekoverzicht - Sporthal {{id}}</h3>
+    <hr>
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="col-md-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">Maandag - {{mondaydate}}</div>
+      <div class="panel-body">
+        <app-reservation-week-item
+          *ngFor="let reservationEl of reservationsWeek[0];"
+          [reservation]="reservationEl"></app-reservation-week-item>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <div class="row-fluid">
+      <div class="col-md-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">Dinsdag - {{tuesdaydate}}</div>
+          <div class="panel-body">
+            <app-reservation-week-item
+              *ngFor="let reservationEl of reservationsWeek[1];"
+              [reservation]="reservationEl"></app-reservation-week-item>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">Woensdag - {{wednesdaydate}}</div>
+          <div class="panel-body">
+            <app-reservation-week-item
+              *ngFor="let reservationEl of reservationsWeek[2];"
+              [reservation]="reservationEl"></app-reservation-week-item>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">Donderdag - {{thursdaydate}}</div>
+          <div class="panel-body">
+            <app-reservation-week-item
+              *ngFor="let reservationEl of reservationsWeek[3];"
+              [reservation]="reservationEl"></app-reservation-week-item>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">Vrijdag - {{fridaydate}}</div>
+          <div class="panel-body"
+               *ngIf="reservationsWeek[4] != null">
+            <app-reservation-week-item
+              *ngFor="let reservationEl of reservationsWeek[4];"
+              [reservation]="reservationEl"></app-reservation-week-item>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">Zaterdag - {{saterdaydate}}</div>
+          <div class="panel-body">
+            <app-reservation-week-item
+              *ngFor="let reservationEl of reservationsWeek[5];"
+              [reservation]="reservationEl"></app-reservation-week-item>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="panel panel-default">
+          <div class="panel-heading">Zondag - {{sundaydate}}</div>
+          <div class="panel-body">
+            <app-reservation-week-item
+              *ngFor="let reservationEl of reservationsWeek[6];"
+              [reservation]="reservationEl"></app-reservation-week-item>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
