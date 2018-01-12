@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Reservation} from "../shared/reservations.model";
 import {ReservationService} from "../reservations/reservation.service";
+import {StringDecoder} from 'string_decoder';
 
 @Component({
   selector: 'app-customer',
@@ -11,14 +12,35 @@ export class CustomerComponent implements OnInit {
   reservations: Reservation[];
   customer: Reservation;
   email: string;
+  id : number;
+  customers: Reservation[];
 
   constructor(private reservationService: ReservationService) { }
 
   ngOnInit() {
+    this.reservationService.getReservations()
+      .then(reservations => this.customers = reservations).then(() => console.log(this.customers));
+
   }
 
-  onSearchEmail(){
+  onSearchEmail() {
+    this.reservationService.getCustomer(this.email)
+      .then(res => {
 
+        if (res.toString() === 'fout') {
+          console.log('bestaatniet');
+        } else {
+          this.customer =  res as Reservation;
+          console.log(this.customer);
+          this.reservationService.getReservationsByEmail(this.id, this.email)
+            .then(reservations => this.reservations = reservations);
+        }
+
+      });
+  }
+
+  onClickEmail(email: string){
+    this.email = email;
   }
 
 }
