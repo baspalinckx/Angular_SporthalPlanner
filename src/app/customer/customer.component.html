@@ -4,7 +4,7 @@
     <button (click)="onSearchEmail()" class="btn btn-primary col-md-2">search</button>
   </div>
   <hr>
-  <div *ngIf="customer">
+  <div *ngIf="customer; else content">
     <div class="row form-g col-md-12">
       <h1 class="col-md-12 r">{{customer.firstName}} {{customer.lastName}}</h1>
       <p class="col-md-2 ">{{customer.streetName}} {{customer.houseNumber}}</p>
@@ -12,8 +12,8 @@
       <p>{{customer.phoneNumber}}</p>
       <hr>
     </div>
-
   </div>
+  <ng-template #content ><p class="list-group-item">{{info}}</p></ng-template>
   <div class="row">
     <div class="col-xs-12">
       <app-reservation-item

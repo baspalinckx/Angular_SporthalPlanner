@@ -14,21 +14,24 @@ export class CustomerComponent implements OnInit {
   email: string;
   id : number;
   customers: Reservation[];
+  info: string;
 
   constructor(private reservationService: ReservationService) { }
 
   ngOnInit() {
     this.reservationService.getReservations()
       .then(reservations => this.customers = reservations).then(() => console.log(this.customers));
-
+    this.info = 'Vul een gebruiker en sporthal id in';
   }
 
   onSearchEmail() {
+    this.info = 'Gebruiker staat niet in onze database';
     this.reservationService.getCustomer(this.email)
       .then(res => {
 
         if (res.toString() === 'fout') {
           console.log('bestaatniet');
+          this.customer = null;
         } else {
           this.customer =  res as Reservation;
           console.log(this.customer);
