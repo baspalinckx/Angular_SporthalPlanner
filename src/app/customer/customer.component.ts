@@ -19,7 +19,7 @@ export class CustomerComponent implements OnInit {
   constructor(private reservationService: ReservationService) { }
 
   ngOnInit() {
-    this.reservationService.getReservations()
+    this.reservationService.getCustomers()
       .then(reservations => this.customers = reservations).then(() => console.log(this.customers));
     this.info = 'Vul een gebruiker en sporthal id in';
   }

@@ -126,6 +126,14 @@ export class ReservationService {
       });
   }
 
+  getCustomers() {
+    return this.http.get(this.serverUrlCustomer, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        return response.json() as Reservation[];
+      });
+  }
+
   addCustomer(customer: Reservation){
     return this.http.post(this.serverUrlCustomer, {
         "firstName": customer.firstName,
