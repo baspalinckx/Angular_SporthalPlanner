@@ -83,4 +83,4 @@ export class ReservationListComponent implements OnInit {
       });
 
 
-  }
+  }}

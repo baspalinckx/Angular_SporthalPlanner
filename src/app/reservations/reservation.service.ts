@@ -48,7 +48,18 @@ export class ReservationService {
       .catch(error => {
         return error;
       });
+  }
 
+  getReservationsByEmail(id: number, email: string) {
+    return this.http.get( this.serverUrlReserve + '/email?id=' + id + '&email=' + email, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        this.reservations = response.json() as Reservation[];
+        return response.json() as Reservation[];
+      })
+      .catch(error => {
+        return error;
+      });
   }
 
   getReservationsS(id: string, date: string) {
@@ -112,10 +123,15 @@ export class ReservationService {
         } else {
           return response.json() as Reservation;
         }
-
-
       });
+  }
 
+  getCustomers() {
+    return this.http.get(this.serverUrlCustomer, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        return response.json() as Reservation[];
+      });
   }
 
   addCustomer(customer: Reservation){
