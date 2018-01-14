@@ -178,7 +178,7 @@ if(this.emailAdress !== '') {
     reservation.lastName = this.bookingForm.value.bookingData.LastName || this.customer.lastName;
     reservation.email = this.bookingForm.value.bookingData.Email;
     reservation.phoneNumber = this.bookingForm.value.bookingData.PhoneNumber || this.customer.phoneNumber;
-    reservation.context = 'reservation';
+    reservation.context = 'Reservation';
     reservation.startTime = new Date(2000, 1, 1, this.bookingForm.value.bookingData.StartTime, 0, 0, 0).toString();
     reservation.endTime = new Date(2000, 1, 1, this.bookingForm.value.bookingData.EndTime, 0, 0, 0).toString();
     reservation.postalCode = this.bookingForm.value.bookingData.PostalCode;
