@@ -20,7 +20,7 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit() {
     this.reservationService.getCustomers()
-      .then(reservations => this.customers = reservations).then(() => console.log(this.customers));
+      .then(reservations => this.customers = reservations);
     this.info = 'Vul een gebruiker en sporthal id in';
   }
 
