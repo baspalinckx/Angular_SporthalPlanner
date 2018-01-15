@@ -1,3 +1,13 @@
 <p>
   factuur-list works!
 </p>
+
+<div class="row">
+  <div class="col-xs-12">
+
+    <app-factuur-item
+      *ngFor="let reservationEl of reservations"
+      [reservation]="reservationEl">
+    </app-factuur-item>
+  </div>
+</div>

@@ -26,6 +26,7 @@ import { ReservationWeekItemComponent } from './reservations/reservation-week-li
 import { CustomerComponent } from './customer/customer.component';
 import { FactuurComponent } from './factuur/factuur.component';
 import { FactuurListComponent } from './factuur/factuur-list/factuur-list.component';
+import { FactuurItemComponent } from './factuur/factuur-list/factuur-item/factuur-item.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { FactuurListComponent } from './factuur/factuur-list/factuur-list.compon
     ReservationWeekItemComponent,
     CustomerComponent,
     FactuurComponent,
-    FactuurListComponent
+    FactuurListComponent,
+    FactuurItemComponent
   ],
   imports: [
     BrowserModule,

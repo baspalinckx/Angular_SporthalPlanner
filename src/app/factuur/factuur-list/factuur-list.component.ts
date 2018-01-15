@@ -14,8 +14,6 @@ import {Reservation} from '../../shared/reservations.model';
 })
 export class FactuurListComponent implements OnInit {
   sporthall: SportsHall;
-  list : [Customer];
-  bool : Boolean : false;
   customers: [Customer];
   reservations: [Reservation];
   id: string;
@@ -30,15 +28,25 @@ export class FactuurListComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id'];
       this.sporthalService.getSportshallById(this.id).then(res => {
-        this.sporthall = res;
+        const test = res.reserve;
+        this.reservations = res.reserve;
+      }).then(() => {
+        const uniqueEmails = [];
+        for (let i = 0; i < this.reservations.length; i++) {
+          if (uniqueEmails.indexOf(this.reservations[i].email) === -1) {
+            uniqueEmails.push(this.reservations[i].email);
+          }
+        }
+        for (let i = 0; i < uniqueEmails.length; i++) {
+          // alert(uniqueEmails[i]);
+          console.log(uniqueEmails[i]);
 
-        this.reservations = this.sporthall.reserve;
-        
-      });
+        }
 
+        }
+      );
     });
-
-
+    // this.customers.push()
   }
 
 
