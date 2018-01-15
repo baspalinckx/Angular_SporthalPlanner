@@ -19,19 +19,8 @@ import {isUndefined} from "util";
 export class BookingComponent implements OnInit, OnDestroy {
 
   @ViewChild('f') bookingForm: NgForm;
-  booking = {
-    Datum: '',
-    StartTime: '',
-    EndTime: '',
-    FirstName: '',
-    LastName: '',
-    Email: '',
-    PhoneNumber: '',
-    PostalCode: '',
-  StreetName: '',
-  HouseNumber: ''};
 
-  submitted = false;
+
   lastdatum: Date;
   sportsHall: SportsHall;
   subscription: Subscription;
@@ -39,13 +28,13 @@ export class BookingComponent implements OnInit, OnDestroy {
   dropDownEndTimes: number[];
   selectedStartTime: number;
   selectedEndTime: number;
+  sport: Sport;
   startTime: number;
-  sports: [SportshallssportModel];
-  selectedSport: string;
-  emailBool: boolean = false;
+  sportsArray: [Sport] = [];
+  emailBool = false;
   emailAdress: '';
   customer: Reservation;
-  clicked: boolean = false;
+  clicked = false;
 
   constructor(private reservationService: ReservationService,
               private sportshallService: SportshallService,
@@ -56,17 +45,14 @@ export class BookingComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  /*changeSelectedType(event: any) {
-    /!*console.log(event); //object, depends on ngValue
-    console.log(this.selectedSport.name); //object, depends on ngValue*!/
-  }*/
-
   ngOnInit() {
     this.subscription = this.route.parent.params.subscribe(params => {
       this.sportshallService.getSportshallById(params['id'])
         .then(sportshall => {
             this.sportsHall = sportshall;
-            this.sports = this.sportsHall.sportsHallSports;
+            sportshall.sportsHallSports.forEach(sporthall => {
+              this.sportsArray.push(sporthall.sport);
+            });
         });
     });
     this.bookingForm.valueChanges.subscribe((update) => {
@@ -135,56 +121,38 @@ export class BookingComponent implements OnInit, OnDestroy {
   onSearch() {
     this.clicked = true;
     this.emailAdress = this.emailAdress || '' ;
-if(this.emailAdress !== '') {
-  this.reservationService.getCustomer(this.emailAdress)
-    .then(res => {
-      if (res === 'fout') {
-
-        this.emailBool = true;
-      }
-      else {
-        this.emailBool = false;
-        /*this.bookingForm.value.bookingData.firstName = res.firstName;
-         this.bookingForm.value.bookingData.lastName = res.lastName;
-         this.bookingForm.value.bookingData.phoneNumber = res.phoneNumber;
-         console.log(this.bookingForm.value.bookingData.phoneNumber);*/
-        this.customer = res;
-
-      }
-    });
-}else{
-}
-
-
+    if (this.emailAdress !== '') {
+      this.reservationService.getCustomer(this.emailAdress)
+        .then(res => {
+          if (res === 'fout') {
+            this.emailBool = true;
+          }
+          else {
+            this.emailBool = false;
+            this.customer = res;
+          }
+        });
+    }
   }
 
-
-
-
-
   onSubmit() {
-    this.submitted = true;
-    this.booking.Datum = this.bookingForm.value.bookingData.Datum;
-    this.booking.StartTime = this.bookingForm.value.bookingData.StartTime;
-    this.booking.EndTime = this.bookingForm.value.bookingData.EndTime;
-    this.booking.FirstName = this.bookingForm.value.bookingData.FirstName || this.customer.firstName;
-    this.booking.LastName = this.bookingForm.value.bookingData.LastName || this.customer.lastName;
-    this.booking.Email = this.bookingForm.value.bookingData.Email;
-    this.booking.PhoneNumber = this.bookingForm.value.bookingData.PhoneNumber || this.customer.phoneNumber;;
-
     let reservation = new Reservation();
     reservation.datum = this.bookingForm.value.bookingData.Datum;
     reservation.firstName = this.bookingForm.value.bookingData.FirstName || this.customer.firstName;
     reservation.lastName = this.bookingForm.value.bookingData.LastName || this.customer.lastName;
     reservation.email = this.bookingForm.value.bookingData.Email;
     reservation.phoneNumber = this.bookingForm.value.bookingData.PhoneNumber || this.customer.phoneNumber;
-    reservation.context = 'reservation';
+    reservation.context = 'Reservation';
     reservation.startTime = new Date(2000, 1, 1, this.bookingForm.value.bookingData.StartTime, 0, 0, 0).toString();
     reservation.endTime = new Date(2000, 1, 1, this.bookingForm.value.bookingData.EndTime, 0, 0, 0).toString();
     reservation.postalCode = this.bookingForm.value.bookingData.PostalCode;
     reservation.streetName = this.bookingForm.value.bookingData.StreetName;
     reservation.houseNumber = this.bookingForm.value.bookingData.HouseNumber;
     reservation.sportsHall = this.sportsHall;
+    reservation.sport = this.sport;
+
+    console.log(this.bookingForm.value.bookingData);
+    console.log(this.sport);
 
     this.reservationService.addReservation(reservation);
     this.bookingForm.reset();
@@ -194,7 +162,6 @@ if(this.emailAdress !== '') {
     if(this.emailBool === true){
       this.reservationService.addCustomer(reservation);
     }
-
   }
 
   onCancel() {
