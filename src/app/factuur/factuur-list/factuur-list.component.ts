@@ -56,7 +56,7 @@ export class FactuurListComponent implements OnInit {
 
         }
       ).then(() => {
-        let list: [Reservation];
+        // let list: [Reservation];
         for (let x = 0; x < this.customers.length; x++){
           console.log(this.reservations);
           for (let y = 0; y < this.reservations.length; y++){

@@ -27,6 +27,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { FactuurComponent } from './factuur/factuur.component';
 import { FactuurListComponent } from './factuur/factuur-list/factuur-list.component';
 import { FactuurItemComponent } from './factuur/factuur-list/factuur-item/factuur-item.component';
+import { FactuurDetailComponent } from './factuur/factuur-detail/factuur-detail.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { FactuurItemComponent } from './factuur/factuur-list/factuur-item/factuu
     CustomerComponent,
     FactuurComponent,
     FactuurListComponent,
-    FactuurItemComponent
+    FactuurItemComponent,
+    FactuurDetailComponent
   ],
   imports: [
     BrowserModule,
