@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://localhost:49335/api',
+  serverUrl: 'http://localhost:50062/api',
   serverMongoUrl: 'http://localhost:3000/api/v1'
 };

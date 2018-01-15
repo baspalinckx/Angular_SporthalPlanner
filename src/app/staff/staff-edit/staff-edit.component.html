@@ -1,0 +1,326 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="staffForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="firstName">First name</label>
+            <input
+              type="text"
+              id="firstName"
+              formControlName="firstname"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="lastName">Last name</label>
+            <input
+              type="text"
+              id="lastName"
+              formControlName="lastName"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input
+              type="number"
+              id="phoneNumber"
+              formControlName="phoneNumber"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              formControlName="email"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="job">Job</label>
+            <select
+              id="job"
+              class="form-control"
+              name="job">
+              <option value="Horeka">Horeka</option>
+              <option value="Onderhoud">Onderhoud</option>
+              <option value="Poetser">Poetser</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <h3>Beschikbaarheid:</h3>
+      <div class="row-fluid">
+        <div class="col-xs-2">
+          <div class="form-group">
+            <h4>Maandag:</h4>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="StartTime">Begin tijd</label>
+            <select
+              id="StartTime"
+              class="form-control"
+              name="StartTime">
+              <option>
+                test
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="EndTime">Eind tijd</label>
+            <select
+              id="EndTime"
+              class="form-control"
+              name="EndTime">
+              <option>
+                test
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="col-xs-2">
+          <div class="form-group">
+            <h4>Dinsdag:</h4>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="StartTime">Begin tijd</label>
+            <select
+              id="StartTime"
+              class="form-control"
+              name="StartTime">
+              <option>
+                test
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="EndTime">Eind tijd</label>
+            <select
+              id="EndTime"
+              class="form-control"
+              name="EndTime">
+              <option>
+                test
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="col-xs-2">
+          <div class="form-group">
+            <h4>Woensdag:</h4>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="StartTime">Begin tijd</label>
+            <select
+              id="StartTime"
+              class="form-control"
+              name="StartTime">
+              <option>
+                test
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="EndTime">Eind tijd</label>
+            <select
+              id="EndTime"
+              class="form-control"
+              name="EndTime">
+              <option>
+                test
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="col-xs-2">
+          <div class="form-group">
+            <h4>Donderdag:</h4>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="StartTime">Begin tijd</label>
+            <select
+              id="StartTime"
+              class="form-control"
+              name="StartTime">
+              <option>
+                test
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="EndTime">Eind tijd</label>
+            <select
+              id="EndTime"
+              class="form-control"
+              name="EndTime">
+              <option>
+                test
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="col-xs-2">
+          <div class="form-group">
+            <h4>Vrijdag:</h4>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="StartTime">Begin tijd</label>
+            <select
+              id="StartTime"
+              class="form-control"
+              name="StartTime">
+              <option>
+                test
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="EndTime">Eind tijd</label>
+            <select
+              id="EndTime"
+              class="form-control"
+              name="EndTime">
+              <option>
+                test
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="col-xs-2">
+          <div class="form-group">
+            <h4>Zaterdag:</h4>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="StartTime">Begin tijd</label>
+            <select
+              id="StartTime"
+              class="form-control"
+              name="StartTime">
+              <option>
+                test
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="EndTime">Eind tijd</label>
+            <select
+              id="EndTime"
+              class="form-control"
+              name="EndTime">
+              <option>
+                test
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="col-xs-2">
+          <div class="form-group">
+            <h4>Zondag:</h4>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="StartTime">Begin tijd</label>
+            <select
+              id="StartTime"
+              class="form-control"
+              name="StartTime">
+              <option>
+                test
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">
+          <div class="form-group">
+            <label for="EndTime">Eind tijd</label>
+            <select
+              id="EndTime"
+              class="form-control"
+              name="EndTime">
+              <option>
+                test
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <hr>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!f.valid">Bevestig</button>
+        <button
+          class="btn btn-danger"
+          (click)="onCancel()"
+        >Annuleer</button>
+      <hr>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+  <form [formGroup]="staffForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input
+            type="text"
+            id="email"
+            formControlName="email"
+            class="form-control">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    <button (click)="onSearchEmail()" class="btn btn-primary col-md-2">Zoek</button>
+    </div>
+  <hr>

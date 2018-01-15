@@ -11,11 +11,18 @@ import {ClosingAddComponent} from './reservations/closingday/closingday.componen
 import {BookingComponent} from './reservations/booking/booking.component';
 import {ReservationWeekListComponent} from "./reservations/reservation-week-list/reservation-week-list.component";
 import {CustomerComponent} from "./customer/customer.component";
+import {StaffComponent} from "./staff/staff.component";
+import {StaffEditComponent} from "./staff/staff-edit/staff-edit.component";
+import {StaffScheduleComponent} from "./staff/staff-schedule/staff-schedule.component";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/sportshalls', pathMatch: 'full'},
   {path: 'sportshalls', component: SportshallComponent},
   {path: 'customer', component: CustomerComponent},
+  {path: 'staff', component: StaffComponent, children: [
+    {path: 'new', component: StaffEditComponent},
+    {path: 'schedule', component: StaffScheduleComponent}
+  ]},
   {path: 'week', component: ReservationWeekListComponent, children: [
     {path: ':id ', component: ReservationWeekListComponent}
     ]},
