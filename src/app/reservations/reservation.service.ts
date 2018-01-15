@@ -14,7 +14,7 @@ export class ReservationService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private serverUrlReserve = environment.serverUrl + '/reserve';
-  private serverUrlReserve = environment.serverUrl + '/sportshalls';
+  private serverUrlSporthalls = environment.serverUrl + '/sportshalls';
   private serverUrlCustomer = environment.serverMongoUrl + '/customers';
   private reservations: Reservation[] = [
     new Reservation({context: 'Reservation', startTime: '10:00:00', endTime: '12:00:00' }

@@ -3,6 +3,9 @@ import {ReservationService} from '../../reservations/reservation.service';
 import {SportshallService} from '../../sportshall/sportshall.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SportsHall} from '../../shared/sportshall.model';
+import {Customer} from '../../shared/customer.model';
+import {forEach} from '@angular/router/src/utils/collection';
+import {Reservation} from '../../shared/reservations.model';
 
 @Component({
   selector: 'app-factuur-list',
@@ -11,6 +14,10 @@ import {SportsHall} from '../../shared/sportshall.model';
 })
 export class FactuurListComponent implements OnInit {
   sporthall: SportsHall;
+  list : [Customer];
+  bool : Boolean : false;
+  customers: [Customer];
+  reservations: [Reservation];
   id: string;
 
   constructor(private reservationService: ReservationService,
@@ -20,15 +27,17 @@ export class FactuurListComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*this.route.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.id = params['id'];
       this.sporthalService.getSportshallById(this.id).then(res => {
         this.sporthall = res;
-        console.log(this.sporthall.reserve);
+
+        this.reservations = this.sporthall.reserve;
+        
       });
-      // this.reservationService.getReservationById(this.id);
-      // }
-    });*/
+
+    });
+
 
   }
 
