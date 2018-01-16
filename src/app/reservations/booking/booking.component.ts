@@ -23,6 +23,7 @@ export class BookingComponent implements OnInit, OnDestroy {
 
   lastdatum: Date;
   sportsHall: SportsHall;
+  sportshallssports: [SportshallssportModel];
   subscription: Subscription;
   dropDownTimes: number[];
   dropDownEndTimes: number[];
@@ -30,7 +31,6 @@ export class BookingComponent implements OnInit, OnDestroy {
   selectedEndTime: number;
   sport: Sport;
   startTime: number;
-  sportsArray: [Sport] = [];
   emailBool = false;
   emailAdress: '';
   customer: Reservation;
@@ -45,14 +45,17 @@ export class BookingComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  onTestClick(){
+    console.log(this.sport);
+  }
+
   ngOnInit() {
     this.subscription = this.route.parent.params.subscribe(params => {
       this.sportshallService.getSportshallById(params['id'])
         .then(sportshall => {
             this.sportsHall = sportshall;
-            sportshall.sportsHallSports.forEach(sporthall => {
-              this.sportsArray.push(sporthall.sport);
-            });
+            this.sportshallssports = sportshall.sportsHallSports;
+
         });
     });
     this.bookingForm.valueChanges.subscribe((update) => {
@@ -151,8 +154,9 @@ export class BookingComponent implements OnInit, OnDestroy {
     reservation.sportsHall = this.sportsHall;
     reservation.sport = this.sport;
 
+
     console.log(this.bookingForm.value.bookingData);
-    console.log(this.sport);
+    /*console.log(this.sport);*/
 
     this.reservationService.addReservation(reservation);
     this.bookingForm.reset();

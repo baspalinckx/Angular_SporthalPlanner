@@ -40,7 +40,7 @@
               </option>
             </select>
           </div>
-
+<button type="button" (click)="onTestClick()"></button>
           <div class="row">
             <div class="col-xs-12">
               <div class="form-group">
@@ -51,9 +51,8 @@
                         [(ngModel)]="sport"
                         class="form-control"
                         id="Sport">
-                  <option *ngFor="let sport of sportsArray"
-                          [value]="sport">
-                    {{sport.name}}
+                  <option  *ngFor="let sportshallssportEl of sportshallssports" [ngValue]="sportshallssportEl.sport">
+                    {{sportshallssportEl.sport.name}}
                   </option>
                 </select>
               </div>
