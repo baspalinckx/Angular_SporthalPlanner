@@ -13,12 +13,40 @@ export class StaffEditComponent implements OnInit {
 
   @ViewChild staffForm: NgForm;
 
+  staff = {
     FirstName: '',
     LastName: '',
     Email: '',
     PhoneNumber: '',
-    StartTime: '',
-    EndTime: '',
+    mondayAvailabilty: {
+      StartTime: '',
+      EndTime: ''
+    },
+    tuesdayAvailabilty: {
+      StartTime: '',
+      EndTime: ''
+    },
+    wednesdayAvailabilty: {
+      StartTime: '',
+      EndTime: ''
+    },
+    thursdayAvailabilty: {
+      StartTime: '',
+      EndTime: ''
+    },
+    fridayAvailabilty: {
+      StartTime: '' ,
+      EndTime: ''
+    },
+    saturdayAvailabilty: {
+      StartTime: '',
+      EndTime: ''
+    },
+    sundayAvailabilty: {
+      StartTime: '',
+      EndTime: ''
+    },
+  }
 
   submitted = false;
 
