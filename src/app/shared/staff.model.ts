@@ -1,7 +1,9 @@
-export class Reservation {
+export class Staff {
   private _firstName: string;
   private _lastName: string;
   private _email: string;
+  private _startTime: string;
+  private _endTime: string;
   private _phoneNumber: string;
   private _job: string;
 
@@ -36,6 +38,21 @@ export class Reservation {
 
   public set phoneNumber(value: string) {
     this._phoneNumber = value;
+  }
+
+  public get startTime(): string {
+    return this._startTime;
+  }
+
+  public set startTime(value: string) {
+    this._startTime = value;
+  }
+  public get endTime(): string {
+    return this._endTime;
+  }
+
+  public set endTime(value: string) {
+    this._endTime = value;
   }
 
   public get job(): string {

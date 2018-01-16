@@ -27,6 +27,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { StaffComponent } from './staff/staff.component';
 import { StaffEditComponent } from './staff/staff-edit/staff-edit.component';
 import { StaffScheduleComponent } from './staff/staff-schedule/staff-schedule.component';
+import {Staff} from "./shared/staff.model";
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { StaffScheduleComponent } from './staff/staff-schedule/staff-schedule.co
     CustomerComponent,
     StaffComponent,
     StaffEditComponent,
-    StaffScheduleComponent
+    StaffScheduleComponent,
+    Staff
   ],
   imports: [
     BrowserModule,

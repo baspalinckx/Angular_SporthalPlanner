@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {Headers, Http} from "@angular/http";
 import {environment} from "../../environments/environment";
+import {Staff} from "../shared/staff.model";
 
 @Injectable()
 export class StaffService {
@@ -11,7 +12,7 @@ export class StaffService {
 
   constructor(private http: Http) {}
 
-  AddStaff(staff: Staff) {
+  addStaff(staff: Staff) {
     this.http.post(environment.serverUrl + '/staff', staff , { headers: this.headers})
       .toPromise()
       .then(response => {
