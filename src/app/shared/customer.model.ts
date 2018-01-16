@@ -6,7 +6,7 @@ export class Customer {
   private _reserve: [Reservation];*/
 
 
-  constructor(private _email: string, private _reserve?: ([Reservation]) ){}
+  constructor(private _email: string, private _reserve?: ([Reservation]) ) { }
 
 
   /*constructor(values: Object = {}) {

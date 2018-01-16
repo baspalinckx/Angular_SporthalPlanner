@@ -43,12 +43,12 @@ export class FactuurListComponent implements OnInit {
           for (let i = 0; i < uniqueEmails.length; i++) {
             // alert(uniqueEmails[i]);
             // console.log(uniqueEmails[i]);
-            const customer = new Customer(uniqueEmails[i].toString(), []);
+            const customer = new Customer(uniqueEmails[i].toString());
             console.log(customer);
-            if(this.customers === undefined){
+            if (this.customers === undefined) {
                this.customers = [customer];
 
-            }else{
+            }else {
               this.customers.push(customer);
 
             }
@@ -60,7 +60,7 @@ export class FactuurListComponent implements OnInit {
         for (let x = 0; x < this.customers.length; x++){
           console.log(this.reservations);
           for (let y = 0; y < this.reservations.length; y++){
-            if(this.customers[x].email === this.reservations[y].email){
+            if (this.customers[x].email === this.reservations[y].email){
               this.customers[x].reserve.push(this.reservations[y]);
             }
           }
