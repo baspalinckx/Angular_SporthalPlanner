@@ -29,6 +29,7 @@ import { FactuurListComponent } from './factuur/factuur-list/factuur-list.compon
 import { FactuurItemComponent } from './factuur/factuur-list/factuur-item/factuur-item.component';
 import { FactuurDetailComponent } from './factuur/factuur-detail/factuur-detail.component';
 import { FactuurResultaatComponent } from './factuur/factuur-resultaat/factuur-resultaat.component';
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { FactuurResultaatComponent } from './factuur/factuur-resultaat/factuur-r
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    CommonModule,
     HttpModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
