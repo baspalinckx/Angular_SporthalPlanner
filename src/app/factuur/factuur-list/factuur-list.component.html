@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-xs-6">
+
+    <app-factuur-item
+      *ngFor="let reservationEl of customers; let i = index"
+      [customer]="reservationEl"
+    [index] = i
+    (notify)="onNotify($event)">
+    </app-factuur-item>
+  </div>
+  <div class="col-xs-6">
+    <div *ngIf="index !== -1 ">
+      <app-factuur-detail
+        [customer]="customers[index]"
+        (notify)="onNotifyDetailed()"
+      ></app-factuur-detail>
+    </div>
+  </div>
+  <div class="col-xs-12">
+    <div *ngIf="customerInvoice">
+      <app-factuur-resultaat [customerInvoice]="customerInvoice"></app-factuur-resultaat>
+    </div>
+  </div>
+</div>
+

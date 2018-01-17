@@ -24,6 +24,12 @@ import {SportshallService} from './sportshall/sportshall.service';
 import { ReservationWeekListComponent } from './reservations/reservation-week-list/reservation-week-list.component';
 import { ReservationWeekItemComponent } from './reservations/reservation-week-list/reservation-week-item/reservation-week-item.component';
 import { CustomerComponent } from './customer/customer.component';
+import { FactuurComponent } from './factuur/factuur.component';
+import { FactuurListComponent } from './factuur/factuur-list/factuur-list.component';
+import { FactuurItemComponent } from './factuur/factuur-list/factuur-item/factuur-item.component';
+import { FactuurDetailComponent } from './factuur/factuur-detail/factuur-detail.component';
+import { FactuurResultaatComponent } from './factuur/factuur-resultaat/factuur-resultaat.component';
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -41,12 +47,18 @@ import { CustomerComponent } from './customer/customer.component';
     ClosingAddComponent,
     ReservationWeekListComponent,
     ReservationWeekItemComponent,
-    CustomerComponent
+    CustomerComponent,
+    FactuurComponent,
+    FactuurListComponent,
+    FactuurItemComponent,
+    FactuurDetailComponent,
+    FactuurResultaatComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    CommonModule,
     HttpModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),

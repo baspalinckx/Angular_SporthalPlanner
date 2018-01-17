@@ -1,6 +1,7 @@
 import {SportsBuilding} from "./sportsbuilding.model";
 import {Sport} from "./sport.model";
 import {SportshallssportModel} from "./sportshallssport.model";
+import {Reservation} from './reservations.model';
 
 
 export class SportsHall {
@@ -14,11 +15,20 @@ export class SportsHall {
   private _numberOfDressingSpace: Number;
   private _openTime: Date;
   private _closeTime: Date;
+  private _reserve: [Reservation];
   private _sportsBuilding: SportsBuilding;
   private _sportsHallSports: [SportshallssportModel];
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
+  }
+
+  get reserve(): [Reservation] {
+    return this._reserve;
+  }
+
+  set reserve(value: [Reservation]) {
+    this._reserve = value;
   }
 
   get sportsHallID(): Number {
