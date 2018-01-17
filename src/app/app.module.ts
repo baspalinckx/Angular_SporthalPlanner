@@ -27,7 +27,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { StaffComponent } from './staff/staff.component';
 import { StaffEditComponent } from './staff/staff-edit/staff-edit.component';
 import { StaffScheduleComponent } from './staff/staff-schedule/staff-schedule.component';
-import {Staff} from "./shared/staff.model";
+import { StaffService } from "./staff/staff.service";
 
 
 @NgModule({
@@ -49,8 +49,7 @@ import {Staff} from "./shared/staff.model";
     CustomerComponent,
     StaffComponent,
     StaffEditComponent,
-    StaffScheduleComponent,
-    Staff
+    StaffScheduleComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +61,7 @@ import {Staff} from "./shared/staff.model";
     NgDatepickerModule
 
   ],
-  providers: [ ReservationService, SportshallService ],
+  providers: [ ReservationService, SportshallService, StaffService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
