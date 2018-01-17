@@ -45,10 +45,6 @@ export class BookingComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  onTestClick(){
-    console.log(this.sport);
-  }
-
   ngOnInit() {
     this.subscription = this.route.parent.params.subscribe(params => {
       this.sportshallService.getSportshallById(params['id'])
@@ -154,16 +150,12 @@ export class BookingComponent implements OnInit, OnDestroy {
     reservation.sportsHall = this.sportsHall;
     reservation.sport = this.sport;
 
-
-    console.log(this.bookingForm.value.bookingData);
-    /*console.log(this.sport);*/
-
     this.reservationService.addReservation(reservation);
     this.bookingForm.reset();
     this.dropDownEndTimes = [];
     this.dropDownTimes = [];
 
-    if(this.emailBool === true){
+    if (this.emailBool === true) {
       this.reservationService.addCustomer(reservation);
     }
   }

@@ -93,8 +93,6 @@ export class ReservationService {
 
   addReservation(reservation: Reservation) {
 
-    console.log(reservation.sport.name);
-
     return this.http.post(this.serverUrlReserve, {
       "firstName": reservation.firstName,
       "lastName": reservation.lastName,
