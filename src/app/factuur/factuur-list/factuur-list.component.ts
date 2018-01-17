@@ -36,7 +36,11 @@ export class FactuurListComponent implements OnInit {
       var doc = new jsPDF();
       doc.addImage(img, 'JPEG', 5, 20);
       console.log(canvas);
-      doc.save('test');
+
+
+      // doc.output('dataurlnewwindow');
+
+      doc.save('file.pdf');
     });
   }
 
