@@ -6,5 +6,6 @@
     <p class="group inner list-group-item-text">{{reservation.startTime }}:00 - {{reservation.endTime}}:00</p>
     <p class="group inner list-group-item-text">{{reservation.firstName}}  {{reservation.lastName}}</p>
     <p class="group inner list-group-item-text">{{reservation.phoneNumber}} - {{reservation.email}}</p>
+    <p class="group inner list-group-item-text" *ngIf="reservation.sport != null">{{reservation.sport.name}}</p>
   </div>
 </div>

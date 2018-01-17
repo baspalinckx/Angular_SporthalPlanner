@@ -5,6 +5,8 @@
         {{reservation.context}}</h5>
         <h5 class="group inner list-group-item-heading">
           {{reservation.startTime}} - {{reservation.endTime}}</h5>
+        <h5 class="group inner list-group-item-heading" *ngIf="reservation.sport != null">
+          {{reservation.sport.name}}</h5>
       </div>
     </div>
   </div>

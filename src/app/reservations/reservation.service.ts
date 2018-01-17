@@ -102,7 +102,8 @@ export class ReservationService {
       "datum": reservation.datum,
       "startTime": new Date(reservation.startTime).toISOString(),
       "endTime": new Date(reservation.endTime).toISOString(),
-      "sportsHall": reservation.sportsHall
+      "sportsHall": reservation.sportsHall,
+      "sport": reservation.sport
     },
       {headers: this.headers})
       .toPromise()

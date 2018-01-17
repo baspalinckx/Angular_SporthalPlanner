@@ -7,6 +7,7 @@
           ngModelGroup="bookingData"
           #bookingData="ngModelGroup">
           <hr>
+
           <div class="form-group">
             <label for="Datum">Datum</label>
             <input
@@ -17,42 +18,48 @@
               name="Datum"
               required>
           </div>
+
           <div class="form-group">
             <label for="StartTime">start tijd</label>
             <br>
-            <select name="StartTime" [(ngModel)]="selectedStartTime" id="StartTime">
+            <select class="form-control" name="StartTime" [(ngModel)]="selectedStartTime" id="StartTime">
               <option *ngFor="let time of dropDownTimes"
                 [value]="time">
                   {{time}}:00
               </option>
             </select>
           </div>
+
           <div class="form-group">
             <label for="EndTime">Eind tijd</label>
             <br>
-            <select name="EndTime" [(ngModel)]="selectedEndTime" id="EndTime">
+            <select class="form-control" name="EndTime" [(ngModel)]="selectedEndTime" id="EndTime">
               <option *ngFor="let time of dropDownEndTimes"
                       [value]="time">
                 {{time}}:00
               </option>
             </select>
           </div>
-          <div >
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <label for="sport">Sport</label>
-                  <select type="text"
-                          id="sport"
-                          name="sport"
-                          class="form-control">
-                    <option *ngFor="let sport of sports" [ngValue]="type">{{sport.sport.name}}</option>
-                  </select>
-                </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="sport">Sport</label>
+                <br>
+                <select type="text"
+                        name="Sport"
+                        [(ngModel)]="sport"
+                        class="form-control"
+                        id="Sport">
+                  <option  *ngFor="let sportshallssportEl of sportshallssports" [ngValue]="sportshallssportEl.sport">
+                    {{sportshallssportEl.sport.name}}
+                  </option>
+                </select>
               </div>
             </div>
           </div>
+
           <hr>
+
           <div class="row">
             <div class="form-group col-md-12">
               <label for="Email">Email</label>
@@ -69,12 +76,12 @@
               <span class="help-block" *ngIf="!email.valid && email.touched">Vul een geldig email adres in!</span>
             </div>
           </div>
+
           <div class="row">
             <div class="form-group col-md-2">
               <button (click)="onSearch()" type="button" class="btn btn-primary">Search</button>
             </div>
           </div>
-
 
           <div *ngIf="emailBool">
           <div class="form-group">
@@ -155,19 +162,6 @@
         </div>
 
       </form>
-    </div>
-  </div>
-  <hr>
-  <div class="row" *ngIf="submitted">
-    <div class="col-xs-12">
-      <h3>Reservering details</h3>
-      <P>Datum: {{ booking.Datum}}</P>
-      <p>Start tijd: {{booking.StartTime}}</p>
-      <p>Eind tijd: {{booking.EndTime}}</p>
-      <p>Voornaam: {{booking.FirstName}}</p>
-      <p>Achternaam: {{booking.LastName}}</p>
-      <p>Email: {{booking.Email}}</p>
-      <p>Telefoon nummer: {{booking.PhoneNumber}}</p>
     </div>
   </div>
 </div>

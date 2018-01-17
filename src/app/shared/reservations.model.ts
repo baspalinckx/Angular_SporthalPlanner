@@ -1,4 +1,5 @@
 import {SportsHall} from './sportshall.model';
+import {Sport} from "./sport.model";
 
 export class Reservation {
   private _reserveID: Number;
@@ -14,6 +15,7 @@ export class Reservation {
   private _streetName: string;
   private _houseNumber: string;
   private _postalCode: string;
+  private _sport: Sport;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
@@ -115,4 +117,11 @@ export class Reservation {
     this._postalCode = value;
   }
 
+  public set sport(value: Sport){
+    this._sport = value;
+  }
+
+  public get sport(): Sport{
+    return this._sport;
+  }
 }
