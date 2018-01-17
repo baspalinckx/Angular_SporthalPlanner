@@ -17,6 +17,7 @@ export class FactuurListComponent implements OnInit {
   customers: [Customer];
   reservations: [Reservation];
   id: string;
+  index: number;
 
   constructor(private reservationService: ReservationService,
               private sporthalService: SportshallService,
@@ -24,7 +25,15 @@ export class FactuurListComponent implements OnInit {
               private route: ActivatedRoute) {
   }
 
+  onNotify(index: number){
+    this.index = index;
+    console.log(this.index);
+    /*this.router.navigate(['detailed'], {relativeTo: this.route});*/
+
+  }
+
   ngOnInit() {
+    this.index = -1;
 
     this.route.params.subscribe(params => {
       this.id = params['id'];

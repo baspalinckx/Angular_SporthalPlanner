@@ -6,11 +6,17 @@
   <div class="col-xs-6">
 
     <app-factuur-item
-      *ngFor="let reservationEl of customers"
-      [customer]="reservationEl">
+      *ngFor="let reservationEl of customers; let i = index"
+      [customer]="reservationEl"
+    [index] = i
+    (notify)="onNotify($event)">
     </app-factuur-item>
   </div>
   <div class="col-xs-6">
-    <router-outlet></router-outlet>
+    <div *ngIf="index !== -1 ">
+      <app-factuur-detail [customer]="customers[index]"></app-factuur-detail>
+    </div>
+
   </div>
 </div>
+

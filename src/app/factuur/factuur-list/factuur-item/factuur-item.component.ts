@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {Reservation} from '../../../shared/reservations.model';
 import {Customer} from '../../../shared/customer.model';
 
@@ -12,7 +12,14 @@ import {Customer} from '../../../shared/customer.model';
 })
 export class FactuurItemComponent implements OnInit {
   @Input() customer: Customer;
+  @Input() index: number;
+  @Output() notify = new EventEmitter<Number>();
   ngOnInit() {
+    console.log(this.index)
+  }
+
+  onClick() {
+    this.notify.emit(this.index)
   }
 
 }
