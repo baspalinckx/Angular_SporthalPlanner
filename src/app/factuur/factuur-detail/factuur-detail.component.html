@@ -5,7 +5,7 @@
     <div >
       <p class="group inner list-group-item-text">{{reservationEl.datum | date}}</p>
       <p class="group inner list-group-item-text"> {{reservationEl.startTime | date:'shortTime'}} - {{reservationEl.endTime | date:'shortTime'}}</p>
-      <p class="group inner list-group-item-text">{{reservationEl.sport}}</p>
+      <p *ngIf="reservationEl.sport" class="group inner list-group-item-text">{{reservationEl.sport.name}}</p>
     </div>
 </div>
 <button (click)="onclick()"  #btn class="pull-right btn btn-primary">Factureer</button>

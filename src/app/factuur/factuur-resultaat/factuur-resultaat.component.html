@@ -14,14 +14,14 @@
     <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-heading">Reserveringen</div>
-        <div *ngFor="let reservationEl of customerInvoice.reserve;" class="list-group-item clearfix">
-          <div >
-            <p class="group inner list-group-item-text">{{reservationEl.datum | date}}</p>
-            <p class="group inner list-group-item-text"> {{reservationEl.startTime | date:'shortTime'}} - {{reservationEl.endTime | date:'shortTime'}}</p>
-            <p class="group inner list-group-item-text">{{reservationEl.sport}}</p>
-          </div>
-        </div>
         <div class="panel-body">
+          <div id="listItems" *ngFor="let reservationEl of customerInvoice.reserve;" class="list-group-item clearfix"  >
+            <div >
+              <p class="group inner list-group-item-text">{{reservationEl.datum | date}}</p>
+              <p class="group inner list-group-item-text"> {{reservationEl.startTime | date:'shortTime'}} - {{reservationEl.endTime | date:'shortTime'}}</p>
+              <p *ngIf="reservationEl.sport" class="group inner list-group-item-text">{{reservationEl.sport.name}}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -29,8 +29,14 @@
   <div class="row fluid">
     <div class="col-md-6">
       <div class="panel panel-default">
-        <div class="panel-heading">Factuuradres</div>
+        <div  class="panel-heading">Factuuradres</div>
+
         <div class="panel-body">
+          <div id="listItems2" *ngIf="customerAdress" class="list-group-item clearfix">
+            <p class="group inner list-group-item-text">{{customerAdress.streetName}}{{customerAdress.houseNumber}}</p>
+
+            <p class="group inner list-group-item-text">{{customerAdress.postalCode}}</p>
+          </div>
         </div>
       </div>
     </div>

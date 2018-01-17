@@ -29,6 +29,7 @@ export class FactuurListComponent implements OnInit {
 
   onNotify(index: number){
     this.index = index;
+    this.customerInvoice = null;
   }
   onNotifyDetailed(){
     console.log('click')
