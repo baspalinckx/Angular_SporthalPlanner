@@ -15,6 +15,7 @@ import {Reservation} from '../../shared/reservations.model';
 export class FactuurListComponent implements OnInit {
   sporthall: SportsHall;
   customers: [Customer];
+  customerInvoice: Customer;
   reservations: [Reservation];
   id: string;
   index: number;
@@ -28,9 +29,10 @@ export class FactuurListComponent implements OnInit {
 
   onNotify(index: number){
     this.index = index;
-    console.log(this.index);
-    /*this.router.navigate(['detailed'], {relativeTo: this.route});*/
-
+  }
+  onNotifyDetailed(){
+    console.log('click')
+    this.customerInvoice = this.customers[this.index];
   }
 
   onFactuurClicked(){
@@ -46,9 +48,7 @@ export class FactuurListComponent implements OnInit {
 
         this.reservations = res.reserve;
       }).then(() => {
-          console.log(this.reservations);
           const uniqueEmails = [];
-          console.log(uniqueEmails);
           for (let i = 0; i < this.reservations.length; i++) {
             if (uniqueEmails.indexOf(this.reservations[i].email) === -1) {
               uniqueEmails.push(this.reservations[i].email);
@@ -75,7 +75,7 @@ export class FactuurListComponent implements OnInit {
         for (let x = 0; x < this.customers.length; x++){
           for (let y = 0; y < this.reservations.length; y++){
             if(this.customers[x].email === this.reservations[y].email){
-              console.log(this.reservations[y])
+
               if(this.customers[x].reserve === undefined){
                 this.customers[x].reserve = [this.reservations[y]];
               }else {
@@ -87,7 +87,7 @@ export class FactuurListComponent implements OnInit {
 
         }
 
-      }).then(() => console.log(this.customers));
+      });
     });
   }
 

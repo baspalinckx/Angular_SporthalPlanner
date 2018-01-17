@@ -4,16 +4,23 @@
   </h3>
   <hr>
   <h5>
-    Besteldatum: 06-10-2017
+    Besteldatum: {{dateNow | date:'M/d/yy'}}
   </h5>
   <h5>
-    Klantnummer: 2909922
+    Klantnummer:
   </h5>
   <hr>
   <div class="row fluid">
     <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-heading">Reserveringen</div>
+        <div *ngFor="let reservationEl of customerInvoice.reserve;" class="list-group-item clearfix">
+          <div >
+            <p class="group inner list-group-item-text">{{reservationEl.datum | date}}</p>
+            <p class="group inner list-group-item-text"> {{reservationEl.startTime | date:'shortTime'}} - {{reservationEl.endTime | date:'shortTime'}}</p>
+            <p class="group inner list-group-item-text">{{reservationEl.sport}}</p>
+          </div>
+        </div>
         <div class="panel-body">
         </div>
       </div>

@@ -15,7 +15,7 @@ export class FactuurItemComponent implements OnInit {
   @Input() index: number;
   @Output() notify = new EventEmitter<Number>();
   ngOnInit() {
-    console.log(this.index)
+
   }
 
   onClick() {

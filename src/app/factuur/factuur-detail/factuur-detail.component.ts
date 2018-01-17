@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import {Customer} from "../../shared/customer.model";
 
 @Component({
@@ -7,14 +7,16 @@ import {Customer} from "../../shared/customer.model";
   styleUrls: ['./factuur-detail.component.css']
 })
 export class FactuurDetailComponent implements OnInit {
-
+@Output() notify = new EventEmitter<any>();
 @Input() customer: Customer;
 
   constructor() { }
 
   ngOnInit() {
-    console.log('test');
-    console.log(this.customer);
+  }
+
+  onclick(){
+    this.notify.emit();
   }
 
 }
