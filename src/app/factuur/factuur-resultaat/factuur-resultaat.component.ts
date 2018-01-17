@@ -1,7 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {Customer} from '../../shared/customer.model';
 import {ReservationService} from '../../reservations/reservation.service';
 import {Reservation} from '../../shared/reservations.model';
+import * as jsPDF from 'jspdf';
+import * as html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-factuur-resultaat',
@@ -12,8 +14,12 @@ export class FactuurResultaatComponent implements OnInit {
   @Input() customerInvoice: Customer;
   customerAdress: Reservation;
   dateNow: Date = new Date();
-
+  @ViewChild('exportthis') element : ElementRef;
   constructor(private customerService: ReservationService) {
+  }
+
+  onClick() {
+
   }
 
   ngOnInit() {

@@ -16,10 +16,12 @@
       ></app-factuur-detail>
     </div>
   </div>
-  <div class="col-xs-12">
-    <div *ngIf="customerInvoice">
-      <app-factuur-resultaat [customerInvoice]="customerInvoice"></app-factuur-resultaat>
+  <div>
+    <div class="col-xs-6" *ngIf="customerInvoice">
+      <app-factuur-resultaat id="exportthis" [customerInvoice]="customerInvoice"></app-factuur-resultaat>
     </div>
   </div>
+  <div *ngIf="customerInvoice" class="col-xs-12"><button (click)="onPrint()" class="center-block">Click</button></div>
+
 </div>
 

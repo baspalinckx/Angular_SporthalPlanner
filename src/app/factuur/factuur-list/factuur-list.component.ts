@@ -6,6 +6,9 @@ import {SportsHall} from '../../shared/sportshall.model';
 import {Customer} from '../../shared/customer.model';
 import {forEach} from '@angular/router/src/utils/collection';
 import {Reservation} from '../../shared/reservations.model';
+import * as jsPDF from 'jspdf';
+import * as html2canvas from 'html2canvas';
+
 
 @Component({
   selector: 'app-factuur-list',
@@ -27,12 +30,22 @@ export class FactuurListComponent implements OnInit {
               private route: ActivatedRoute) {
   }
 
+  onPrint() {
+    html2canvas(document.getElementById('exportthis')).then(function (canvas) {
+      const img = canvas.toDataURL('image/png');
+      var doc = new jsPDF();
+      doc.addImage(img, 'JPEG', 5, 20);
+      console.log(canvas);
+      doc.save('test');
+    });
+  }
+
   onNotify(index: number){
     this.index = index;
     this.customerInvoice = null;
   }
   onNotifyDetailed(){
-    console.log('click')
+
     this.customerInvoice = this.customers[this.index];
   }
 
