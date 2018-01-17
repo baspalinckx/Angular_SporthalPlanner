@@ -18,6 +18,7 @@ export class FactuurListComponent implements OnInit {
   reservations: [Reservation];
   id: string;
   index: number;
+  isClicked: boolean;
 
   constructor(private reservationService: ReservationService,
               private sporthalService: SportshallService,
@@ -29,6 +30,10 @@ export class FactuurListComponent implements OnInit {
     this.index = index;
     console.log(this.index);
     /*this.router.navigate(['detailed'], {relativeTo: this.route});*/
+
+  }
+
+  onFactuurClicked(){
 
   }
 
