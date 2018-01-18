@@ -1,27 +1,28 @@
-<div class="container">
+<div id="exportthis" class="col-xs-12">
   <h3>
-    Bestellingsnr. 10206047100970
+    Bestellingsnr: {{reservationNumber}}
   </h3>
   <hr>
   <h5>
     Besteldatum: {{dateNow | date:'M/d/yy'}}
   </h5>
   <h5>
-    Klantnummer:
+    Klantnummer: {{customerNumber}}
   </h5>
   <hr>
   <div class="row fluid">
     <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-heading">Reserveringen</div>
-        <div *ngFor="let reservationEl of customerInvoice.reserve;" class="list-group-item clearfix">
-          <div >
-            <p class="group inner list-group-item-text">{{reservationEl.datum | date}}</p>
-            <p class="group inner list-group-item-text"> {{reservationEl.startTime | date:'shortTime'}} - {{reservationEl.endTime | date:'shortTime'}}</p>
-            <p class="group inner list-group-item-text">{{reservationEl.sport}}</p>
-          </div>
-        </div>
         <div class="panel-body">
+          <div id="listItems" *ngFor="let reservationEl of customerInvoice.reserve; let i = index " class="list-group-item clearfix"  >
+            <div >
+              <p class="group inner list-group-item-text">{{reservationEl.datum | date}}</p>
+              <p class="group inner list-group-item-text"> {{reservationEl.startTime | date:'shortTime'}} - {{reservationEl.endTime | date:'shortTime'}}</p>
+              <p *ngIf="reservationEl.sport" class="group inner list-group-item-text">{{reservationEl.sport.name}}</p>
+              <p class="group inner list-group-item-text"> € {{priceArray[i]}}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -29,17 +30,29 @@
   <div class="row fluid">
     <div class="col-md-6">
       <div class="panel panel-default">
-        <div class="panel-heading">Factuuradres</div>
+        <div  class="panel-heading">Factuuradres</div>
         <div class="panel-body">
+          <div id="listItems2" *ngIf="customerAdress" class="list-group-item clearfix">
+            <p class="group inner list-group-item-text">Adres: {{customerAdress.streetName}}  {{customerAdress.houseNumber}}</p>
+
+            <p class="group inner list-group-item-text">Postcode: {{customerAdress.postalCode}}</p>
+          </div>
         </div>
       </div>
     </div>
     <div class="col-md-6">
       <div class="panel panel-default">
-        <div class="panel-heading">Betaalwijze</div>
+        <div class="panel-heading">Totaal opgave</div>
         <div class="panel-body">
+          <div *ngFor="let price of priceArray">
+            <p>€ {{price}}</p>
+          </div>
+          <hr>
+          <p>Totaal: € {{priceTotal}}</p>
+          <p>Totaal excl. BTW: € {{priceExclBTW | number: '1.2'}} </p>
         </div>
       </div>
+
     </div>
   </div>
 </div>
