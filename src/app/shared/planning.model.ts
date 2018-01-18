@@ -1,7 +1,7 @@
 import {Staff} from "./staff.model";
 
 export class Planning {
-  private _sportHallId: number;
+  private _sportHallId: Number;
   private _date: Date;
   private _startTime: Date;
   private _endTime: Date;
@@ -12,8 +12,12 @@ export class Planning {
     Object.assign(this, values);
   }
 
-  public get sportHallId(): number {
+  public get sportHallId(): Number {
     return this._sportHallId;
+  }
+
+  public set sportHallId(value: Number) {
+    this._sportHallId = value;
   }
 
   public set date(value: Date) {

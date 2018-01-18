@@ -17,6 +17,7 @@ import {StaffScheduleComponent} from "./staff/staff-schedule/staff-schedule.comp
 import {FactuurComponent} from './factuur/factuur.component';
 import {FactuurListComponent} from './factuur/factuur-list/factuur-list.component';
 import {FactuurDetailComponent} from './factuur/factuur-detail/factuur-detail.component';
+import {NewPlanningComponent} from "./staff/new-planning/new-planning.component";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/sportshalls', pathMatch: 'full'},
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
   {path: 'reserve', component: ReservationsComponent, children: [
     {path: '', component: ReservationStartComponent},
       {path: ':id', component: ReservationListComponent, children: [
+        {path: 'planing', component: NewPlanningComponent},
         {path: 'new', component: BookingComponent},
         {path: 'extra', component: ClosingAddComponent},
       ]}
