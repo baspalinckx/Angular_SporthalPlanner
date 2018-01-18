@@ -10,76 +10,37 @@ import {Staff} from "../../shared/staff.model";
   styleUrls: ['./staff-edit.component.css']
 })
 export class StaffEditComponent implements OnInit {
-
-  @ViewChild('g') staffForm: NgForm;
-
-  staff = {
-    FirstName: '',
-    LastName: '',
-    Email: '',
-    PhoneNumber: '',
-    mondayAvailabilty: {
-      StartTime: '',
-      EndTime: ''
-    },
-    tuesdayAvailabilty: {
-      StartTime: '',
-      EndTime: ''
-    },
-    wednesdayAvailabilty: {
-      StartTime: '',
-      EndTime: ''
-    },
-    thursdayAvailabilty: {
-      StartTime: '',
-      EndTime: ''
-    },
-    fridayAvailabilty: {
-      StartTime: '' ,
-      EndTime: ''
-    },
-    saturdayAvailabilty: {
-      StartTime: '',
-      EndTime: ''
-    },
-    sundayAvailabilty: {
-      StartTime: '',
-      EndTime: ''
-    },
-  }
+  private firstname: string = '';
+  private lastname: string = '';
+  private email: string = '';
+  private phoneNumber: string =  '';
+  private job: string = '';
 
   submitted = false;
-  dropDownTimes: number[];
-  dropDownEndTimes: number[];
-  selectedStartTime: number;
-  selectedEndTime: number;
 
   constructor(private staffService: StaffService,
               private router: Router,
               private route: ActivatedRoute ) { }
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-      this.dropDownTimes = [8, 9, 10];
-      this.dropDownEndTimes = [16, 17, 18];
-    });
   }
 
-  onSubmit() {
+  submit() {
     this.submitted = true;
 
     let staff = new Staff();
-    staff.firstName = this.staffForm.value.staffData.FirstName;
-    staff.lastName = this.staffForm.value.staffData.LastName;
-    staff.email = this.staffForm.value.staffData.Email;
-    staff.phoneNumber = this.staffForm.value.staffData.PhoneNumber;
-    staff.startTime = new Date(2000, 1, 1, this.staffForm.value.staffData.StartTime, 0, 0, 0).toString();
-    staff.endTime = new Date(2000, 1, 1, this.staffForm.value.staffData.EndTime, 0, 0, 0).toString();
+    staff.firstName = this.firstname;
+    staff.lastName = this.lastname;
+    staff.email = this.email;
+    staff.phoneNumber = this.phoneNumber;
+    staff.job = this.job;
 
     this.staffService.addStaff(staff);
-    this.staffForm.reset();
 
-
+    this.firstname = '';
+    this.lastname = '';
+    this.email = '';
+    this.phoneNumber = '';
+    this.job = '';
   }
-
 }
