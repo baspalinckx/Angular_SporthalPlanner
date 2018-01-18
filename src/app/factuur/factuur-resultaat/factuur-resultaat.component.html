@@ -31,28 +31,29 @@
     <div class="col-md-6">
       <div class="panel panel-default">
         <div  class="panel-heading">Factuuradres</div>
-
         <div class="panel-body">
           <div id="listItems2" *ngIf="customerAdress" class="list-group-item clearfix">
-            <p class="group inner list-group-item-text">{{customerAdress.streetName}}{{customerAdress.houseNumber}}</p>
+            <p class="group inner list-group-item-text">Adres: {{customerAdress.streetName}}  {{customerAdress.houseNumber}}</p>
 
-            <p class="group inner list-group-item-text">{{customerAdress.postalCode}}</p>
+            <p class="group inner list-group-item-text">Postcode{{customerAdress.postalCode}}</p>
           </div>
         </div>
       </div>
     </div>
     <div class="col-md-6">
       <div class="panel panel-default">
-        <div class="panel-heading">Betaalwijze</div>
+        <div class="panel-heading">Totaal opgave</div>
         <div class="panel-body">
           <div *ngFor="let price of priceArray">
             <p>€ {{price}}</p>
           </div>
           <hr>
           <p>Totaal: € {{priceTotal}}</p>
+          <p>Totaal excl. BTW: € {{priceExclBTW}} </p>
         </div>
       </div>
     </div>
+    <div *ngIf="customerInvoice" class="col-xs-12"><button (click)="onPrint()" class="btn btn-primary">PDF opslaan</button></div>
   </div>
 </div>
 

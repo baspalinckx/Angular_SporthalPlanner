@@ -1,13 +1,14 @@
-<h4>
-  {{customer.email}}
-</h4>
+<!--<h4>-->
+  <!--{{customer.email}}-->
+<!--</h4>-->
 <p *ngIf="!customer.reserve">Deze klant heeft geen factures open staan</p>
-<div *ngFor="let reservationEl of customer.reserve;" class="list-group-item clearfix">
+<div *ngFor="let reservationEl of customer.reserve;" class="list-group-item clearfix itemstyle">
     <div >
       <p class="group inner list-group-item-text">{{reservationEl.datum | date}}</p>
       <p class="group inner list-group-item-text"> {{reservationEl.startTime | date:'shortTime'}} - {{reservationEl.endTime | date:'shortTime'}}</p>
       <p *ngIf="reservationEl.sport" class="group inner list-group-item-text">{{reservationEl.sport.name}}</p>
     </div>
 </div>
-<button (click)="onclick()"  #btn class="pull-right btn btn-primary">Factureer</button>
+<hr>
+<div ><button [disabled]="!customer.reserve" (click)="onclick()"  #btn class="pull-right btn btn-primary">Factureer</button></div>
 
