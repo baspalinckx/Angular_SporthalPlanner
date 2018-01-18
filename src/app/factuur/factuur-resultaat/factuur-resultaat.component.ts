@@ -14,6 +14,7 @@ export class FactuurResultaatComponent implements OnInit {
   @Input() customerInvoice: Customer;
   @Input() price: number;
   priceTotal = 0;
+  priceExclBTW = 0;
   priceArray: [number] = [0];
   customerAdress: Reservation;
   dateNow: Date = new Date();
@@ -47,13 +48,14 @@ export class FactuurResultaatComponent implements OnInit {
       const lengthTime = end - start;
       const price = this.price * lengthTime;
 
-      if(i === 0){
+      if (i === 0) {
         this.priceArray[0] = price;
       }else {
         this.priceArray.push(price);
       }
 
       this.priceTotal = this.priceTotal + price;
+      this.priceExclBTW = this.priceTotal - (this.priceTotal * 0.21) ;
       console.log(this.priceTotal);
     }
     console.log(this.priceArray);
