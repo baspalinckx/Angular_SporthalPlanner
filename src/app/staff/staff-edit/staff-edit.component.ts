@@ -49,7 +49,10 @@ export class StaffEditComponent implements OnInit {
   }
 
   submitted = false;
-
+  dropDownTimes: number[];
+  dropDownEndTimes: number[];
+  selectedStartTime: number;
+  selectedEndTime: number;
 
   constructor(private staffService: StaffService,
               private router: Router,
@@ -67,17 +70,7 @@ export class StaffEditComponent implements OnInit {
     staff.email = this.staffForm.value.staffData.Email;
     staff.phoneNumber = this.staffForm.value.staffData.PhoneNumber;
     staff.startTime = new Date(2000, 1, 1, this.staffForm.value.staffData.StartTime, 0, 0, 0).toString();
-    staff.endTime = new Date(2000, 1, 1
-
-
-
-
-
-
-
-
-
-      , this.staffForm.value.staffData.EndTime, 0, 0, 0).toString();
+    staff.endTime = new Date(2000, 1, 1, this.staffForm.value.staffData.EndTime, 0, 0, 0).toString();
 
     this.staffService.addStaff(staff);
     this.staffForm.reset();
