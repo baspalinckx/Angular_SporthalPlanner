@@ -13,12 +13,13 @@
       <app-factuur-detail
         [customer]="customers[index]"
         (notify)="onNotifyDetailed()"
+        [price]="price"
       ></app-factuur-detail>
     </div>
   </div>
   <div>
     <div class="col-xs-6" *ngIf="customerInvoice">
-      <app-factuur-resultaat id="exportthis" [customerInvoice]="customerInvoice"></app-factuur-resultaat>
+      <app-factuur-resultaat id="exportthis" [price]="price" [customerInvoice]="customerInvoice"></app-factuur-resultaat>
     </div>
   </div>
   <div *ngIf="customerInvoice" class="col-xs-12"><button (click)="onPrint()" class="center-block">Click</button></div>

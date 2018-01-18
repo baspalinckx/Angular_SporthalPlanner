@@ -12,6 +12,7 @@ import * as html2canvas from 'html2canvas';
 })
 export class FactuurResultaatComponent implements OnInit {
   @Input() customerInvoice: Customer;
+  @Input() price: number;
   customerAdress: Reservation;
   dateNow: Date = new Date();
   customerNumber: number;
@@ -33,8 +34,8 @@ export class FactuurResultaatComponent implements OnInit {
         } else {
           console.log('fout');
         }
-
       });
+
 
     this.customerNumber = Math.floor((Math.random() * 10000000) + 1000000);
     this.reservationNumber = Math.floor((Math.random() * 1000000000000) + 10000000000);

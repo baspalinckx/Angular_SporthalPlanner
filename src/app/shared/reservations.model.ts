@@ -18,6 +18,7 @@ export class Reservation {
   private _sport: Sport;
   private _isPaid: boolean;
 
+
   constructor(values: Object = {}) {
     Object.assign(this, values);
   }

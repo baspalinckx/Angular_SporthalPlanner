@@ -9,6 +9,7 @@ import {Customer} from "../../shared/customer.model";
 export class FactuurDetailComponent implements OnInit {
 @Output() notify = new EventEmitter<any>();
 @Input() customer: Customer;
+@Input() price: number;
 
   constructor() { }
 
