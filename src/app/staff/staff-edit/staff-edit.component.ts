@@ -1,6 +1,6 @@
 import {Component, ViewChild, OnInit, OnDestroy, ElementRef} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {StaffService} from "../staff.service";
 import {Staff} from "../../shared/staff.model";
 
@@ -59,6 +59,10 @@ export class StaffEditComponent implements OnInit {
               private route: ActivatedRoute ) { }
 
   ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      this.dropDownTimes = [8, 9, 10];
+      this.dropDownEndTimes = [16, 17, 18];
+    });
   }
 
   onSubmit() {
