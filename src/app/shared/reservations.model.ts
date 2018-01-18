@@ -1,4 +1,5 @@
 import {SportsHall} from './sportshall.model';
+import {Sport} from "./sport.model";
 
 export class Reservation {
   private _reserveID: Number;
@@ -14,6 +15,9 @@ export class Reservation {
   private _streetName: string;
   private _houseNumber: string;
   private _postalCode: string;
+  private _sport: Sport;
+  private _isPaid: boolean;
+
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
@@ -23,7 +27,15 @@ export class Reservation {
     return this._datum;
   }
 
-  public set datum(value: string){
+  public get isPaid(): boolean {
+    return this._isPaid;
+  }
+
+  public set isPaid(value: boolean) {
+    this._isPaid = value;
+  }
+
+  public set datum(value: string) {
     this._datum = value;
   }
 
@@ -115,4 +127,11 @@ export class Reservation {
     this._postalCode = value;
   }
 
+  public set sport(value: Sport){
+    this._sport = value;
+  }
+
+  public get sport(): Sport{
+    return this._sport;
+  }
 }

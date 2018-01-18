@@ -28,7 +28,12 @@ import { StaffComponent } from './staff/staff.component';
 import { StaffEditComponent } from './staff/staff-edit/staff-edit.component';
 import { StaffScheduleComponent } from './staff/staff-schedule/staff-schedule.component';
 import { StaffService } from "./staff/staff.service";
-
+import { FactuurComponent } from './factuur/factuur.component';
+import { FactuurListComponent } from './factuur/factuur-list/factuur-list.component';
+import { FactuurItemComponent } from './factuur/factuur-list/factuur-item/factuur-item.component';
+import { FactuurDetailComponent } from './factuur/factuur-detail/factuur-detail.component';
+import { FactuurResultaatComponent } from './factuur/factuur-resultaat/factuur-resultaat.component';
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -50,11 +55,17 @@ import { StaffService } from "./staff/staff.service";
     StaffComponent,
     StaffEditComponent,
     StaffScheduleComponent
+    FactuurComponent,
+    FactuurListComponent,
+    FactuurItemComponent,
+    FactuurDetailComponent,
+    FactuurResultaatComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    CommonModule,
     HttpModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
