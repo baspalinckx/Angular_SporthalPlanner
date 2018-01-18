@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <h1 *ngIf="sporthall.sportsHallID !== 0">Boekingen  {{sporthall.sportsBuilding.name}} {{sporthall.sportsHallID}}:</h1>
+    <div class="col-xs-12">
+      <button class="btn btn-success" routerLink="new">Nieuwe boeking</button>
+      <button class="btn btn-success" routerLink="extra">Extra bezetting</button>
+      <button class="btn btn-success" routerLink="planing">Nieuwe personeelsplanning</button>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+
+<div class="row">
+  <div class="col-sm-12">
+    <hr>
+    <div class="row">
+      <div id="datePicker" class="col-sm-2" >
+
+        <ng-datepicker  type="text" format="DD-MM-YYYY" [options]="options" name="dateExpires" [(ngModel)]="date"> </ng-datepicker>
+      </div>
+      <div class="col-sm-5">
+        <button class="btn btn-primary"(click)="onSearchWeek()"
+        >Search Week</button>
+        <button class="btn btn-primary" (click)="onSearchDay()">
+          Search Day
+        </button>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12">
+
+        <app-reservation-item
+          *ngFor="let reservationEl of reservations"
+          [reservation]="reservationEl">
+        </app-reservation-item>
+      </div>
+    </div>
+
+    <h4 *ngIf="reservations?.length == 0"> Helaas, niks gevonden</h4>
+  </div>
+</div>
+
+</div>
+

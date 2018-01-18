@@ -1,0 +1,13 @@
+.itemstyle{
+  margin: 10px;
+
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: cornflowerblue;
+}
+

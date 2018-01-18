@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <input placeholder="Enter Email" [(ngModel)]="email">
+      <input placeholder="Enter Sporthall Id" type="number" [(ngModel)]="id">
+    </div>
+    <button (click)="onSearchEmail()" class="btn btn-primary col-md-2">search</button>
+  </div>
+  <hr>
+  <div *ngIf="customer; else content">
+    <div class="row form-g col-md-12">
+      <h1 class="col-md-12 r">{{customer.firstName}} {{customer.lastName}}</h1>
+      <p class="col-md-2 ">{{customer.streetName}} {{customer.houseNumber}}</p>
+      <p class="col-md-1">{{customer.postalCode}}</p>
+      <p>{{customer.phoneNumber}}</p>
+      <hr>
+    </div>
+  </div>
+  <ng-template #content ><p class="list-group-item">{{info}}</p></ng-template>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-reservation-item
+        *ngFor="let reservationEl of reservations"
+        [reservation]="reservationEl">
+      </app-reservation-item>
+    </div>
+  </div>
+  <hr>
+  <!--<div *ngFor="let customerEl of customers">
+    <p>{{customerEl.email}}</p>
+  </div>-->
+  <div class="list-group">
+    <a  (click)="onClickEmail(customerEl.email)" *ngFor="let customerEl of customers" class="list-group-item list-group-item-action">{{customerEl.email}}</a>
+
+  </div>
+</div>
+

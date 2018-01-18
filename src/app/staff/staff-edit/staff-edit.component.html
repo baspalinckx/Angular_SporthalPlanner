@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-xs-12">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="FirstName">First name</label>
+            <input
+              type="text"
+              name="FirstName"
+              id="FirstName"
+              [(ngModel)]="firstname"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="LastName">Last name</label>
+            <input
+              type="text"
+              id="LastName"
+              name="LastName"
+              [(ngModel)]="lastname"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="PhoneNumber">Phone Number</label>
+            <input
+              type="text"
+              name="PhoneNumber"
+              id="PhoneNumber"
+              [(ngModel)]="phoneNumber"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="Email">Email</label>
+            <input
+              type="text"
+              id="Email"
+              name="Email"
+              [(ngModel)]="email"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="job">Taak</label>
+            <select
+              id="job"
+              class="form-control"
+              [(ngModel)]="job"
+              name="job">
+              <option value="Horeka">Horeka</option>
+              <option value="Onderhoud">Onderhoud</option>
+              <option value="Poetser">Poetser</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <button
+        class="btn btn-primary"
+        (click)="submit()"
+        disabled
+        *ngIf="firstname.length < 1 && lastname.length < 1 || email.length < 1 || phoneNumber.length < 1 || job.length < 1">
+        Submit
+      </button>
+      <button
+        class="btn btn-primary"
+        (click)="submit()"
+        *ngIf="firstname.length > 1 && lastname.length > 1 && email.length > 1 && phoneNumber.length > 1 && job.length > 1 ">
+        Submit
+      </button>
+      <button
+        class="btn btn-danger"
+        (click)="onCancel()"
+      >Annuleer</button>
+      <hr>
+  </div>
+</div>
