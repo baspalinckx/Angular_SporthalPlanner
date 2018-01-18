@@ -36,7 +36,7 @@ export class FactuurListComponent implements OnInit {
     html2canvas(document.getElementById('exportthis')).then(function (canvas) {
       const img = canvas.toDataURL('image/png');
       var doc = new jsPDF();
-      doc.addImage(img, 'JPEG', 30, 20);
+      doc.addImage(img, 'JPEG', 10, 20);
       // doc.output('dataurlnewwindow');
       doc.save('file.pdf');
       // console.log(this.customers);
