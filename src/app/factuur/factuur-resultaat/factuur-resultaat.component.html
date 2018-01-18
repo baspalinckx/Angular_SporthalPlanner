@@ -35,7 +35,7 @@
           <div id="listItems2" *ngIf="customerAdress" class="list-group-item clearfix">
             <p class="group inner list-group-item-text">Adres: {{customerAdress.streetName}}  {{customerAdress.houseNumber}}</p>
 
-            <p class="group inner list-group-item-text">Postcode{{customerAdress.postalCode}}</p>
+            <p class="group inner list-group-item-text">Postcode: {{customerAdress.postalCode}}</p>
           </div>
         </div>
       </div>
@@ -49,9 +49,10 @@
           </div>
           <hr>
           <p>Totaal: € {{priceTotal}}</p>
-          <p>Totaal excl. BTW: € {{priceExclBTW}} </p>
+          <p>Totaal excl. BTW: € {{priceExclBTW | number: '1.2'}} </p>
         </div>
       </div>
+
     </div>
   </div>
 </div>
