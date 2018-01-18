@@ -42,12 +42,23 @@ export class FactuurListComponent implements OnInit {
       // console.log(this.customers);
     });
 
-    for(let i = 0; i < this.customers[this.index].reserve.length; i++ ) {
+    for (let i = 0; i < this.customers[this.index].reserve.length; i++) {
       // this.reservationService.updateReservation(this.customerInvoice.reserve[i]);
       this.customers[this.index].reserve[i].isPaid = true;
-      this.reservationService.updateReservation(this.customers[this.index].reserve[i]);
-      console.log(this.customers[this.index].reserve[i]);
+      this.reservationService.updateReservation(this.customers[this.index].reserve[i]).then(() => {
+        if (i = this.customers[this.index].reserve.length) {
+          this.customers[this.index].reserve = null;
+          this.customers = undefined;
+          this.reservations = undefined;
+          this.customerInvoice = null;
+          this.ngOnInit();
+        }
+      });
+      // console.log(this.customers[this.index].reserve[i]);
+
     }
+
+
   }
 
   onNotify(index: number){
@@ -63,6 +74,8 @@ export class FactuurListComponent implements OnInit {
 
   }
 
+
+
   ngOnInit() {
     this.index = -1;
     this.route.params.subscribe(params => {
@@ -70,6 +83,7 @@ export class FactuurListComponent implements OnInit {
       this.sporthalService.getSportshallById(this.id).then(res => {
         this.price = res.price;
         this.reservations = res.reserve;
+        console.log(this.reservations);
       }).then(() => {
           const uniqueEmails = [];
           for (let i = 0; i < this.reservations.length; i++) {
