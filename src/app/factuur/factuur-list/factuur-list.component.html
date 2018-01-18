@@ -23,6 +23,8 @@
       <app-factuur-resultaat id="exportthis" [price]="price" [customerInvoice]="customerInvoice"></app-factuur-resultaat>
     </div>
   </div>
+  <div *ngIf="customerInvoice" class="col-xs-12"><button (click)="onPrint()" class="btn btn-primary pull-right">PDF opslaan</button></div>
+
 </div>
 </div>
 
