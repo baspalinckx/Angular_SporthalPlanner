@@ -24,6 +24,10 @@ import {SportshallService} from './sportshall/sportshall.service';
 import { ReservationWeekListComponent } from './reservations/reservation-week-list/reservation-week-list.component';
 import { ReservationWeekItemComponent } from './reservations/reservation-week-list/reservation-week-item/reservation-week-item.component';
 import { CustomerComponent } from './customer/customer.component';
+import { StaffComponent } from './staff/staff.component';
+import { StaffEditComponent } from './staff/staff-edit/staff-edit.component';
+import { StaffScheduleComponent } from './staff/staff-schedule/staff-schedule.component';
+import { StaffService } from "./staff/staff.service";
 import { FactuurComponent } from './factuur/factuur.component';
 import { FactuurListComponent } from './factuur/factuur-list/factuur-list.component';
 import { FactuurItemComponent } from './factuur/factuur-list/factuur-item/factuur-item.component';
@@ -48,6 +52,9 @@ import {CommonModule} from "@angular/common";
     ReservationWeekListComponent,
     ReservationWeekItemComponent,
     CustomerComponent,
+    StaffComponent,
+    StaffEditComponent,
+    StaffScheduleComponent
     FactuurComponent,
     FactuurListComponent,
     FactuurItemComponent,
@@ -65,7 +72,7 @@ import {CommonModule} from "@angular/common";
     NgDatepickerModule
 
   ],
-  providers: [ ReservationService, SportshallService ],
+  providers: [ ReservationService, SportshallService, StaffService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

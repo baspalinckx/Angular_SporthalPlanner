@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="form-group">
+      <label>Email:</label>
+      <input
+        type="text"
+        [(ngModel)]="email">
+    </div>
+  </div>
+</div>
+<div class="row">
+  <button (click)="onSearchEmail()" class="btn btn-primary col-md-2">Zoek</button>
+</div>
+
+<div *ngIf="staff">
+  <hr>
+  <h4>{{staff.firstName}} {{staff.lastName}}</h4>
+  <h4>{{staff.email}}</h4>
+  <h4>{{staff.phoneNumber}}</h4>
+  <h4>{{staff.job}}</h4>
+  <hr>
+</div>
+
+<div *ngIf="planning">
+  <h1>Planning:</h1>
+  <div *ngFor="let plan of planning">
+    <hr>
+    <h4>Sporthall: {{plan.sportHallId}}</h4>
+    <h4>Taak: {{plan.job}}</h4>
+    <h4>{{plan.date | date}}</h4>
+    <h4>{{plan.startTime | date:'shortTime'}} - {{plan.endTime | date:'shortTime'}}</h4>
+    <hr>
+  </div>
+</div>

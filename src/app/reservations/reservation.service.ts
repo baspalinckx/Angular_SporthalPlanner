@@ -32,7 +32,6 @@ export class ReservationService {
       {context: 'Maintenance', startTime: '12:00:00', endTime: '12:30:00'}
     )
   ];
-
   private reservationsWeek: ReservationweekModel[];
 
   constructor(private http: Http) {
