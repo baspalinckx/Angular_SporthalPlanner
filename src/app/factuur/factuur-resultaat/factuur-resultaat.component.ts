@@ -20,7 +20,6 @@ export class FactuurResultaatComponent implements OnInit {
   dateNow: Date = new Date();
   customerNumber: number;
   reservationNumber: number;
-  @ViewChild('exportthis') element : ElementRef;
   constructor(private customerService: ReservationService) {
   }
 
