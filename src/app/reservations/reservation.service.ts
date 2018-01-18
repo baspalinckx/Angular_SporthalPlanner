@@ -5,6 +5,7 @@ import {Subject} from 'rxjs/Subject';
 import {Http, Headers} from '@angular/http';
 import {environment} from '../../environments/environment';
 import {ReservationweekModel} from "../shared/reservationweek.model";
+import {SportsHall} from '../shared/sportshall.model';
 
 @Injectable()
 export class ReservationService {
@@ -13,6 +14,7 @@ export class ReservationService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private serverUrlReserve = environment.serverUrl + '/reserve';
+  private serverUrlSporthalls = environment.serverUrl + '/sportshalls';
   private serverUrlCustomer = environment.serverMongoUrl + '/customers';
   private reservations: Reservation[] = [
     new Reservation({context: 'Reservation', startTime: '10:00:00', endTime: '12:00:00' }
@@ -43,6 +45,18 @@ export class ReservationService {
       .then(response => {
         this.reservations = response.json() as Reservation[];
         return response.json() as Reservation[];
+      })
+      .catch(error => {
+        return error;
+      });
+  }
+
+  getReservationById(id: number) {
+    return this.http.get( this.serverUrlReserve + '/SporthalId?id=' + id, {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        // this.reservations = response.json() as Reservation[];
+        return response.json() as SportsHall;
       })
       .catch(error => {
         return error;
@@ -101,7 +115,8 @@ export class ReservationService {
       "datum": reservation.datum,
       "startTime": new Date(reservation.startTime).toISOString(),
       "endTime": new Date(reservation.endTime).toISOString(),
-      "sportsHall": reservation.sportsHall
+      "sportsHall": reservation.sportsHall,
+      "sport": reservation.sport
     },
       {headers: this.headers})
       .toPromise()
