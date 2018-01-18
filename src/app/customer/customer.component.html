@@ -10,8 +10,12 @@
         <label>Sporthall ID:</label>
         <input type="number" [(ngModel)]="id">
       </div>
-      <button (click)="onSearchEmail()" class="btn btn-primary col-md-2">Zoek</button>
     </div>
+  <div>
+    <br>
+  <button (click)="onSearchEmail()" class="btn btn-primary col-md-2">Zoek</button>
+  </div>
+  <br><br>
     <hr>
     <div *ngIf="customer; else content">
       <div class="row form-g col-md-12">
