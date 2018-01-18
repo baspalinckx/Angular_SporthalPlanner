@@ -15,11 +15,12 @@
       <div class="panel panel-default">
         <div class="panel-heading">Reserveringen</div>
         <div class="panel-body">
-          <div id="listItems" *ngFor="let reservationEl of customerInvoice.reserve;" class="list-group-item clearfix"  >
+          <div id="listItems" *ngFor="let reservationEl of customerInvoice.reserve; let i = index " class="list-group-item clearfix"  >
             <div >
               <p class="group inner list-group-item-text">{{reservationEl.datum | date}}</p>
               <p class="group inner list-group-item-text"> {{reservationEl.startTime | date:'shortTime'}} - {{reservationEl.endTime | date:'shortTime'}}</p>
               <p *ngIf="reservationEl.sport" class="group inner list-group-item-text">{{reservationEl.sport.name}}</p>
+              <p class="group inner list-group-item-text"> € {{priceArray[i]}}</p>
             </div>
           </div>
         </div>
@@ -44,6 +45,11 @@
       <div class="panel panel-default">
         <div class="panel-heading">Betaalwijze</div>
         <div class="panel-body">
+          <div *ngFor="let price of priceArray">
+            <p>€ {{price}}</p>
+          </div>
+          <hr>
+          <p>Totaal: € {{priceTotal}}</p>
         </div>
       </div>
     </div>

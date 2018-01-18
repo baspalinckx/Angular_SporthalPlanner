@@ -13,6 +13,8 @@ import * as html2canvas from 'html2canvas';
 export class FactuurResultaatComponent implements OnInit {
   @Input() customerInvoice: Customer;
   @Input() price: number;
+  priceTotal = 0;
+  priceArray: [number] = [0];
   customerAdress: Reservation;
   dateNow: Date = new Date();
   customerNumber: number;
@@ -26,15 +28,36 @@ export class FactuurResultaatComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.price);
     this.customerService.getCustomer(this.customerInvoice.email)
       .then((customer) => {
         if (customer.toString() !== 'fout') {
           this.customerAdress = customer as Reservation;
-          console.log(this.customerAdress);
+
         } else {
           console.log('fout');
         }
       });
+
+
+
+    for (let i = 0; i < this.customerInvoice.reserve.length; i++) {
+      const start = new Date(this.customerInvoice.reserve[i].startTime).getHours();
+      const end = new Date(this.customerInvoice.reserve[i].endTime).getHours();
+      const lengthTime = end - start;
+      const price = this.price * lengthTime;
+
+      if(i === 0){
+        this.priceArray[0] = price;
+      }else {
+        this.priceArray.push(price);
+      }
+
+      this.priceTotal = this.priceTotal + price;
+      console.log(this.priceTotal);
+    }
+    console.log(this.priceArray);
+
 
 
     this.customerNumber = Math.floor((Math.random() * 10000000) + 1000000);
