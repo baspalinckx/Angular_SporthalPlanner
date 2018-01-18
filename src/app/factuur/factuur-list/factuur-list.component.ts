@@ -35,13 +35,17 @@ export class FactuurListComponent implements OnInit {
       const img = canvas.toDataURL('image/png');
       var doc = new jsPDF();
       doc.addImage(img, 'JPEG', 5, 20);
-      console.log(canvas);
-
-
       // doc.output('dataurlnewwindow');
-
       doc.save('file.pdf');
+      // console.log(this.customers);
     });
+
+    for(let i = 0; i < this.customers[this.index].reserve.length; i++ ) {
+      // this.reservationService.updateReservation(this.customerInvoice.reserve[i]);
+      this.customers[this.index].reserve[i].isPaid = true;
+      this.reservationService.updateReservation(this.customers[this.index].reserve[i]);
+      console.log(this.customers[this.index].reserve[i]);
+    }
   }
 
   onNotify(index: number){
@@ -91,8 +95,8 @@ export class FactuurListComponent implements OnInit {
         // let list: [Reservation];
 
         for (let x = 0; x < this.customers.length; x++){
-          for (let y = 0; y < this.reservations.length; y++){
-            if(this.customers[x].email === this.reservations[y].email){
+          for (let y = 0; y < this.reservations.length; y++) {
+            if(this.customers[x].email === this.reservations[y].email && this.reservations[y].isPaid === false){
 
               if(this.customers[x].reserve === undefined){
                 this.customers[x].reserve = [this.reservations[y]];

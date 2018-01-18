@@ -14,6 +14,8 @@ export class FactuurResultaatComponent implements OnInit {
   @Input() customerInvoice: Customer;
   customerAdress: Reservation;
   dateNow: Date = new Date();
+  customerNumber: number;
+  reservationNumber: number;
   @ViewChild('exportthis') element : ElementRef;
   constructor(private customerService: ReservationService) {
   }
@@ -33,6 +35,10 @@ export class FactuurResultaatComponent implements OnInit {
         }
 
       });
+
+    this.customerNumber = Math.floor((Math.random() * 10000000) + 1000000);
+    this.reservationNumber = Math.floor((Math.random() * 1000000000000) + 10000000000);
   }
+
 
 }

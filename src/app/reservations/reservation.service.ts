@@ -1,10 +1,9 @@
-
 import {Injectable} from '@angular/core';
 import {Reservation} from '../shared/reservations.model';
 import {Subject} from 'rxjs/Subject';
 import {Http, Headers} from '@angular/http';
 import {environment} from '../../environments/environment';
-import {ReservationweekModel} from "../shared/reservationweek.model";
+import {ReservationweekModel} from '../shared/reservationweek.model';
 import {SportsHall} from '../shared/sportshall.model';
 
 @Injectable()
@@ -17,7 +16,7 @@ export class ReservationService {
   private serverUrlSporthalls = environment.serverUrl + '/sportshalls';
   private serverUrlCustomer = environment.serverMongoUrl + '/customers';
   private reservations: Reservation[] = [
-    new Reservation({context: 'Reservation', startTime: '10:00:00', endTime: '12:00:00' }
+    new Reservation({context: 'Reservation', startTime: '10:00:00', endTime: '12:00:00'}
     ),
     new Reservation(
       {context: 'Maintenance', startTime: '12:00:00', endTime: '12:30:00'}
@@ -41,7 +40,7 @@ export class ReservationService {
   // Reservation
 
   getReservations() {
-    return this.http.get( this.serverUrlReserve, {headers: this.headers})
+    return this.http.get(this.serverUrlReserve, {headers: this.headers})
       .toPromise()
       .then(response => {
         this.reservations = response.json() as Reservation[];
@@ -53,7 +52,7 @@ export class ReservationService {
   }
 
   getReservationById(id: number) {
-    return this.http.get( this.serverUrlReserve + '/SporthalId?id=' + id, {headers: this.headers})
+    return this.http.get(this.serverUrlReserve + '/SporthalId?id=' + id, {headers: this.headers})
       .toPromise()
       .then(response => {
         // this.reservations = response.json() as Reservation[];
@@ -65,7 +64,7 @@ export class ReservationService {
   }
 
   getReservationsByEmail(id: number, email: string) {
-    return this.http.get( this.serverUrlReserve + '/email?id=' + id + '&email=' + email, {headers: this.headers})
+    return this.http.get(this.serverUrlReserve + '/email?id=' + id + '&email=' + email, {headers: this.headers})
       .toPromise()
       .then(response => {
         this.reservations = response.json() as Reservation[];
@@ -77,8 +76,8 @@ export class ReservationService {
   }
 
   getReservationsS(id: string, date: string) {
-  console.log(this.serverUrlReserve + '/SporthalId?id=' + id + '&dateTime=' + date);
-    return this.http.get( this.serverUrlReserve + '/SporthalId?id=' + id + '&dateTime=' + date, {headers: this.headers})
+    console.log(this.serverUrlReserve + '/SporthalId?id=' + id + '&dateTime=' + date);
+    return this.http.get(this.serverUrlReserve + '/SporthalId?id=' + id + '&dateTime=' + date, {headers: this.headers})
       .toPromise()
       .then(response => {
         this.reservations = response.json() as Reservation[];
@@ -92,7 +91,7 @@ export class ReservationService {
 
   getReservationsWeek(id: string, monday: string, sunday: string) {
     console.log(this.serverUrlReserve + '/ReserveWeek?id=' + id + '&monday=' + monday + '&sunday=' + sunday);
-    return this.http.get( this.serverUrlReserve + '/ReserveWeek?id=' + id + '&monday=' + monday + '&sunday=' + sunday, {headers: this.headers})
+    return this.http.get(this.serverUrlReserve + '/ReserveWeek?id=' + id + '&monday=' + monday + '&sunday=' + sunday, {headers: this.headers})
       .toPromise()
       .then(response => {
         this.reservationsWeek = response.json() as ReservationweekModel[];
@@ -105,26 +104,36 @@ export class ReservationService {
 
   }
 
+  updateReservation(reservation: Reservation) {
+    return this.http.put(this.serverUrlReserve + '/' + reservation.reserveID,{headers: this.headers})
+      .toPromise()
+      .then(response => {
+        return response.json();
+      });
+  }
+
   addReservation(reservation: Reservation) {
 
+    console.log(reservation.datum);
+    console.log(reservation.phoneNumber);
     return this.http.post(this.serverUrlReserve, {
-      "firstName": reservation.firstName,
-      "lastName": reservation.lastName,
-      "email": reservation.email,
-      "context": reservation.context,
-      "phoneNumber": reservation.phoneNumber,
-      "datum": reservation.datum,
-      "startTime": new Date(reservation.startTime).toISOString(),
-      "endTime": new Date(reservation.endTime).toISOString(),
-      "sportsHall": reservation.sportsHall,
-      "sport": reservation.sport
-    },
+        'firstName': reservation.firstName,
+        'lastName': reservation.lastName,
+        'email': reservation.email,
+        'context': reservation.context,
+        'phoneNumber': reservation.phoneNumber,
+        'datum': reservation.datum,
+        'startTime': new Date(reservation.startTime).toISOString(),
+        'endTime': new Date(reservation.endTime).toISOString(),
+        'sportsHall': reservation.sportsHall,
+        'sport': reservation.sport
+      },
       {headers: this.headers})
       .toPromise()
       .then(response => {
         this.reservationChanged.next();
       })
-      .catch( res => {
+      .catch(res => {
         console.log('rejected');
       });
   }
@@ -134,7 +143,7 @@ export class ReservationService {
       .toPromise()
       .then(response => {
         if (response.text() === '') {
-        return 'fout';
+          return 'fout';
         } else {
           return response.json() as Reservation;
         }
@@ -149,26 +158,25 @@ export class ReservationService {
       });
   }
 
-  addCustomer(customer: Reservation){
+  addCustomer(customer: Reservation) {
     return this.http.post(this.serverUrlCustomer, {
-        "firstName": customer.firstName,
-        "lastName": customer.lastName,
-        "email": customer.email,
-        "streetName": customer.streetName,
-        "phoneNumber": customer.phoneNumber,
-        "houseNumber": customer.houseNumber,
-        "postalCode": customer.postalCode
+        'firstName': customer.firstName,
+        'lastName': customer.lastName,
+        'email': customer.email,
+        'streetName': customer.streetName,
+        'phoneNumber': customer.phoneNumber,
+        'houseNumber': customer.houseNumber,
+        'postalCode': customer.postalCode
       },
       {headers: this.headers})
       .toPromise()
       .then(response => {
         this.reservationChanged.next();
       })
-      .catch( res => {
+      .catch(res => {
 
       });
-      }
-
+  }
 
 
 }

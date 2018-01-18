@@ -13,9 +13,14 @@ import {Customer} from '../../../shared/customer.model';
 export class FactuurItemComponent implements OnInit {
   @Input() customer: Customer;
   @Input() index: number;
+  length: number;
   @Output() notify = new EventEmitter<Number>();
   ngOnInit() {
-
+    if(this.customer.reserve){
+      this.length = this.customer.reserve.length;
+    }else {
+      this.length = 0;
+    }
   }
 
   onClick() {
