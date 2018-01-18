@@ -34,6 +34,7 @@ import { FactuurItemComponent } from './factuur/factuur-list/factuur-item/factuu
 import { FactuurDetailComponent } from './factuur/factuur-detail/factuur-detail.component';
 import { FactuurResultaatComponent } from './factuur/factuur-resultaat/factuur-resultaat.component';
 import {CommonModule} from "@angular/common";
+import { NewPlanningComponent } from './staff/new-planning/new-planning.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import {CommonModule} from "@angular/common";
     FactuurListComponent,
     FactuurItemComponent,
     FactuurDetailComponent,
-    FactuurResultaatComponent
+    FactuurResultaatComponent,
+    NewPlanningComponent
   ],
   imports: [
     BrowserModule,

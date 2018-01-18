@@ -51,7 +51,6 @@ export class BookingComponent implements OnInit, OnDestroy {
         .then(sportshall => {
             this.sportsHall = sportshall;
             this.sportshallssports = sportshall.sportsHallSports;
-
         });
     });
     this.bookingForm.valueChanges.subscribe((update) => {

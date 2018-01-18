@@ -25,7 +25,6 @@ export class SportshallService {
 
   // Sportshalls by id
   getSportshallById(id: string) {
-    console.log(this.serverUrlSportshall + '/' + id);
     return this.http.get( this.serverUrlSportshall + '/' + id)
       .toPromise()
       .then(response => {

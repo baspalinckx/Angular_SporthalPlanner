@@ -19,7 +19,7 @@ export class SportshallListComponent implements OnInit {
 
   ngOnInit() {
     this.sportshallService.getSportshalls()
-      .then(res => { this.sportshalls = res; console.log(res) });
+      .then(res => { this.sportshalls = res;});
   }
 
 }
