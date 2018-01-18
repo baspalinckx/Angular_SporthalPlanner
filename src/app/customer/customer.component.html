@@ -19,10 +19,17 @@
   <ng-template #content ><p class="list-group-item">{{info}}</p></ng-template>
   <div class="row">
     <div class="col-xs-12">
-      <app-reservation-item
-        *ngFor="let reservationEl of reservations"
-        [reservation]="reservationEl">
-      </app-reservation-item>
+      <div *ngFor="let reservation of reservations" id="reservations" class="list-group-item clearfix">
+        <div>
+          <h4 class="group inner list-group-item-heading">
+            {{reservation.context}}</h4>
+          <p class="group inner list-group-item-text">{{reservation.datum | date}}</p>
+          <p class="group inner list-group-item-text">{{reservation.startTime | date:'shortTime' }} - {{reservation.endTime | date:'shortTime'}}</p>
+          <p class="group inner list-group-item-text">{{reservation.firstName}}  {{reservation.lastName}}</p>
+          <p class="group inner list-group-item-text">{{reservation.phoneNumber}} - {{reservation.email}}</p>
+          <p class="group inner list-group-item-text" *ngIf="reservation.sport != null">{{reservation.sport.name}}</p>
+        </div>
+      </div>
     </div>
   </div>
   <hr>
