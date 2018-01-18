@@ -1,0 +1,88 @@
+<div *ngIf="sportsHall && staffArray">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label>Datum</label>
+            <input
+              type="date"
+              [(ngModel)]="date"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label>StartTijd</label>
+            <select
+              (change)="startTimeChange()"
+              class="form-control"
+              [(ngModel)]="startTime">
+              <option *ngFor="let time of startTimeArray" [ngValue]="time">{{time}}:00</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label>EindTijd</label>
+            <select
+              class="form-control"
+              [(ngModel)]="endTime">
+              <option *ngFor="let time of endTimeArray" [ngValue]="time">{{time}}:00</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label>Staff</label>
+            <select
+              class="form-control"
+              [(ngModel)]="selectedStaff">
+              <option *ngFor="let staff of staffArray" [ngValue]="staff">{{staff.firstName}} {{staff.lastName}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label>Taak</label>
+            <select
+              [(ngModel)]="job"
+              class="form-control">
+              <option value="Horeka">Horeka</option>
+              <option value="Onderhoud">Onderhoud</option>
+              <option value="Poetser">Poetser</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <button
+        class="btn btn-primary"
+        (click)="Submit()"
+        *ngIf="date && startTime && endTime && selectedStaff && job"
+      >Plan in</button>
+
+      <button
+        class="btn btn-primary"
+        disabled
+        *ngIf="!date || !startTime || !endTime || !selectedStaff || !job"
+      >Plan in</button>
+
+
+
+      <button
+        class="btn btn-danger"
+        (click)="onCancel()"
+      >Annuleer</button>
+      <hr>
+    </div>
+  </div>
+</div>
