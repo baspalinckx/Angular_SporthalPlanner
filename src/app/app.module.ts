@@ -54,7 +54,7 @@ import {CommonModule} from "@angular/common";
     CustomerComponent,
     StaffComponent,
     StaffEditComponent,
-    StaffScheduleComponent
+    StaffScheduleComponent,
     FactuurComponent,
     FactuurListComponent,
     FactuurItemComponent,
